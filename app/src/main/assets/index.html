@@ -3544,89 +3544,6 @@
             border-color: var(--primary);
         }
 
-        /* ===== 画师名字旁的成就徽章 ===== */
-        .name-badges {
-            display: inline-flex;
-            align-items: center;
-            gap: 4px;
-            margin-left: 8px;
-            vertical-align: middle;
-            flex-wrap: nowrap;
-            max-width: 100%;
-        }
-        .name-badge {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: 24px;
-            height: 24px;
-            font-size: 14px;
-            border-radius: 50%;
-            background: rgba(var(--shadow-color), 0.10);
-            border: 1px solid rgba(var(--shadow-color), 0.18);
-            cursor: pointer;
-            transition: var(--transition);
-            position: relative;
-            user-select: none;
-            -webkit-user-select: none;
-            line-height: 1;
-        }
-        .name-badge:hover {
-            transform: translateY(-2px) scale(1.12);
-            box-shadow: 0 4px 10px rgba(var(--shadow-color), 0.25);
-            background: rgba(var(--shadow-color), 0.15);
-        }
-        .name-badge.tier-legend {
-            background: linear-gradient(135deg, #FFD700, #FFA500);
-            border-color: #FFA500;
-            box-shadow: 0 0 8px rgba(255, 165, 0, 0.4);
-        }
-        .name-badge.tier-mythic {
-            background: linear-gradient(135deg, #FF6B6B, #C71585);
-            border-color: #C71585;
-            box-shadow: 0 0 10px rgba(199, 21, 133, 0.5);
-        }
-        .name-badge .badge-tip {
-            position: absolute;
-            bottom: calc(100% + 6px);
-            left: 50%;
-            transform: translateX(-50%);
-            background: rgba(0,0,0,0.85);
-            color: #fff;
-            font-size: 11px;
-            padding: 4px 8px;
-            border-radius: 6px;
-            white-space: nowrap;
-            opacity: 0;
-            pointer-events: none;
-            transition: opacity 0.2s;
-            z-index: 100;
-        }
-        .name-badge:hover .badge-tip {
-            opacity: 1;
-        }
-        .name-badge-more {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            min-width: 24px;
-            height: 24px;
-            padding: 0 6px;
-            font-size: 11px;
-            font-weight: 700;
-            color: var(--text-light);
-            background: rgba(var(--shadow-color), 0.10);
-            border: 1px solid rgba(var(--shadow-color), 0.18);
-            border-radius: 12px;
-            cursor: pointer;
-            transition: var(--transition);
-        }
-        .name-badge-more:hover {
-            background: rgba(var(--shadow-color), 0.18);
-            color: var(--text);
-            transform: translateY(-2px);
-        }
-
         /* ===== 紧急提醒弹窗 ===== */
         #urgentAlertModalOverlay .modal {
             max-width: 520px;
@@ -3785,627 +3702,6 @@
         #urgentAlertModalOverlay .modal-footer .btn-secondary {
             background: rgba(var(--shadow-color), 0.06);
             color: var(--text-light);
-        }
-
-        /* ===== 成就面板模态框 ===== */
-        #achievementModalOverlay .modal {
-            max-width: 800px;
-        }
-        #achievementModalOverlay .modal-body {
-            padding: 20px 28px 28px;
-            max-height: 70vh;
-            overflow-y: auto;
-        }
-        .ach-stats-bar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 12px 16px;
-            background: rgba(var(--shadow-color), 0.04);
-            border-radius: var(--radius-sm);
-            margin-bottom: 20px;
-            flex-wrap: wrap;
-            gap: 8px;
-        }
-        .ach-stats-bar .ach-total {
-            font-size: 15px;
-            font-weight: 500;
-            color: var(--text-light);
-        }
-        .ach-stats-bar .ach-total strong {
-            color: var(--primary);
-            font-size: 20px;
-        }
-        .ach-stats-bar .ach-progress-wrap {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-        .ach-stats-bar .ach-progress-track {
-            width: 120px;
-            height: 6px;
-            background: rgba(var(--shadow-color), 0.10);
-            border-radius: 10px;
-            overflow: hidden;
-        }
-        .ach-stats-bar .ach-progress-track .ach-progress-fill {
-            height: 100%;
-            border-radius: 10px;
-            background: linear-gradient(90deg, var(--primary-light), var(--primary));
-            transition: width 0.6s;
-        }
-        .ach-stats-bar .ach-next-label {
-            font-size: 13px;
-            color: var(--text-muted);
-            font-weight: 500;
-        }
-
-        .ach-section-title {
-            font-size: 16px;
-            font-weight: 600;
-            color: var(--text);
-            margin: 20px 0 12px;
-            padding-bottom: 8px;
-            border-bottom: 2px solid var(--border-light);
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-        .ach-section-title i {
-            font-size: 18px;
-        }
-        .ach-section-title .ach-count-badge {
-            font-size: 12px;
-            font-weight: 400;
-            color: var(--text-muted);
-            background: rgba(var(--shadow-color), 0.06);
-            padding: 2px 10px;
-            border-radius: 20px;
-            margin-left: auto;
-        }
-
-        .ach-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
-            gap: 12px;
-        }
-        .ach-item {
-            background: var(--card-bg);
-            border: 2px solid var(--border-light);
-            border-radius: var(--radius-sm);
-            padding: 14px 10px 12px;
-            text-align: center;
-            transition: var(--transition);
-            position: relative;
-            opacity: 0.5;
-            filter: grayscale(0.8);
-        }
-        .ach-item.unlocked {
-            opacity: 1;
-            filter: grayscale(0);
-            border-color: var(--primary);
-            box-shadow: 0 0 20px rgba(var(--shadow-color), 0.08);
-        }
-        .ach-item.unlocked:hover {
-            transform: translateY(-4px);
-            box-shadow: var(--shadow-hover);
-        }
-        .ach-item .ach-icon {
-            font-size: 32px;
-            display: block;
-            margin-bottom: 4px;
-            line-height: 1.2;
-        }
-        .ach-item .ach-name {
-            font-size: 13px;
-            font-weight: 600;
-            color: var(--text);
-            display: block;
-        }
-        .ach-item .ach-requirement {
-            font-size: 11px;
-            color: var(--text-muted);
-            display: block;
-            margin-top: 2px;
-        }
-        .ach-item .ach-status {
-            font-size: 11px;
-            font-weight: 600;
-            display: block;
-            margin-top: 4px;
-            padding: 2px 10px;
-            border-radius: 20px;
-            background: rgba(var(--shadow-color), 0.06);
-            color: var(--text-muted);
-        }
-        .ach-item.unlocked .ach-status {
-            background: rgba(16, 185, 129, 0.12);
-            color: #10B981;
-        }
-        .ach-item .ach-badge-glow {
-            position: absolute;
-            top: -2px;
-            right: -2px;
-            font-size: 16px;
-            animation: none;
-        }
-        .ach-item.unlocked .ach-badge-glow {
-            animation: glow-pulse 2s infinite;
-        }
-        @keyframes glow-pulse {
-            0%,
-            100% {
-                transform: scale(1);
-                opacity: 0.7;
-            }
-            50% {
-                transform: scale(1.2);
-                opacity: 1;
-            }
-        }
-        .ach-item.rainbow-ach .ach-icon {
-            background: linear-gradient(90deg,
-                    #FF6B6B, #FF9F43, #FECA57, #48DBFB, #0ABDE3, #A29BFE, #FD79A8);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-        .ach-item.rainbow-ach .ach-name {
-            background: linear-gradient(90deg,
-                    #FF6B6B, #FF9F43, #FECA57, #48DBFB, #0ABDE3, #A29BFE, #FD79A8);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            font-weight: 700;
-        }
-
-        .daily-ach-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
-            gap: 12px;
-        }
-        .daily-ach-item {
-            background: var(--card-bg);
-            border: 2px solid var(--border-light);
-            border-radius: var(--radius-sm);
-            padding: 12px 8px 10px;
-            text-align: center;
-            transition: var(--transition);
-            opacity: 0.5;
-            filter: grayscale(0.6);
-        }
-        .daily-ach-item.unlocked {
-            opacity: 1;
-            filter: grayscale(0);
-            border-color: #FF6B6B;
-            box-shadow: 0 0 16px rgba(255, 107, 107, 0.12);
-        }
-        .daily-ach-item .daily-icon {
-            font-size: 28px;
-            display: block;
-            margin-bottom: 2px;
-        }
-        .daily-ach-item .daily-name {
-            font-size: 12px;
-            font-weight: 600;
-            color: var(--text);
-            display: block;
-        }
-        .daily-ach-item .daily-req {
-            font-size: 10px;
-            color: var(--text-muted);
-            display: block;
-        }
-        .daily-ach-item .daily-status {
-            font-size: 11px;
-            font-weight: 600;
-            display: block;
-            margin-top: 4px;
-            padding: 2px 10px;
-            border-radius: 20px;
-            background: rgba(var(--shadow-color), 0.06);
-            color: var(--text-muted);
-        }
-        .daily-ach-item.unlocked .daily-status {
-            background: rgba(255, 107, 107, 0.12);
-            color: #FF6B6B;
-        }
-
-        .streak-ach-section {
-            margin-top: 16px;
-            padding-top: 16px;
-            border-top: 2px solid var(--border-light);
-        }
-        .streak-ach-section .section-title {
-            font-size: 16px;
-            font-weight: 600;
-            color: var(--text);
-            margin-bottom: 12px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-        .streak-ach-section .section-title i {
-            color: #FBBF24;
-        }
-        .streak-status {
-            display: flex;
-            align-items: center;
-            gap: 16px;
-            padding: 8px 12px;
-            background: rgba(var(--shadow-color), 0.04);
-            border-radius: var(--radius-sm);
-            margin-bottom: 12px;
-            flex-wrap: wrap;
-        }
-        .streak-status .streak-days {
-            font-size: 20px;
-            font-weight: 700;
-            color: var(--primary);
-        }
-        .streak-status .streak-label {
-            font-size: 14px;
-            color: var(--text-light);
-        }
-        .streak-status .streak-next {
-            font-size: 13px;
-            color: var(--text-muted);
-            margin-left: auto;
-        }
-        .streak-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
-            gap: 10px;
-        }
-        .streak-item {
-            background: var(--card-bg);
-            border: 2px solid var(--border-light);
-            border-radius: var(--radius-sm);
-            padding: 12px 8px 10px;
-            text-align: center;
-            transition: var(--transition);
-            opacity: 0.5;
-            filter: grayscale(0.7);
-        }
-        .streak-item.unlocked {
-            opacity: 1;
-            filter: grayscale(0);
-            border-color: #FBBF24;
-            box-shadow: 0 0 16px rgba(251, 191, 36, 0.15);
-        }
-        .streak-item .streak-icon {
-            font-size: 28px;
-            display: block;
-            margin-bottom: 2px;
-        }
-        .streak-item .streak-name {
-            font-size: 12px;
-            font-weight: 600;
-            color: var(--text);
-            display: block;
-        }
-        .streak-item .streak-req {
-            font-size: 10px;
-            color: var(--text-muted);
-            display: block;
-        }
-        .streak-item .streak-status-label {
-            font-size: 11px;
-            font-weight: 600;
-            display: block;
-            margin-top: 4px;
-            padding: 2px 10px;
-            border-radius: 20px;
-            background: rgba(var(--shadow-color), 0.06);
-            color: var(--text-muted);
-        }
-        .streak-item.unlocked .streak-status-label {
-            background: rgba(251, 191, 36, 0.15);
-            color: #B45309;
-        }
-
-        .negative-ach-section {
-            margin-top: 16px;
-            padding-top: 16px;
-            border-top: 2px solid var(--border-light);
-        }
-        .negative-ach-section .section-title {
-            font-size: 16px;
-            font-weight: 600;
-            color: var(--text);
-            margin-bottom: 12px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-        .negative-ach-section .section-title i {
-            color: #9CA3AF;
-        }
-        .negative-ach-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
-            gap: 10px;
-        }
-        .negative-ach-item {
-            background: var(--card-bg);
-            border: 2px solid var(--border-light);
-            border-radius: var(--radius-sm);
-            padding: 12px 10px 10px;
-            text-align: center;
-            transition: var(--transition);
-            opacity: 0.5;
-            filter: grayscale(0.7);
-        }
-        .negative-ach-item.unlocked {
-            opacity: 1;
-            filter: grayscale(0);
-            border-color: #9CA3AF;
-            box-shadow: 0 0 16px rgba(156, 163, 175, 0.15);
-        }
-        .negative-ach-item .neg-icon {
-            font-size: 28px;
-            display: block;
-            margin-bottom: 2px;
-        }
-        .negative-ach-item .neg-name {
-            font-size: 13px;
-            font-weight: 600;
-            color: var(--text);
-            display: block;
-        }
-        .negative-ach-item .neg-desc {
-            font-size: 10px;
-            color: var(--text-muted);
-            display: block;
-            margin-top: 2px;
-            line-height: 1.3;
-        }
-        .negative-ach-item .neg-status {
-            font-size: 11px;
-            font-weight: 600;
-            display: block;
-            margin-top: 4px;
-            padding: 2px 10px;
-            border-radius: 20px;
-            background: rgba(var(--shadow-color), 0.06);
-            color: var(--text-muted);
-        }
-        .negative-ach-item.unlocked .neg-status {
-            background: rgba(156, 163, 175, 0.15);
-            color: #6B7280;
-        }
-
-        /* ===== 每日成就解锁弹窗 ===== */
-        #dailyAchievementModalOverlay .modal {
-            max-width: 480px;
-            border-top: 6px solid #FF6B6B;
-            text-align: center;
-        }
-        #dailyAchievementModalOverlay .modal .modal-header {
-            border-bottom: none;
-            padding-bottom: 0;
-        }
-        #dailyAchievementModalOverlay .modal .modal-header .modal-title-group {
-            margin: 0 auto;
-            text-align: center;
-        }
-        #dailyAchievementModalOverlay .modal .modal-header .modal-title-group .modal-emoji {
-            font-size: 56px;
-            display: block;
-            margin-bottom: 4px;
-        }
-        #dailyAchievementModalOverlay .modal .modal-header .modal-title {
-            font-size: 24px;
-            font-weight: 700;
-            color: #FF6B6B;
-        }
-        #dailyAchievementModalOverlay .modal .modal-header .modal-sub {
-            color: var(--text-light);
-            font-weight: 400;
-            font-size: 15px;
-            margin-top: 4px;
-        }
-        #dailyAchievementModalOverlay .modal .modal-body {
-            padding: 12px 28px 20px;
-        }
-        #dailyAchievementModalOverlay .modal .modal-body .daily-ach-body-text {
-            font-size: 16px;
-            line-height: 1.7;
-            color: var(--text);
-            padding: 8px 0;
-        }
-        #dailyAchievementModalOverlay .modal .modal-body .daily-ach-body-text .highlight-ach {
-            font-weight: 700;
-            color: #FF6B6B;
-        }
-        #dailyAchievementModalOverlay .modal .modal-body .daily-ach-hidden-tag {
-            margin-top: 12px;
-            padding: 10px 16px;
-            background: rgba(255, 107, 107, 0.08);
-            border-radius: var(--radius-xs);
-            border: 1px dashed #FF6B6B;
-            font-size: 14px;
-            color: #FF6B6B;
-            font-weight: 600;
-        }
-        #dailyAchievementModalOverlay .modal-footer {
-            border-top: none;
-            justify-content: center;
-            padding-top: 4px;
-        }
-        #dailyAchievementModalOverlay .modal-footer .btn-primary {
-            background: #FF6B6B;
-        }
-        #dailyAchievementModalOverlay .modal-footer .btn-primary:hover {
-            background: #E55A5A;
-        }
-
-        /* ===== 连续成就解锁弹窗 ===== */
-        #streakAchievementModalOverlay .modal {
-            max-width: 480px;
-            border-top: 6px solid #FBBF24;
-            text-align: center;
-        }
-        #streakAchievementModalOverlay .modal .modal-header {
-            border-bottom: none;
-            padding-bottom: 0;
-        }
-        #streakAchievementModalOverlay .modal .modal-header .modal-title-group {
-            margin: 0 auto;
-            text-align: center;
-        }
-        #streakAchievementModalOverlay .modal .modal-header .modal-title-group .modal-emoji {
-            font-size: 56px;
-            display: block;
-            margin-bottom: 4px;
-        }
-        #streakAchievementModalOverlay .modal .modal-header .modal-title {
-            font-size: 24px;
-            font-weight: 700;
-            color: #B45309;
-        }
-        #streakAchievementModalOverlay .modal .modal-header .modal-sub {
-            color: var(--text-light);
-            font-weight: 400;
-            font-size: 15px;
-            margin-top: 4px;
-        }
-        #streakAchievementModalOverlay .modal .modal-body {
-            padding: 12px 28px 20px;
-        }
-        #streakAchievementModalOverlay .modal .modal-body .streak-ach-body-text {
-            font-size: 16px;
-            line-height: 1.7;
-            color: var(--text);
-            padding: 8px 0;
-        }
-        #streakAchievementModalOverlay .modal .modal-body .streak-ach-body-text .highlight-streak {
-            font-weight: 700;
-            color: #B45309;
-        }
-        #streakAchievementModalOverlay .modal-footer {
-            border-top: none;
-            justify-content: center;
-            padding-top: 4px;
-        }
-        #streakAchievementModalOverlay .modal-footer .btn-primary {
-            background: #FBBF24;
-            color: #78350F;
-        }
-        #streakAchievementModalOverlay .modal-footer .btn-primary:hover {
-            background: #F59E0B;
-        }
-
-        /* ===== 负面成就解锁弹窗 ===== */
-        #negativeAchievementModalOverlay .modal {
-            max-width: 480px;
-            border-top: 6px solid #9CA3AF;
-            text-align: center;
-        }
-        #negativeAchievementModalOverlay .modal .modal-header {
-            border-bottom: none;
-            padding-bottom: 0;
-        }
-        #negativeAchievementModalOverlay .modal .modal-header .modal-title-group {
-            margin: 0 auto;
-            text-align: center;
-        }
-        #negativeAchievementModalOverlay .modal .modal-header .modal-title-group .modal-emoji {
-            font-size: 56px;
-            display: block;
-            margin-bottom: 4px;
-        }
-        #negativeAchievementModalOverlay .modal .modal-header .modal-title {
-            font-size: 24px;
-            font-weight: 700;
-            color: #6B7280;
-        }
-        #negativeAchievementModalOverlay .modal .modal-header .modal-sub {
-            color: var(--text-light);
-            font-weight: 400;
-            font-size: 15px;
-            margin-top: 4px;
-        }
-        #negativeAchievementModalOverlay .modal .modal-body {
-            padding: 12px 28px 20px;
-        }
-        #negativeAchievementModalOverlay .modal .modal-body .neg-ach-body-text {
-            font-size: 16px;
-            line-height: 1.7;
-            color: var(--text);
-            padding: 8px 0;
-        }
-        #negativeAchievementModalOverlay .modal .modal-body .neg-ach-body-text .highlight-neg {
-            font-weight: 700;
-            color: #6B7280;
-        }
-        #negativeAchievementModalOverlay .modal-footer {
-            border-top: none;
-            justify-content: center;
-            padding-top: 4px;
-        }
-        #negativeAchievementModalOverlay .modal-footer .btn-primary {
-            background: #9CA3AF;
-            color: #fff;
-        }
-        #negativeAchievementModalOverlay .modal-footer .btn-primary:hover {
-            background: #6B7280;
-        }
-
-        /* ===== 通用成就解锁弹窗 ===== */
-        #genericAchievementModalOverlay .modal {
-            max-width: 480px;
-            border-top: 6px solid var(--primary);
-            text-align: center;
-        }
-        #genericAchievementModalOverlay .modal .modal-header {
-            border-bottom: none;
-            padding-bottom: 0;
-        }
-        #genericAchievementModalOverlay .modal .modal-header .modal-title-group {
-            margin: 0 auto;
-            text-align: center;
-        }
-        #genericAchievementModalOverlay .modal .modal-header .modal-title-group .modal-emoji {
-            font-size: 56px;
-            display: block;
-            margin-bottom: 4px;
-        }
-        #genericAchievementModalOverlay .modal .modal-header .modal-title {
-            font-size: 24px;
-            font-weight: 700;
-            color: var(--primary);
-        }
-        #genericAchievementModalOverlay .modal .modal-header .modal-sub {
-            color: var(--text-light);
-            font-weight: 400;
-            font-size: 15px;
-            margin-top: 4px;
-        }
-        #genericAchievementModalOverlay .modal .modal-body {
-            padding: 12px 28px 20px;
-        }
-        #genericAchievementModalOverlay .modal .modal-body .gen-ach-body-text {
-            font-size: 16px;
-            line-height: 1.7;
-            color: var(--text);
-            padding: 8px 0;
-        }
-        #genericAchievementModalOverlay .modal .modal-body .gen-ach-body-text .highlight-gen {
-            font-weight: 700;
-            color: var(--primary);
-        }
-        #genericAchievementModalOverlay .modal-footer {
-            border-top: none;
-            justify-content: center;
-            padding-top: 4px;
-        }
-        #genericAchievementModalOverlay .modal-footer .btn-primary {
-            background: var(--primary);
-            color: #fff;
-        }
-        #genericAchievementModalOverlay .modal-footer .btn-primary:hover {
-            background: var(--primary-dark);
         }
 
         /* ============================================================
@@ -6710,18 +6006,7 @@
                 <span>收入</span>
                 <span class="badge" id="badgeIncome">0</span>
             </a>
-            <a class="nav-item" data-tab="achievement">
-                <svg class="nav-svg" viewBox="0 0 24 24"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/><path d="M4 22h16"/><path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"/><path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"/><path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"/></svg>
-                <span>成就</span>
-                <span class="ach-badge-dot" id="achBadgeDot"></span>
-                <span class="daily-ach-dot" id="dailyAchDot"></span>
-                <span class="streak-ach-dot" id="streakAchDot"></span>
-                <span class="neg-ach-dot" id="negAchDot"></span>
-                <span class="price-ach-dot" id="priceAchDot"></span>
-                <span class="quantity-ach-dot" id="quantityAchDot"></span>
-                <span class="combo-ach-dot" id="comboAchDot"></span>
-                <span class="monthly-income-ach-dot" id="monthlyIncomeAchDot"></span>
-            </a>
+
             <a class="nav-item" data-tab="settings">
                 <svg class="nav-svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
                 <span>设置</span>
@@ -6754,10 +6039,7 @@
             <svg class="icon" viewBox="0 0 24 24"><path d="M12 2v20"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
             <span>收入</span>
         </button>
-        <button class="mobile-tab" data-tab="achievement" aria-label="成就">
-            <svg class="icon" viewBox="0 0 24 24"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/><path d="M4 22h16"/><path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"/><path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"/><path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"/></svg>
-            <span>成就</span>
-        </button>
+
         <button class="mobile-tab" data-tab="settings" aria-label="设置">
             <svg class="icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 1v3M12 20v3M4.22 4.22l2.12 2.12M17.66 17.66l2.12 2.12M1 12h3M20 12h3M4.22 19.78l2.12-2.12M17.66 6.34l2.12-2.12"/></svg>
             <span>设置</span>
@@ -6770,7 +6052,7 @@
         <!-- 欢迎横幅 -->
         <div class="welcome-banner">
             <div class="greeting">
-                <h1>👋 你好，<span class="highlight" id="greetingName">这是一个初始名字</span><span class="name-badges" id="greetingBadges"></span></h1>
+                <h1>👋 你好，<span class="highlight" id="greetingName">这是一个初始名字</span></h1>
                 <p><i class="fas fa-paint-brush"></i> 今天有 <strong id="today-count">0</strong> 个稿件需要关注</p>
             </div>
             <div class="action-btns">
@@ -6875,94 +6157,6 @@
                 </div>
             </div>
             <div class="income-grid" id="incomeGrid"></div>
-        </div>
-        <div id="achievementView" style="display:none;">
-            <h2 style="margin-bottom:16px; font-weight:600; color:var(--text);">
-                <i class="fas fa-trophy" style="color:var(--ach-gold);"></i> 成就墙
-                <span style="font-size:14px;font-weight:400;color:var(--text-muted);margin-left:12px;">记录你的成长足迹</span>
-            </h2>
-            <div id="achievementPanel">
-                <!-- 累计进度 -->
-                <div class="ach-stats-bar">
-                    <div class="ach-total">
-                        已累计完成 <strong id="achTotalCount">0</strong> 篇稿件
-                    </div>
-                    <div class="ach-progress-wrap">
-                        <span class="ach-next-label" id="achNextLabel">下一个：3篇</span>
-                        <div class="ach-progress-track">
-                            <div class="ach-progress-fill" id="achProgressFill" style="width:0%;"></div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- 累计成就 -->
-                <div class="ach-section-title">
-                    <i class="fas fa-star" style="color:var(--ach-gold);"></i> 累计成就
-                    <span class="ach-count-badge" id="achCountBadge">0/8</span>
-                </div>
-                <div class="ach-grid" id="achGrid"></div>
-
-                <!-- 价格成就 -->
-                <div class="ach-section-title">
-                    <i class="fas fa-coins" style="color:#34D399;"></i> 价格成就
-                    <span class="ach-count-badge" id="priceAchCountBadge">0/5</span>
-                </div>
-                <div class="ach-grid" id="priceAchGrid"></div>
-
-                <!-- 数量成就 -->
-                <div class="ach-section-title">
-                    <i class="fas fa-hashtag" style="color:#60A5FA;"></i> 数量成就
-                    <span class="ach-count-badge" id="quantityAchCountBadge">0/5</span>
-                </div>
-                <div class="ach-grid" id="quantityAchGrid"></div>
-
-                <!-- 组合成就 -->
-                <div class="ach-section-title">
-                    <i class="fas fa-puzzle-piece" style="color:#F472B6;"></i> 组合成就
-                    <span class="ach-count-badge" id="comboAchCountBadge">0/3</span>
-                </div>
-                <div class="ach-grid" id="comboAchGrid"></div>
-
-                <!-- 月度收入成就 -->
-                <div class="ach-section-title">
-                    <i class="fas fa-chart-line" style="color:#10B981;"></i> 月度收入成就
-                    <span style="font-size:13px;font-weight:400;color:var(--text-muted);margin-left:8px;">（单月累计稿费 · 含历史月份）</span>
-                    <span class="ach-count-badge" id="monthlyIncomeAchCountBadge">0/5</span>
-                </div>
-                <div class="ach-grid" id="monthlyIncomeAchGrid"></div>
-
-                <!-- 每日成就 -->
-                <div class="ach-section-title" style="margin-top:20px;">
-                    <i class="fas fa-sun" style="color:#FF6B6B;"></i> 今日成就 · 限时称号
-                    <span style="font-size:13px;font-weight:400;color:var(--text-muted);margin-left:8px;">（当日完成成图数）</span>
-                    <span class="ach-count-badge" id="dailyAchCountDisplay">今日：0 张</span>
-                </div>
-                <div class="daily-ach-grid" id="dailyAchGrid"></div>
-
-                <!-- 稳定产出（连续成就） -->
-                <div class="streak-ach-section">
-                    <div class="section-title">
-                        <i class="fas fa-calendar-check" style="color:#FBBF24;"></i> 稳定产出 · 连续天数
-                        <span style="font-size:13px;font-weight:400;color:var(--text-muted);margin-left:8px;">（每日至少1张成图）</span>
-                    </div>
-                    <div class="streak-status">
-                        <span class="streak-days" id="streakCurrentDays">0</span>
-                        <span class="streak-label">连续创作天数</span>
-                        <span class="streak-next" id="streakNextTarget">下一个成就：10天</span>
-                    </div>
-                    <div class="streak-grid" id="streakGrid"></div>
-                </div>
-
-                <!-- 负面成就 -->
-                <div class="negative-ach-section">
-                    <div class="section-title">
-                        <i class="fas fa-face-smile-wink" style="color:#9CA3AF;"></i> 负面成就 · 自嘲时刻
-                        <span style="font-size:13px;font-weight:400;color:var(--text-muted);margin-left:8px;">（解锁另类里程碑）</span>
-                    </div>
-                    <div class="negative-ach-grid" id="negativeAchGrid"></div>
-                </div>
-
-            </div>
         </div>
     </main>
 
@@ -7632,214 +6826,6 @@
         </div>
     </div>
 
-    <!-- ===== 成就面板模态框（已迁移为 #achievementView 直接跳转模式，此处仅保留为历史兼容占位，不会再被打开） ===== -->
-    <div class="modal-overlay" id="achievementModalOverlay" style="display:none;">
-        <div class="modal" id="achievementModal">
-            <div class="modal-header">
-                <div class="modal-title-group">
-                    <span class="modal-emoji">🏆</span>
-                    <div>
-                        <div class="modal-title">成就徽章</div>
-                        <div class="modal-sub">解锁专属荣誉</div>
-                    </div>
-                </div>
-                <button class="modal-close" id="achievementModalClose"><i class="fas fa-times"></i></button>
-            </div>
-            <div class="modal-body">
-                <!-- 累计进度 -->
-                <div class="ach-stats-bar">
-                    <div class="ach-total">
-                        已累计完成 <strong id="achTotalCount">0</strong> 篇稿件
-                    </div>
-                    <div class="ach-progress-wrap">
-                        <span class="ach-next-label" id="achNextLabel">下一个：3篇</span>
-                        <div class="ach-progress-track">
-                            <div class="ach-progress-fill" id="achProgressFill" style="width:0%;"></div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- 累计成就 -->
-                <div class="ach-section-title">
-                    <i class="fas fa-star" style="color:var(--ach-gold);"></i> 累计成就
-                    <span class="ach-count-badge" id="achCountBadge">0/8</span>
-                </div>
-                <div class="ach-grid" id="achGrid"></div>
-
-                <!-- 价格成就 -->
-                <div class="ach-section-title">
-                    <i class="fas fa-coins" style="color:#34D399;"></i> 价格成就
-                    <span class="ach-count-badge" id="priceAchCountBadge">0/5</span>
-                </div>
-                <div class="ach-grid" id="priceAchGrid"></div>
-
-                <!-- 数量成就 -->
-                <div class="ach-section-title">
-                    <i class="fas fa-hashtag" style="color:#60A5FA;"></i> 数量成就
-                    <span class="ach-count-badge" id="quantityAchCountBadge">0/5</span>
-                </div>
-                <div class="ach-grid" id="quantityAchGrid"></div>
-
-                <!-- 组合成就 -->
-                <div class="ach-section-title">
-                    <i class="fas fa-puzzle-piece" style="color:#F472B6;"></i> 组合成就
-                    <span class="ach-count-badge" id="comboAchCountBadge">0/3</span>
-                </div>
-                <div class="ach-grid" id="comboAchGrid"></div>
-
-                <!-- 月度收入成就 -->
-                <div class="ach-section-title">
-                    <i class="fas fa-chart-line" style="color:#10B981;"></i> 月度收入成就
-                    <span style="font-size:13px;font-weight:400;color:var(--text-muted);margin-left:8px;">（单月累计稿费 · 含历史月份）</span>
-                    <span class="ach-count-badge" id="monthlyIncomeAchCountBadge">0/5</span>
-                </div>
-                <div class="ach-grid" id="monthlyIncomeAchGrid"></div>
-
-                <!-- 每日成就 -->
-                <div class="ach-section-title" style="margin-top:20px;">
-                    <i class="fas fa-sun" style="color:#FF6B6B;"></i> 今日成就 · 限时称号
-                    <span style="font-size:13px;font-weight:400;color:var(--text-muted);margin-left:8px;">（当日完成成图数）</span>
-                    <span class="ach-count-badge" id="dailyAchCountDisplay">今日：0 张</span>
-                </div>
-                <div class="daily-ach-grid" id="dailyAchGrid"></div>
-
-                <!-- 稳定产出（连续成就） -->
-                <div class="streak-ach-section">
-                    <div class="section-title">
-                        <i class="fas fa-calendar-check" style="color:#FBBF24;"></i> 稳定产出 · 连续天数
-                        <span style="font-size:13px;font-weight:400;color:var(--text-muted);margin-left:8px;">（每日至少1张成图）</span>
-                    </div>
-                    <div class="streak-status">
-                        <span class="streak-days" id="streakCurrentDays">0</span>
-                        <span class="streak-label">连续创作天数</span>
-                        <span class="streak-next" id="streakNextTarget">下一个成就：10天</span>
-                    </div>
-                    <div class="streak-grid" id="streakGrid"></div>
-                </div>
-
-                <!-- 负面成就 -->
-                <div class="negative-ach-section">
-                    <div class="section-title">
-                        <i class="fas fa-face-smile-wink" style="color:#9CA3AF;"></i> 负面成就 · 自嘲时刻
-                        <span style="font-size:13px;font-weight:400;color:var(--text-muted);margin-left:8px;">（解锁另类里程碑）</span>
-                    </div>
-                    <div class="negative-ach-grid" id="negativeAchGrid"></div>
-                </div>
-
-            </div>
-            <div class="modal-footer">
-                <button class="btn-primary" id="achievementModalDone">太棒了！</button>
-            </div>
-        </div>
-    </div>
-
-    <!-- ===== 每日成就解锁弹窗 ===== -->
-    <div class="modal-overlay" id="dailyAchievementModalOverlay">
-        <div class="modal" id="dailyAchievementModal">
-            <div class="modal-header">
-                <div class="modal-title-group">
-                    <span class="modal-emoji" id="dailyAchEmoji">🏅</span>
-                    <div>
-                        <div class="modal-title" id="dailyAchTitle">勤勉打卡达成！</div>
-                        <div class="modal-sub" id="dailyAchSub">解锁限时称号</div>
-                    </div>
-                </div>
-                <button class="modal-close" id="dailyAchModalClose"><i class="fas fa-times"></i></button>
-            </div>
-            <div class="modal-body">
-                <div class="daily-ach-body-text" id="dailyAchBody">
-                    今日顺利完成3张稿件，<br />
-                    坚持下笔的画手闪闪发光✨<br />
-                    <span class="highlight-ach">解锁限时称号：努力画手</span>
-                </div>
-                <div class="daily-ach-hidden-tag" id="dailyAchHiddenTag" style="display:none;">
-                    ✅ 同步解锁隐藏标签：高产传说
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button class="btn-primary" id="dailyAchConfirm">太棒了！继续创作 ✨</button>
-            </div>
-        </div>
-    </div>
-
-    <!-- ===== 连续成就解锁弹窗 ===== -->
-    <div class="modal-overlay" id="streakAchievementModalOverlay">
-        <div class="modal" id="streakAchievementModal">
-            <div class="modal-header">
-                <div class="modal-title-group">
-                    <span class="modal-emoji" id="streakAchEmoji">🗓️</span>
-                    <div>
-                        <div class="modal-title" id="streakAchTitle">连续产出成就！</div>
-                        <div class="modal-sub" id="streakAchSub">解锁稳定产出称号</div>
-                    </div>
-                </div>
-                <button class="modal-close" id="streakAchModalClose"><i class="fas fa-times"></i></button>
-            </div>
-            <div class="modal-body">
-                <div class="streak-ach-body-text" id="streakAchBody">
-                    连续创作 <strong id="streakAchDays">10</strong> 天，<br />
-                    每日至少完成1张稿件，<br />
-                    <span class="highlight-streak">解锁称号：稳定输出</span>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button class="btn-primary" id="streakAchConfirm">太棒了！继续坚持 ✨</button>
-            </div>
-        </div>
-    </div>
-
-    <!-- ===== 负面成就解锁弹窗 ===== -->
-    <div class="modal-overlay" id="negativeAchievementModalOverlay">
-        <div class="modal" id="negativeAchievementModal">
-            <div class="modal-header">
-                <div class="modal-title-group">
-                    <span class="modal-emoji" id="negAchEmoji">😅</span>
-                    <div>
-                        <div class="modal-title" id="negAchTitle">你怎么还没画完？</div>
-                        <div class="modal-sub" id="negAchSub">负面成就达成</div>
-                    </div>
-                </div>
-                <button class="modal-close" id="negAchModalClose"><i class="fas fa-times"></i></button>
-            </div>
-            <div class="modal-body">
-                <div class="neg-ach-body-text" id="negAchBody">
-                    你达成了 <span class="highlight-neg">你怎么还没画完</span> 成就！<br />
-                    累计120张草稿存档超过3个月未完成…<br />
-                    该加油啦 💪
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button class="btn-primary" id="negAchConfirm">好吧，我承认 😅</button>
-            </div>
-        </div>
-    </div>
-
-    <!-- ===== 通用成就解锁弹窗 ===== -->
-    <div class="modal-overlay" id="genericAchievementModalOverlay">
-        <div class="modal" id="genericAchievementModal">
-            <div class="modal-header">
-                <div class="modal-title-group">
-                    <span class="modal-emoji" id="genAchEmoji">🏆</span>
-                    <div>
-                        <div class="modal-title" id="genAchTitle">成就解锁！</div>
-                        <div class="modal-sub" id="genAchSub">恭喜达成</div>
-                    </div>
-                </div>
-                <button class="modal-close" id="genAchModalClose"><i class="fas fa-times"></i></button>
-            </div>
-            <div class="modal-body">
-                <div class="gen-ach-body-text" id="genAchBody">
-                    你达成了 <span class="highlight-gen">慈善画师</span> 成就！<br />
-                    累计稿费收入＜100元，<br />
-                    用爱发电，温暖人心 ❤️
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button class="btn-primary" id="genAchConfirm">太棒了！</button>
-            </div>
-        </div>
-    </div>
-
     <!-- ===== 设置模态框 ===== -->
     <div class="modal-overlay settings-modal" id="settingsModalOverlay">
         <div class="modal" id="settingsModal">
@@ -7869,17 +6855,6 @@
                     <div class="theme-toggle" id="themeToggle">
                         <span class="toggle-icon sun">☀️</span>
                         <span class="toggle-icon moon">🌙</span>
-                        <span class="toggle-knob"></span>
-                    </div>
-                </div>
-                <div class="settings-group">
-                    <span class="settings-label">
-                        <i class="fas fa-rainbow"></i> 七彩名字
-                        <span id="rainbowBadge" class="badge-locked">🔒 需完成100篇</span>
-                    </span>
-                    <div class="rainbow-toggle" id="rainbowToggle">
-                        <span class="toggle-icon on">🌈</span>
-                        <span class="toggle-icon off">☁️</span>
                         <span class="toggle-knob"></span>
                     </div>
                 </div>
@@ -7967,7 +6942,6 @@
                         <div class="storage-stats-detail" id="storageStatsDetail">
                             <span><i class="fas fa-folder"></i> 稿件 <strong id="storageStatsProjects">—</strong></span>
                             <span><i class="fas fa-image"></i> 封面 <strong id="storageStatsCovers">—</strong></span>
-                            <span><i class="fas fa-trophy"></i> 成就 <strong id="storageStatsAch">—</strong></span>
                         </div>
                     </div>
                     <div class="settings-label">
@@ -8156,7 +7130,6 @@
         const THEME_KEY = 'artflow_theme';
         const COLOR_KEY = 'artflow_color_scheme';
         const URGENT_ALERT_SHOWN_KEY = 'artflow_urgent_alert_shown';
-        const ACHIEVEMENT_KEY = 'artflow_achievement';
         const HUAJIA_FEE_KEY = 'artflow_huajia_fee_enabled';
         const MHS_SYNC_RESULT_KEY = 'mhs_sync_result';
 
@@ -8164,11 +7137,10 @@
         //  IndexedDB 封装（替代 localStorage，突破 5-10MB 容量限制）
         // ============================================================
         const IDB_NAME = 'artflow-db';
-        const IDB_VERSION = 1;
-        // store 名称：workspace（项目主数据）、achievement（成就）、settings（设置/标记位）
+        const IDB_VERSION = 2;
+        // store 名称：workspace（项目主数据）、settings（设置/标记位）
         const IDB_STORE = {
             WORKSPACE: 'workspace',
-            ACHIEVEMENT: 'achievement',
             SETTINGS: 'settings'
         };
 
@@ -8190,8 +7162,9 @@
                     if (!db.objectStoreNames.contains(IDB_STORE.WORKSPACE)) {
                         db.createObjectStore(IDB_STORE.WORKSPACE);
                     }
-                    if (!db.objectStoreNames.contains(IDB_STORE.ACHIEVEMENT)) {
-                        db.createObjectStore(IDB_STORE.ACHIEVEMENT);
+                    // v2 起移除旧的 achievement store
+                    if (db.objectStoreNames.contains('achievement')) {
+                        db.deleteObjectStore('achievement');
                     }
                     if (!db.objectStoreNames.contains(IDB_STORE.SETTINGS)) {
                         db.createObjectStore(IDB_STORE.SETTINGS);
@@ -8299,16 +7272,7 @@
                         migrated++;
                     } catch (e) {}
                 }
-                // 2. achievement
-                const achRaw = localStorage.getItem(ACHIEVEMENT_KEY);
-                if (achRaw) {
-                    try {
-                        const data = JSON.parse(achRaw);
-                        await dbPut(IDB_STORE.ACHIEVEMENT, data, 'global');
-                        migrated++;
-                    } catch (e) {}
-                }
-                // 3. settings（合一个小 store）
+                // 2. settings（合一个小 store）
                 const settings = {};
                 const theme = localStorage.getItem(THEME_KEY);
                 const color = localStorage.getItem(COLOR_KEY);
@@ -8351,7 +7315,7 @@
             try {
                 // 主数据从 IDB 读，删 localStorage
                 localStorage.removeItem(APP_DATA_KEY);
-                localStorage.removeItem(ACHIEVEMENT_KEY);
+                localStorage.removeItem('artflow_achievement');
                 // 小数据保留在 localStorage（更稳定：跨标签页同步、IDB 不可用时 fallback）
             } catch (e) {
                 console.warn('清理 localStorage 失败:', e);
@@ -8399,7 +7363,7 @@
         // ============================================================
         //  数据导出 / 导入（跨浏览器迁移）
         // ============================================================
-        const BACKUP_VERSION = '1.2.2';
+        const BACKUP_VERSION = '1.3.0';
         const BACKUP_APP = 'artflow-workbench';
 
         /**
@@ -8746,7 +7710,7 @@ ${summaryRow}
             // 5. 保存 + 渲染
             saveAppData();
             renderProjects();
-            updateStatistics();
+
             updateStorageStats();
 
             // 6. 给反馈
@@ -8787,7 +7751,7 @@ ${summaryRow}
                 }
                 saveAppData();
                 renderProjects();
-                updateStatistics();
+
                 updateStorageStats();
                 const hint = document.getElementById('settingsDataHint');
                 if (hint) {
@@ -8891,14 +7855,13 @@ ${summaryRow}
 
         /**
          * 导出当前所有数据为 JSON 文件并触发下载。
-         * 包含：workspace（项目主数据）、achievement、settings（小数据）。
+         * 包含：workspace（项目主数据）、settings（小数据）。
          */
         /**
          * 构建完整备份对象（导出 / 云端同步共用）
          * 优先从 IndexedDB 读最新数据，保证抓到未写入内存的最新值
          */
         async function buildBackup() {
-            // 1. 收集 workspace（优先从 IDB 读，确保拿到最新）
             let workspaceData = {
                 projects: projects,
                 artistName: artistName,
@@ -8913,31 +7876,22 @@ ${summaryRow}
                     if (data) workspaceData = data;
                 } catch (e) {}
             }
-            // 2. 收集 achievement
-            let achievementSnapshot = achievementData;
-            if (dbInstance) {
-                try {
-                    const data = await dbGet(IDB_STORE.ACHIEVEMENT, 'global');
-                    if (data) achievementSnapshot = data;
-                } catch (e) {}
-            }
-            // 3. 收集 settings（小数据从 localStorage）
             const settings = {
                 theme: localStorage.getItem(THEME_KEY) || 'light',
                 color: localStorage.getItem(COLOR_KEY) || 'blue',
                 huajiaFee: localStorage.getItem(HUAJIA_FEE_KEY) || 'true'
             };
+            const backupProjects = Array.isArray(workspaceData.projects) ? workspaceData.projects : [];
             const backup = {
                 app: BACKUP_APP,
                 version: BACKUP_VERSION,
                 exportedAt: new Date().toISOString(),
                 workspace: workspaceData,
-                achievement: achievementSnapshot,
                 settings: settings,
                 stats: {
-                    projectCount: (workspaceData.projects || []).length,
-                    completedCount: (achievementSnapshot && achievementSnapshot.completedCount) || 0,
-                    coverImageCount: (workspaceData.projects || []).filter(p => p.coverImage).length,
+                    projectCount: backupProjects.length,
+                    completedCount: backupProjects.filter(p => Number(p.progress) >= 100).length,
+                    coverImageCount: backupProjects.filter(p => p.coverImage).length,
                     sizeKB: 0
                 }
             };
@@ -9146,12 +8100,6 @@ ${summaryRow}
             await persistWrite(IDB_STORE.WORKSPACE, backup.workspace, () => {
                 try { localStorage.setItem(APP_DATA_KEY, JSON.stringify(backup.workspace)); } catch (e) {}
             });
-            if (backup.achievement) {
-                achievementData = backup.achievement;
-                await persistWrite(IDB_STORE.ACHIEVEMENT, achievementData, () => {
-                    try { localStorage.setItem(ACHIEVEMENT_KEY, JSON.stringify(achievementData)); } catch (e) {}
-                });
-            }
             if (backup.settings) {
                 try {
                     localStorage.setItem(THEME_KEY, backup.settings.theme || 'light');
@@ -9159,7 +8107,6 @@ ${summaryRow}
                     localStorage.setItem(HUAJIA_FEE_KEY, backup.settings.huajiaFee || 'true');
                 } catch (e) {}
             }
-            // 重新加载内存
             const saved = await loadAppDataAsync();
             if (saved) {
                 projects = saved.projects;
@@ -9167,14 +8114,13 @@ ${summaryRow}
                 currentFilter = saved.currentFilter || 'all';
                 currentSort = saved.currentSort || 'due-asc';
             }
-            achievementData = await loadAchievementDataAsync();
-            // 刷新界面
-            if (typeof renderProjects === 'function') renderProjects();
-            if (typeof renderSchedule === 'function') renderSchedule();
-            if (typeof renderIncome === 'function') renderIncome();
-            if (typeof renderCalendar === 'function') renderCalendar();
-            const activeTabEl = document.querySelector('.nav-item.active') || document.querySelector('.mobile-tab.active');
-            const activeTab = activeTabEl ? activeTabEl.dataset.tab : null;
+            renderArtistName();
+            renderProjects();
+            renderSchedule();
+            renderIncome();
+            renderCalendar();
+            renderStatusSelector();
+            renderFilterTags();
             if (typeof updateStorageStats === 'function') updateStorageStats();
             localDirtySinceSync = false;
         }
@@ -9529,7 +8475,6 @@ ${summaryRow}
             }
             try {
                 let newProjects = JSON.parse(JSON.stringify(data.workspace.projects || []));
-                // 数据规范化
                 newProjects.forEach(p => {
                     if (typeof p.id !== 'number') {
                         const seed = p.mihuashiOrderId || p.title || String(p.id);
@@ -9537,12 +8482,11 @@ ${summaryRow}
                     }
                     if (!p.source) p.source = '未指定';
                     if (p.price === undefined) p.price = 0;
-                    if (p.achievementCounted === undefined) p.achievementCounted = false;
+                    delete p.achievementCounted;
                     if (p.completedAt === undefined) p.completedAt = null;
                 });
 
                 if (mode === 'overwrite') {
-                    // 覆盖：先把当前数据备份到一个临时 store（用于回滚）
                     const oldSnapshot = {
                         projects: projects,
                         artistName: artistName,
@@ -9551,8 +8495,7 @@ ${summaryRow}
                         statusNodes: statusNodes,
                         savedAt: new Date().toISOString()
                     };
-                    await dbPut(IDB_STORE.WORKSPACE, oldSnapshot, '_rollback_backup');
-                    // 替换
+                    if (dbInstance) await dbPut(IDB_STORE.WORKSPACE, oldSnapshot, '_rollback_backup');
                     projects = newProjects;
                     artistName = data.workspace.artistName || '这是一个初始名字';
                     currentFilter = data.workspace.currentFilter || 'all';
@@ -9560,18 +8503,12 @@ ${summaryRow}
                     if (Array.isArray(data.workspace.statusNodes) && data.workspace.statusNodes.length > 0) {
                         statusNodes = sanitizeStatusNodes(data.workspace.statusNodes);
                     }
-                    if (data.achievement) {
-                        achievementData = mergeAchievementDefaults(data.achievement);
-                    }
-                    // 设置项
                     if (data.settings) {
                         if (data.settings.theme) localStorage.setItem(THEME_KEY, data.settings.theme);
                         if (data.settings.color) localStorage.setItem(COLOR_KEY, data.settings.color);
                         if (data.settings.huajiaFee != null) localStorage.setItem(HUAJIA_FEE_KEY, data.settings.huajiaFee);
                     }
-                    // 写回 IDB 主 store
                     saveAppData();
-                    saveAchievementData();
                     const count = newProjects.length;
                     if (hint) {
                         hint.textContent = `✅ 已覆盖导入 ${count} 个稿件（原数据已自动备份，可回滚）`;
@@ -9579,7 +8516,6 @@ ${summaryRow}
                     }
                     showToast(`📥 已导入 ${count} 个稿件（覆盖模式）`);
                 } else if (mode === 'merge') {
-                    // 合并：按 id 去重，导入数据优先
                     const existingIds = new Set(projects.map(p => p.id));
                     let added = 0, skipped = 0;
                     const merged = [...projects];
@@ -9595,17 +8531,7 @@ ${summaryRow}
                     if (Array.isArray(data.workspace.statusNodes) && data.workspace.statusNodes.length > 0) {
                         statusNodes = sanitizeStatusNodes(data.workspace.statusNodes);
                     }
-                    if (data.achievement) {
-                        // 合并成就：取两边的并集
-                        achievementData = mergeAchievementDefaults({
-                            ...achievementData,
-                            ...data.achievement,
-                            unlocked: Array.from(new Set([...(achievementData.unlocked || []), ...(data.achievement.unlocked || [])])),
-                            countedProjects: Array.from(new Set([...(achievementData.countedProjects || []), ...(data.achievement.countedProjects || [])]))
-                        });
-                    }
                     saveAppData();
-                    saveAchievementData();
                     if (hint) {
                         hint.textContent = `✅ 合并完成：新增 ${added} 个，跳过 ${skipped} 个（id 已存在）`;
                         hint.classList.add('success');
@@ -9613,9 +8539,7 @@ ${summaryRow}
                     showToast(`📥 合并完成：+${added} / 跳过 ${skipped}`);
                 }
 
-                // 刷新整个 UI
                 renderArtistName();
-                applyRainbowName();
                 renderProjects();
                 renderSchedule();
                 renderIncome();
@@ -9623,12 +8547,7 @@ ${summaryRow}
                 renderStatusSelector();
                 renderFilterTags();
                 applyStatusNodeCssVars();
-                updateStatistics();
-                checkAllAchievements(null);
-                rebuildStreak();
-                updateAllDots();
                 publishWorkspaceProjects();
-                // 主题/配色
                 if (data.settings) {
                     if (data.settings.theme) setTheme(data.settings.theme);
                     if (data.settings.color) setColorScheme(data.settings.color);
@@ -9643,246 +8562,6 @@ ${summaryRow}
             }
         }
 
-        // ---- 每日成就定义 ----
-        const DAILY_ACHIEVEMENT_DEFS = [{
-            id: 'daily_3',
-            icon: '✍️',
-            name: '努力画手',
-            requirement: 3,
-            emoji: '🏅',
-            title: '勤勉打卡达成！',
-            body: '今日顺利完成3张稿件，<br />坚持下笔的画手闪闪发光✨',
-            subtitle: '解锁限时称号：努力画手',
-            broadcast: '🎉 你当日完成3张稿件，持之以恒，解锁称号【努力画手】',
-            hiddenTag: null
-        }, {
-            id: 'daily_5',
-            icon: '⚡',
-            name: '速写狂人',
-            requirement: 5,
-            emoji: '⚡',
-            title: '手速觉醒！',
-            body: '惊人手速展露锋芒，<br />源源不断产出画作，',
-            subtitle: '解锁限时称号：速写狂人',
-            broadcast: '⚡ 你手速炸裂！当日完成5张稿件，解锁称号【速写狂人】',
-            hiddenTag: null
-        }, {
-            id: 'daily_8',
-            icon: '🔥',
-            name: '灵感永动机',
-            requirement: 8,
-            emoji: '🔥',
-            title: '灵感无限续航！',
-            body: '不受疲惫束缚，创作火力全开，<br />旁人惊叹的高产水准，',
-            subtitle: '解锁限时称号：灵感永动机',
-            broadcast: '🔥 你创作能量拉满！当日完成8张稿件，解锁称号【灵感永动机】',
-            hiddenTag: null
-        }, {
-            id: 'daily_10',
-            icon: '🌟',
-            name: '画布收割者',
-            requirement: 10,
-            emoji: '🌟',
-            title: '巅峰创作者登场！',
-            body: '一日十稿，横扫空白画布，<br />属于顶级高产画师的荣誉，',
-            subtitle: '解锁限时称号：画布收割者',
-            broadcast: '🌟 重磅！你达成一日十稿壮举，横扫所有空白画布，解锁顶级称号【画布收割者】',
-            hiddenTag: '✅ 同步解锁隐藏标签：高产传说'
-        }];
-
-        // ---- 连续成就定义 ----
-        const STREAK_ACHIEVEMENT_DEFS = [
-            { id: 'streak_10', icon: '🗓️', name: '稳定输出', days: 10 },
-            { id: 'streak_20', icon: '📆', name: '持续发力', days: 20 },
-            { id: 'streak_50', icon: '📅', name: '创作劳模', days: 50 },
-            { id: 'streak_100', icon: '🔨', name: '铁人画师', days: 100 },
-            { id: 'streak_200', icon: '✨', name: '不朽画魂', days: 200 },
-            { id: 'streak_365', icon: '🏆', name: '年度传奇', days: 365 }
-        ];
-
-        // ---- 负面成就定义 ----
-        const NEGATIVE_ACHIEVEMENT_DEFS = [{
-            id: 'neg_stalled',
-            icon: '😅',
-            name: '你怎么还没画完',
-            desc: '累计120张草稿存档超过3个月完成度没有100%',
-            unlockTitle: '你怎么还没画完？',
-            unlockBody: '你达成了 <span class="highlight-neg">你怎么还没画完</span> 成就！<br />累计120张草稿存档超过3个月未完成…<br />该加油啦 💪'
-        }, {
-            id: 'neg_forgotten',
-            icon: '👋',
-            name: 'Hello，你还记得我吗',
-            desc: '一张草稿搁置一年以上，最终完成上色',
-            unlockTitle: 'Hello，你还记得我吗？',
-            unlockBody: '你达成了 <span class="highlight-neg">Hello，你还记得我吗</span> 成就！<br />一张尘封一年的草稿终于完成上色…<br />它等这一天等了好久 🥲'
-        }, {
-            id: 'neg_no_production',
-            icon: '💀',
-            name: '这下真的再起不能了',
-            desc: '连续60天没有产出任何一张成品',
-            unlockTitle: '这下真的再起不能了',
-            unlockBody: '你达成了 <span class="highlight-neg">这下真的再起不能了</span> 成就！<br />连续60天没有产出任何一张成品…<br />是时候拿起画笔了 🎨'
-        }];
-
-        // ---- 价格成就定义 ----
-        const PRICE_ACHIEVEMENT_DEFS = [{
-            id: 'price_charity',
-            icon: '❤️',
-            name: '慈善画师',
-            desc: '累计稿费收入＜100元',
-            unlockTitle: '慈善画师',
-            unlockBody: '你达成了 <span class="highlight-gen">慈善画师</span> 成就！<br />累计稿费收入＜100元，<br />用爱发电，温暖人心 ❤️'
-        }, {
-            id: 'price_hundred',
-            icon: '💯',
-            name: '百元户',
-            desc: '单张稿费首次达到100元',
-            unlockTitle: '百元户',
-            unlockBody: '你达成了 <span class="highlight-gen">百元户</span> 成就！<br />单张稿费首次达到100元，<br />迈出商业化第一步 🚀'
-        }, {
-            id: 'price_thousand',
-            icon: '💰',
-            name: '千元户',
-            desc: '累计稿费突破1000元',
-            unlockTitle: '千元户',
-            unlockBody: '你达成了 <span class="highlight-gen">千元户</span> 成就！<br />累计稿费突破1000元，<br />小有成就，继续加油 💪'
-        }, {
-            id: 'price_ten_thousand',
-            icon: '💎',
-            name: '五位数俱乐部',
-            desc: '累计稿费突破10000元',
-            unlockTitle: '五位数俱乐部',
-            unlockBody: '你达成了 <span class="highlight-gen">五位数俱乐部</span> 成就！<br />累计稿费突破10000元，<br />实力认证，未来可期 🌟'
-        }, {
-            id: 'price_thousand_single',
-            icon: '👀',
-            name: '万元户の瞭望',
-            desc: '单张稿费首次达到1000元',
-            unlockTitle: '万元户の瞭望',
-            unlockBody: '你达成了 <span class="highlight-gen">万元户の瞭望</span> 成就！<br />单张稿费首次达到1000元，<br />距万元户又近了一步 ✨'
-        }];
-
-        // ---- 月度收入成就定义 ----
-        const MONTHLY_INCOME_ACHIEVEMENT_DEFS = [{
-            id: 'monthly_income_1k',
-            icon: '💵',
-            name: '月入过千',
-            desc: '单月稿费收入 ≥ ¥1,000',
-            threshold: 1000,
-            unlockTitle: '月入过千',
-            unlockBody: '你达成了 <span class="highlight-gen">月入过千</span> 成就！<br />单月稿费收入突破 ¥1,000，<br />已经是个能持续变现的画师啦 💵'
-        }, {
-            id: 'monthly_income_2k',
-            icon: '💴',
-            name: '月入两千',
-            desc: '单月稿费收入 ≥ ¥2,000',
-            threshold: 2000,
-            unlockTitle: '月入两千',
-            unlockBody: '你达成了 <span class="highlight-gen">月入两千</span> 成就！<br />单月稿费收入突破 ¥2,000，<br />稳定接单，月入节节高 💴'
-        }, {
-            id: 'monthly_income_5k',
-            icon: '💶',
-            name: '月入五千',
-            desc: '单月稿费收入 ≥ ¥5,000',
-            threshold: 5000,
-            unlockTitle: '月入五千',
-            unlockBody: '你达成了 <span class="highlight-gen">月入五千</span> 成就！<br />单月稿费收入突破 ¥5,000，<br />副业变主业，画画养活自己 💶'
-        }, {
-            id: 'monthly_income_10k',
-            icon: '💷',
-            name: '月入过万',
-            desc: '单月稿费收入 ≥ ¥10,000',
-            threshold: 10000,
-            unlockTitle: '月入过万',
-            unlockBody: '你达成了 <span class="highlight-gen">月入过万</span> 成就！<br />单月稿费收入突破 ¥10,000，<br />万元户达成，资深画师认证 💷'
-        }, {
-            id: 'monthly_income_20k',
-            icon: '💎',
-            name: '月入两万',
-            desc: '单月稿费收入 ≥ ¥20,000',
-            threshold: 20000,
-            unlockTitle: '月入两万',
-            unlockBody: '你达成了 <span class="highlight-gen">月入两万</span> 成就！<br />单月稿费收入突破 ¥20,000，<br />画师圈的天花板，实力的证明 💎'
-        }];
-
-        // ---- 数量成就定义 ----
-        const QUANTITY_ACHIEVEMENT_DEFS = [{
-            id: 'qty_queue_king',
-            icon: '👑',
-            name: '排单排队王',
-            desc: '一个月内新建稿件30张以上',
-            unlockTitle: '排单排队王',
-            unlockBody: '你达成了 <span class="highlight-gen">排单排队王</span> 成就！<br />一个月内新建稿件30张以上，<br />单子多到排不过来 📋'
-        }, {
-            id: 'qty_empty_window',
-            icon: '🌵',
-            name: '空窗期选手',
-            desc: '连续30天0单解锁',
-            unlockTitle: '空窗期选手',
-            unlockBody: '你达成了 <span class="highlight-gen">空窗期选手</span> 成就！<br />连续30天0单，<br />是时候主动出击了 🎯'
-        }, {
-            id: 'qty_printer',
-            icon: '🖨️',
-            name: '打印机模式',
-            desc: '单月完成15张以上稿件解锁',
-            unlockTitle: '打印机模式',
-            unlockBody: '你达成了 <span class="highlight-gen">打印机模式</span> 成就！<br />单月完成15张以上稿件，<br />高产如打印机 🔥'
-        }, {
-            id: 'qty_annual',
-            icon: '📅',
-            name: '年更画师',
-            desc: '全年只接了1单解锁',
-            unlockTitle: '年更画师',
-            unlockBody: '你达成了 <span class="highlight-gen">年更画师</span> 成就！<br />全年只接了1单，<br />佛系创作，随缘更新 🧘'
-        }, {
-            id: 'qty_sea_king',
-            icon: '🌊',
-            name: '海王接稿',
-            desc: '同时进行5张以上未完成稿件解锁',
-            unlockTitle: '海王接稿',
-            unlockBody: '你达成了 <span class="highlight-gen">海王接稿</span> 成就！<br />同时进行5张以上未完成稿件，<br />时间管理大师就是你 ⏰'
-        }];
-
-        // ---- 组合成就定义 ----
-        const COMBO_ACHIEVEMENT_DEFS = [{
-            id: 'combo_love_power',
-            icon: '🌍',
-            name: '为爱发电',
-            desc: '稿费＜500但累计画了20张',
-            unlockTitle: '为爱发电',
-            unlockBody: '你达成了 <span class="highlight-gen">为爱发电</span> 成就！<br />稿费＜500但累计画了20张，<br />用爱发电，感动画圈 ⚡',
-            nameStyle: 'black',
-            nameIcon: '🌍'
-        }, {
-            id: 'combo_big_order',
-            icon: '💥',
-            name: '我去好大的单子',
-            desc: '首次添加稿件价格＞1000的稿件',
-            unlockTitle: '我去好大的单子',
-            unlockBody: '你达成了 <span class="highlight-gen">我去好大的单子</span> 成就！<br />首次添加价格＞1000的稿件，<br />大单在手，信心我有 💪'
-        }, {
-            id: 'combo_big_red',
-            icon: '🔥',
-            name: '这下真的成大red了',
-            desc: '累计十次稿件价格＞1000的稿件',
-            unlockTitle: '这下真的成大red了',
-            unlockBody: '你达成了 <span class="highlight-gen">这下真的成大red了</span> 成就！<br />累计十次价格＞1000的稿件，<br />你已经是大佬了 👏',
-            nameStyle: 'goldGlow',
-            nameIcon: '🔥'
-        }];
-
-        // ---- 累计成就定义 ----
-        const ACHIEVEMENT_DEFS = [
-            { id: '3', icon: '🥉', name: '青铜学徒', requirement: 3 },
-            { id: '5', icon: '🥈', name: '白银画手', requirement: 5 },
-            { id: '10', icon: '🥇', name: '黄金画师', requirement: 10 },
-            { id: '20', icon: '💎', name: '铂金大师', requirement: 20 },
-            { id: '50', icon: '💠', name: '钻石工匠', requirement: 50 },
-            { id: '100', icon: '👑', name: '殿堂大师', requirement: 100 },
-            { id: '200', icon: '🌟', name: '传说画圣', requirement: 200 },
-            { id: '500', icon: '🔥', name: '神话创世', requirement: 500 }
-        ];
-
         function getDefaultProjects() {
             return [{
                 id: 1,
@@ -9895,7 +8574,7 @@ ${summaryRow}
                 emoji: '🌳',
                 price: 500,
                 tags: ['插画', '儿童书'],
-                achievementCounted: false,
+
                 completedAt: null
             }, {
                 id: 2,
@@ -9908,7 +8587,7 @@ ${summaryRow}
                 emoji: '👩',
                 price: 800,
                 tags: ['肖像', '时尚'],
-                achievementCounted: false,
+
                 completedAt: null
             }, {
                 id: 3,
@@ -9921,7 +8600,7 @@ ${summaryRow}
                 emoji: '🐉',
                 price: 1200,
                 tags: ['角色设计', '奇幻'],
-                achievementCounted: false,
+
                 completedAt: null
             }, {
                 id: 4,
@@ -9934,7 +8613,7 @@ ${summaryRow}
                 emoji: '🌸',
                 price: 600,
                 tags: ['海报', '宣传'],
-                achievementCounted: false,
+
                 completedAt: null
             }, {
                 id: 5,
@@ -9947,7 +8626,7 @@ ${summaryRow}
                 emoji: '🪲',
                 price: 900,
                 tags: ['科学插画', '机械'],
-                achievementCounted: false,
+
                 completedAt: null
             }, {
                 id: 6,
@@ -9960,7 +8639,7 @@ ${summaryRow}
                 emoji: '🦊',
                 price: 700,
                 tags: ['文创', '可爱'],
-                achievementCounted: false,
+
                 completedAt: null
             }, {
                 id: 7,
@@ -9973,7 +8652,7 @@ ${summaryRow}
                 emoji: '🚀',
                 price: 1100,
                 tags: ['科幻', '场景'],
-                achievementCounted: false,
+
                 completedAt: null
             }, {
                 id: 8,
@@ -9986,7 +8665,7 @@ ${summaryRow}
                 emoji: '🍜',
                 price: 1000,
                 tags: ['美食', '手绘'],
-                achievementCounted: true,
+
                 completedAt: '2026-07-10T08:00:00.000Z'
             }].map(p => ({ ...p, isSeedData: true }));
         }
@@ -10039,7 +8718,7 @@ ${summaryRow}
                     delete p.client;
                     if (!p.source) p.source = '未指定';
                     if (p.price === undefined) p.price = 0;
-                    if (p.achievementCounted === undefined) p.achievementCounted = false;
+                    delete p.achievementCounted;
                     if (p.completedAt === undefined) p.completedAt = null;
                 });
                 return data;
@@ -10241,7 +8920,7 @@ ${summaryRow}
                     saveAppData();
                     renderProjects();
                     renderIncome();
-                    updateStatistics();
+
                 }
 
                 return { imported, skipped, updated, results };
@@ -10337,7 +9016,6 @@ ${summaryRow}
             try {
                 if (typeof renderProjects === 'function') renderProjects();
                 if (typeof renderIncome === 'function') renderIncome();
-                if (typeof updateStatistics === 'function') updateStatistics();
                 // 详情模态框中的费用提示也要更新（如果打开中）
                 const priceInput = document.getElementById('modalPriceInput');
                 const modalOverlayEl = document.getElementById('modalOverlay');
@@ -10642,105 +9320,6 @@ ${summaryRow}
         }
 
         // ============================================================
-        //  成就数据管理 (扩展)
-        // ============================================================
-        function getDefaultAchievementData() {
-            return {
-                completedCount: 0,
-                unlocked: [],
-                countedProjects: [],
-                rainbowUnlocked: false,
-                rainbowEnabled: false,
-                achievementTrackingEnabled: false,  // 用户第一次新建稿件后才开启
-                daily: {},
-                dailyCompletion: {},
-                currentStreak: 0,
-                maxStreak: 0,
-                streakUnlocked: [],
-                negativeUnlocked: [],
-                forgottenProjects: [],
-                lastCompletedDate: null,
-                priceUnlocked: [],
-                quantityUnlocked: [],
-                comboUnlocked: [],
-                monthlyIncomeUnlocked: [],
-                statistics: {
-                    totalIncome: 0,
-                    maxSingleIncome: 0,
-                    monthlyNewCount: {},
-                    monthlyCompletedCount: {},
-                    monthlyIncome: {},
-                    consecutiveZeroDays: 0,
-                    lastProjectDate: null,
-                    projectsWithPriceOver1000: [],
-                    bigOrderTriggered: false,
-                    totalProjects: 0,
-                    annualOrderCount: 0,
-                    annualYear: new Date().getFullYear()
-                }
-            };
-        }
-
-        function loadAchievementData() {
-            try {
-                const raw = localStorage.getItem(ACHIEVEMENT_KEY);
-                if (!raw) return getDefaultAchievementData();
-                const data = JSON.parse(raw);
-                return mergeAchievementDefaults(data);
-            } catch (e) {
-                return getDefaultAchievementData();
-            }
-        }
-
-        /**
-         * 异步读取成就：优先 IndexedDB，回退 localStorage。
-         */
-        async function loadAchievementDataAsync() {
-            if (dbInstance) {
-                try {
-                    const data = await dbGet(IDB_STORE.ACHIEVEMENT, 'global');
-                    if (data) return mergeAchievementDefaults(data);
-                } catch (e) { console.warn('[IndexedDB] 读取成就失败:', e); }
-            }
-            return loadAchievementData();
-        }
-
-        /**
-         * 用默认值补全缺失字段
-         */
-        function mergeAchievementDefaults(data) {
-            if (!data || typeof data !== 'object') return getDefaultAchievementData();
-            const def = getDefaultAchievementData();
-            for (const key in def) {
-                if (data[key] === undefined) data[key] = def[key];
-            }
-            if (!data.statistics) data.statistics = def.statistics;
-            if (!data.priceUnlocked) data.priceUnlocked = [];
-            if (!data.quantityUnlocked) data.quantityUnlocked = [];
-            if (!data.comboUnlocked) data.comboUnlocked = [];
-            if (!data.monthlyIncomeUnlocked) data.monthlyIncomeUnlocked = [];
-            // 清理旧版本已移除模块的历史数据。
-            if (Object.prototype.hasOwnProperty.call(data, 'practice')) delete data.practice;
-            // 清理旧版本已保存的计时器数据。
-            if (Object.prototype.hasOwnProperty.call(data, 'pomodoro')) delete data.pomodoro;
-            if (!data.statistics.monthlyIncome) data.statistics.monthlyIncome = {};
-            return data;
-        }
-
-        function saveAchievementData() {
-            try {
-                persistWrite(IDB_STORE.ACHIEVEMENT, achievementData, () => {
-                    try { localStorage.setItem(ACHIEVEMENT_KEY, JSON.stringify(achievementData)); }
-                    catch (e) { console.warn('localStorage 写入失败:', e); }
-                });
-                // 标记本地有改动（自动同步防抖推送，init 完成后才生效）
-                if (appReady) markLocalDirty();
-            } catch (e) {
-                console.warn('保存成就数据失败:', e);
-            }
-        }
-
-        // ============================================================
         //  详情弹窗：描述查看/编辑切换
         // ============================================================
         let descEditing = false;
@@ -10872,922 +9451,15 @@ ${summaryRow}
         }
 
         // ============================================================
-        //  成就检测核心逻辑 (使用手续费后的收入)
-        // ============================================================
-        function checkAllAchievements(triggeredProjectId) {
-            const stats = achievementData.statistics;
-            let newUnlock = false;
-
-            updateStatistics();
-
-            const priceResults = checkPriceAchievements();
-            if (priceResults) newUnlock = true;
-
-            const qtyResults = checkQuantityAchievements();
-            if (qtyResults) newUnlock = true;
-
-            const comboResults = checkComboAchievements(triggeredProjectId);
-            if (comboResults) newUnlock = true;
-
-            const monthlyIncomeResults = checkMonthlyIncomeAchievements();
-            if (monthlyIncomeResults) newUnlock = true;
-
-            updateArtistNameStyle();
-            renderNameBadges();
-
-            if (newUnlock) {
-                saveAchievementData();
-                updateAllDots();
-                if (document.getElementById('achievementModalOverlay').classList.contains('active')) {
-                    renderAchievementPanel();
-                }
-            }
-        }
-
-        function updateStatistics() {
-            const stats = achievementData.statistics;
-            const now = new Date();
-            const currentYear = now.getFullYear();
-
-            let totalIncome = 0;
-            let maxSingle = 0;
-            let projectsWithPriceOver1000 = [];
-            let totalProjects = 0;
-
-            const monthlyNew = {};
-            const monthlyCompleted = {};
-            const monthlyIncome = {};
-
-            projects.forEach(p => {
-                // 成就系统未开启 或 种子数据 → 跳过
-                if (!achievementData.achievementTrackingEnabled || p.isSeedData) return;
-                totalProjects++;
-                // 使用扣除手续费后的价格进行统计
-                const afterFeePrice = calculateAfterFee(p.price, p.source);
-                if (afterFeePrice > 0) {
-                    totalIncome += afterFeePrice;
-                    if (afterFeePrice > maxSingle) maxSingle = afterFeePrice;
-                    if (p.price > 1000) {
-                        projectsWithPriceOver1000.push(p.id);
-                    }
-                }
-                if (p.createdAt) {
-                    const d = new Date(p.createdAt);
-                    const key = getMonthKey(d.getFullYear(), d.getMonth());
-                    monthlyNew[key] = (monthlyNew[key] || 0) + 1;
-                } else if (p.dueDate) {
-                    const d = new Date(p.dueDate);
-                    const key = getMonthKey(d.getFullYear(), d.getMonth());
-                    monthlyNew[key] = (monthlyNew[key] || 0) + 1;
-                }
-                // 月度收入：按完成时间（completedAt）所在月份累计扣手续费后的稿费
-                if (p.progress >= 100 && p.completedAt) {
-                    const d = new Date(p.completedAt);
-                    const key = getMonthKey(d.getFullYear(), d.getMonth());
-                    monthlyCompleted[key] = (monthlyCompleted[key] || 0) + 1;
-                    const price = calculateAfterFee(p.price, p.source);
-                    if (price > 0) {
-                        monthlyIncome[key] = (monthlyIncome[key] || 0) + price;
-                    }
-                }
-            });
-
-            stats.totalIncome = totalIncome;
-            stats.maxSingleIncome = maxSingle;
-            stats.projectsWithPriceOver1000 = projectsWithPriceOver1000;
-            stats.totalProjects = totalProjects;
-            stats.monthlyNewCount = monthlyNew;
-            stats.monthlyCompletedCount = monthlyCompleted;
-            stats.monthlyIncome = monthlyIncome;
-
-            const yearKey = currentYear;
-            let annualCount = 0;
-            projects.forEach(p => {
-                // 成就系统未开启 或 种子数据 → 跳过
-                if (!achievementData.achievementTrackingEnabled || p.isSeedData) return;
-                if (p.dueDate) {
-                    const d = new Date(p.dueDate);
-                    if (d.getFullYear() === currentYear) {
-                        annualCount++;
-                    }
-                }
-            });
-            stats.annualOrderCount = annualCount;
-            stats.annualYear = currentYear;
-
-            if (stats.lastCompletedDate) {
-                const last = new Date(stats.lastCompletedDate);
-                const diff = now - last;
-                stats.consecutiveZeroDays = Math.floor(diff / (1000 * 60 * 60 * 24));
-            } else if (projects.some(p => p.progress >= 100 && !p.isSeedData)) {
-                const completedWithDate = projects.filter(p => p.progress >= 100 && p.completedAt && !p.isSeedData);
-                if (completedWithDate.length > 0) {
-                    const latest = completedWithDate.reduce((max, p) => {
-                        const d = new Date(p.completedAt);
-                        return d > max ? d : max;
-                    }, new Date(0));
-                    stats.lastCompletedDate = latest.toISOString();
-                    const diff = now - latest;
-                    stats.consecutiveZeroDays = Math.floor(diff / (1000 * 60 * 60 * 24));
-                } else {
-                    const completed = projects.filter(p => p.progress >= 100 && !p.isSeedData);
-                    if (completed.length > 0) {
-                        const latest = completed.reduce((max, p) => {
-                            const d = p.dueDate ? parseDueDateEnd(p.dueDate) : new Date(0);
-                            return d > max ? d : max;
-                        }, new Date(0));
-                        stats.lastCompletedDate = latest.toISOString();
-                        const diff = now - latest;
-                        stats.consecutiveZeroDays = Math.floor(diff / (1000 * 60 * 60 * 24));
-                    }
-                }
-            } else {
-                stats.consecutiveZeroDays = 0;
-            }
-
-            const completedWithDate = projects.filter(p => p.progress >= 100 && p.completedAt && !p.isSeedData);
-            if (completedWithDate.length > 0) {
-                const latest = completedWithDate.reduce((max, p) => {
-                    const d = new Date(p.completedAt);
-                    return d > max ? d : max;
-                }, new Date(0));
-                stats.lastCompletedDate = latest.toISOString();
-            }
-
-            saveAchievementData();
-        }
-
-        function checkPriceAchievements() {
-            const stats = achievementData.statistics;
-            const unlocked = achievementData.priceUnlocked || [];
-            let newUnlock = false;
-
-            // 使用扣除手续费后的收入
-            const income = stats.totalIncome;
-            const maxSingle = stats.maxSingleIncome;
-
-            if (income < 100 && !unlocked.includes('price_charity')) {
-                unlockGenericAchievement('price_charity', PRICE_ACHIEVEMENT_DEFS);
-                newUnlock = true;
-            }
-            if (maxSingle >= 100 && !unlocked.includes('price_hundred')) {
-                unlockGenericAchievement('price_hundred', PRICE_ACHIEVEMENT_DEFS);
-                newUnlock = true;
-            }
-            if (income >= 1000 && !unlocked.includes('price_thousand')) {
-                unlockGenericAchievement('price_thousand', PRICE_ACHIEVEMENT_DEFS);
-                newUnlock = true;
-            }
-            if (income >= 10000 && !unlocked.includes('price_ten_thousand')) {
-                unlockGenericAchievement('price_ten_thousand', PRICE_ACHIEVEMENT_DEFS);
-                newUnlock = true;
-            }
-            if (maxSingle >= 1000 && !unlocked.includes('price_thousand_single')) {
-                unlockGenericAchievement('price_thousand_single', PRICE_ACHIEVEMENT_DEFS);
-                newUnlock = true;
-            }
-
-            achievementData.priceUnlocked = unlocked;
-            return newUnlock;
-        }
-
-        function checkQuantityAchievements() {
-            const stats = achievementData.statistics;
-            const unlocked = achievementData.quantityUnlocked || [];
-            let newUnlock = false;
-            const now = new Date();
-
-            const currentMonth = getCurrentMonthKey();
-            const monthNewCount = stats.monthlyNewCount[currentMonth] || 0;
-            if (monthNewCount >= 30 && !unlocked.includes('qty_queue_king')) {
-                unlockGenericAchievement('qty_queue_king', QUANTITY_ACHIEVEMENT_DEFS);
-                newUnlock = true;
-            }
-
-            if (stats.consecutiveZeroDays >= 30 && !unlocked.includes('qty_empty_window')) {
-                unlockGenericAchievement('qty_empty_window', QUANTITY_ACHIEVEMENT_DEFS);
-                newUnlock = true;
-            }
-
-            const monthCompletedCount = stats.monthlyCompletedCount[currentMonth] || 0;
-            if (monthCompletedCount >= 15 && !unlocked.includes('qty_printer')) {
-                unlockGenericAchievement('qty_printer', QUANTITY_ACHIEVEMENT_DEFS);
-                newUnlock = true;
-            }
-
-            if (stats.annualOrderCount === 1 && !unlocked.includes('qty_annual')) {
-                unlockGenericAchievement('qty_annual', QUANTITY_ACHIEVEMENT_DEFS);
-                newUnlock = true;
-            }
-
-            const inProgress = projects.filter(p => p.progress < 100 && p.progress > 0 && !p.isSeedData).length;
-            if (inProgress >= 5 && !unlocked.includes('qty_sea_king')) {
-                unlockGenericAchievement('qty_sea_king', QUANTITY_ACHIEVEMENT_DEFS);
-                newUnlock = true;
-            }
-
-            achievementData.quantityUnlocked = unlocked;
-            return newUnlock;
-        }
-
-        function checkMonthlyIncomeAchievements() {
-            const stats = achievementData.statistics;
-            const unlocked = achievementData.monthlyIncomeUnlocked || [];
-            const monthlyIncome = stats.monthlyIncome || {};
-            let newUnlock = false;
-
-            // 按阈值从低到高检查：任一月份累计收入 ≥ 阈值 即解锁
-            // 阈值列表与定义顺序一致：[1k, 2k, 5k, 10k, 20k]
-            const thresholds = [1000, 2000, 5000, 10000, 20000];
-            thresholds.forEach(threshold => {
-                const id = `monthly_income_${threshold / 1000}k`;
-                if (unlocked.includes(id)) return;
-                // 找出任一月份累计收入是否达到阈值
-                const hit = Object.values(monthlyIncome).some(income => income >= threshold);
-                if (hit) {
-                    unlockGenericAchievement(id, MONTHLY_INCOME_ACHIEVEMENT_DEFS);
-                    newUnlock = true;
-                }
-            });
-
-            achievementData.monthlyIncomeUnlocked = unlocked;
-            return newUnlock;
-        }
-
-        function checkComboAchievements(triggeredProjectId) {
-            const stats = achievementData.statistics;
-            const unlocked = achievementData.comboUnlocked || [];
-            let newUnlock = false;
-
-            // 使用扣除手续费后的收入
-            const income = stats.totalIncome;
-
-            if (income < 500 && stats.totalProjects >= 20 && !unlocked.includes('combo_love_power')) {
-                unlockGenericAchievement('combo_love_power', COMBO_ACHIEVEMENT_DEFS);
-                newUnlock = true;
-                updateArtistNameStyle();
-            }
-
-            if (stats.projectsWithPriceOver1000.length > 0 && !stats.bigOrderTriggered) {
-                stats.bigOrderTriggered = true;
-                if (!unlocked.includes('combo_big_order')) {
-                    unlockGenericAchievement('combo_big_order', COMBO_ACHIEVEMENT_DEFS);
-                    newUnlock = true;
-                }
-            }
-
-            if (stats.projectsWithPriceOver1000.length >= 10 && !unlocked.includes('combo_big_red')) {
-                unlockGenericAchievement('combo_big_red', COMBO_ACHIEVEMENT_DEFS);
-                newUnlock = true;
-                updateArtistNameStyle();
-            }
-
-            achievementData.comboUnlocked = unlocked;
-            saveAchievementData();
-            return newUnlock;
-        }
-
-        function unlockGenericAchievement(id, defs) {
-            const def = defs.find(d => d.id === id);
-            if (!def) return;
-            let arr = null;
-            if (defs === PRICE_ACHIEVEMENT_DEFS) arr = achievementData.priceUnlocked;
-            else if (defs === QUANTITY_ACHIEVEMENT_DEFS) arr = achievementData.quantityUnlocked;
-            else if (defs === COMBO_ACHIEVEMENT_DEFS) arr = achievementData.comboUnlocked;
-            else if (defs === MONTHLY_INCOME_ACHIEVEMENT_DEFS) arr = achievementData.monthlyIncomeUnlocked;
-            else return;
-
-            if (!arr.includes(id)) {
-                arr.push(id);
-                showGenericAchievementModal(def);
-                showGenericBroadcast(def);
-                saveAchievementData();
-                updateAllDots();
-            }
-        }
-
-        function showGenericAchievementModal(def) {
-            document.getElementById('genAchEmoji').textContent = def.icon || '🏆';
-            document.getElementById('genAchTitle').textContent = def.unlockTitle || '成就解锁！';
-            document.getElementById('genAchSub').textContent = '恭喜达成';
-            document.getElementById('genAchBody').innerHTML = def.unlockBody || '你达成了新的成就！';
-            document.getElementById('genericAchievementModalOverlay').classList.add('active');
-            document.body.style.overflow = 'hidden';
-        }
-
-        function closeGenericAchievementModal() {
-            document.getElementById('genericAchievementModalOverlay').classList.remove('active');
-            document.body.style.overflow = '';
-        }
-
-        function showGenericBroadcast(def) {
-            const toast = document.getElementById('toast');
-            document.getElementById('toastMsg').innerHTML = `🏆 成就解锁：${def.name}`;
-            toast.className = 'toast gen-ach-toast';
-            toast.classList.add('show');
-            clearTimeout(toastTimer);
-            toastTimer = setTimeout(() => {
-                toast.classList.remove('show');
-                toast.className = 'toast';
-            }, 3500);
-        }
-
-        // ============================================================
-        //  画师名字样式更新
-        // ============================================================
-        function updateArtistNameStyle() {
-            const nameSpans = [
-                document.getElementById('sidebarNameText'),
-                document.getElementById('greetingName')
-            ];
-            const comboUnlocked = achievementData.comboUnlocked || [];
-
-            const hasLovePower = comboUnlocked.includes('combo_love_power');
-            const hasBigRed = comboUnlocked.includes('combo_big_red');
-
-            let nameStyle = 'default';
-            let nameIcon = null;
-
-            if (hasBigRed) {
-                nameStyle = 'goldGlow';
-                nameIcon = '🔥';
-            } else if (hasLovePower) {
-                nameStyle = 'black';
-                nameIcon = '🌍';
-            } else if (achievementData.rainbowEnabled && achievementData.rainbowUnlocked) {
-                nameStyle = 'rainbow';
-                nameIcon = null;
-            }
-
-            nameSpans.forEach(el => {
-                if (!el) return;
-                el.classList.remove('rainbow-name', 'black-name', 'gold-glow');
-                el.style.color = '';
-                el.style.textShadow = '';
-                el.style.webkitTextFillColor = '';
-
-                if (nameStyle === 'goldGlow') {
-                    el.classList.add('gold-glow');
-                } else if (nameStyle === 'black') {
-                    el.classList.add('black-name');
-                } else if (nameStyle === 'rainbow') {
-                    el.classList.add('rainbow-name');
-                }
-                const parent = el.parentElement;
-                if (parent) {
-                    const oldIcon = parent.querySelector('.name-icon');
-                    if (oldIcon) oldIcon.remove();
-                    if (nameIcon) {
-                        const iconSpan = document.createElement('span');
-                        iconSpan.className = 'name-icon';
-                        iconSpan.textContent = nameIcon;
-                        parent.appendChild(iconSpan);
-                    }
-                }
-            });
-
-            const highlight = document.getElementById('greetingName');
-            if (highlight) {
-                highlight.className = 'highlight';
-                if (nameStyle === 'goldGlow') highlight.classList.add('gold-glow');
-                else if (nameStyle === 'black') highlight.classList.add('black-name');
-                else if (nameStyle === 'rainbow') highlight.classList.add('rainbow-name');
-                const parent = highlight.parentElement;
-                if (parent) {
-                    const oldIcon = parent.querySelector('.name-icon');
-                    if (oldIcon) oldIcon.remove();
-                    if (nameIcon) {
-                        const iconSpan = document.createElement('span');
-                        iconSpan.className = 'name-icon';
-                        iconSpan.textContent = nameIcon;
-                        parent.appendChild(iconSpan);
-                    }
-                }
-            }
-        }
-
-        // ============================================================
-        //  所有小圆点更新
-        // ============================================================
-        function updateAllDots() {
-            updateAchievementDot();
-            updateDailyAchDot();
-            updateStreakDot();
-            updateNegativeDot();
-            updatePriceDot();
-            updateQuantityDot();
-            updateComboDot();
-            updateMonthlyIncomeDot();
-        }
-
-        function updateMonthlyIncomeDot() {
-            const dot = document.getElementById('monthlyIncomeAchDot');
-            if (!dot) return;
-            const viewed = sessionStorage.getItem('monthly_income_viewed') || '[]';
-            const viewedArr = JSON.parse(viewed);
-            const unlocked = achievementData.monthlyIncomeUnlocked || [];
-            const hasNew = unlocked.some(id => !viewedArr.includes(id));
-            if (hasNew && unlocked.length > 0) {
-                dot.classList.add('show');
-            } else {
-                dot.classList.remove('show');
-            }
-        }
-
-        function markMonthlyIncomeViewed() {
-            sessionStorage.setItem('monthly_income_viewed', JSON.stringify(achievementData.monthlyIncomeUnlocked || []));
-            const dot = document.getElementById('monthlyIncomeAchDot');
-            if (dot) dot.classList.remove('show');
-        }
-
-        function updatePriceDot() {
-            const dot = document.getElementById('priceAchDot');
-            const viewed = sessionStorage.getItem('price_viewed') || '[]';
-            const viewedArr = JSON.parse(viewed);
-            const unlocked = achievementData.priceUnlocked || [];
-            const hasNew = unlocked.some(id => !viewedArr.includes(id));
-            if (hasNew && unlocked.length > 0) {
-                dot.classList.add('show');
-            } else {
-                dot.classList.remove('show');
-            }
-        }
-
-        function markPriceViewed() {
-            sessionStorage.setItem('price_viewed', JSON.stringify(achievementData.priceUnlocked || []));
-            document.getElementById('priceAchDot').classList.remove('show');
-        }
-
-        function updateQuantityDot() {
-            const dot = document.getElementById('quantityAchDot');
-            const viewed = sessionStorage.getItem('quantity_viewed') || '[]';
-            const viewedArr = JSON.parse(viewed);
-            const unlocked = achievementData.quantityUnlocked || [];
-            const hasNew = unlocked.some(id => !viewedArr.includes(id));
-            if (hasNew && unlocked.length > 0) {
-                dot.classList.add('show');
-            } else {
-                dot.classList.remove('show');
-            }
-        }
-
-        function markQuantityViewed() {
-            sessionStorage.setItem('quantity_viewed', JSON.stringify(achievementData.quantityUnlocked || []));
-            document.getElementById('quantityAchDot').classList.remove('show');
-        }
-
-        function updateComboDot() {
-            const dot = document.getElementById('comboAchDot');
-            const viewed = sessionStorage.getItem('combo_viewed') || '[]';
-            const viewedArr = JSON.parse(viewed);
-            const unlocked = achievementData.comboUnlocked || [];
-            const hasNew = unlocked.some(id => !viewedArr.includes(id));
-            if (hasNew && unlocked.length > 0) {
-                dot.classList.add('show');
-            } else {
-                dot.classList.remove('show');
-            }
-        }
-
-        function markComboViewed() {
-            sessionStorage.setItem('combo_viewed', JSON.stringify(achievementData.comboUnlocked || []));
-            document.getElementById('comboAchDot').classList.remove('show');
-        }
-
-        // ============================================================
-        //  累计成就逻辑
-        // ============================================================
-        function checkAndUpdateAchievements() {
-            const count = achievementData.completedCount;
-            let newUnlock = false;
-
-            ACHIEVEMENT_DEFS.forEach(def => {
-                if (count >= parseInt(def.id) && !achievementData.unlocked.includes(def.id)) {
-                    achievementData.unlocked.push(def.id);
-                    newUnlock = true;
-                    showToast(`🎉 成就解锁！${def.icon} ${def.name} (完成${def.id}篇)`, true);
-                }
-            });
-
-            if (count >= 100 && !achievementData.rainbowUnlocked) {
-                achievementData.rainbowUnlocked = true;
-                achievementData.rainbowEnabled = true;
-                showToast('🌈 七彩名字已解锁！在设置中开启吧 ✨', true);
-                applyRainbowName();
-            }
-
-            if (newUnlock) {
-                updateAchievementDot();
-            }
-
-            renderNameBadges();
-            saveAchievementData();
-            if (document.getElementById('achievementModalOverlay').classList.contains('active')) {
-                renderAchievementPanel();
-            }
-        }
-
-        function updateAchievementDot() {
-            const dot = document.getElementById('achBadgeDot');
-            const viewed = sessionStorage.getItem('ach_viewed') || '[]';
-            const viewedArr = JSON.parse(viewed);
-            const hasNew = achievementData.unlocked.some(id => !viewedArr.includes(id));
-            if (hasNew && achievementData.unlocked.length > 0) {
-                dot.classList.add('show');
-            } else {
-                dot.classList.remove('show');
-            }
-        }
-
-        function markAchievementViewed() {
-            sessionStorage.setItem('ach_viewed', JSON.stringify(achievementData.unlocked));
-            document.getElementById('achBadgeDot').classList.remove('show');
-        }
-
-        // ============================================================
-        //  每日成就逻辑
-        // ============================================================
-        function getTodayDailyData() {
-            const today = getTodayStr();
-            if (!achievementData.daily[today]) {
-                achievementData.daily[today] = { count: 0, triggered: [], projectIds: [] };
-                saveAchievementData();
-            }
-            return achievementData.daily[today];
-        }
-
-        function getTodayCompletedCount() {
-            const today = getTodayStr();
-            if (!achievementData.daily[today]) return 0;
-            return achievementData.daily[today].count;
-        }
-
-        function checkDailyAchievements(projectId) {
-            const today = getTodayStr();
-            const dailyData = getTodayDailyData();
-            if (dailyData.projectIds.includes(projectId)) return;
-
-            dailyData.projectIds.push(projectId);
-            dailyData.count = dailyData.projectIds.length;
-            saveAchievementData();
-
-            const count = dailyData.count;
-
-            let unlockedAny = false;
-            for (const def of DAILY_ACHIEVEMENT_DEFS) {
-                if (count >= def.requirement && !dailyData.triggered.includes(def.id)) {
-                    dailyData.triggered.push(def.id);
-                    unlockedAny = true;
-                    showDailyAchievementModal(def);
-                    showDailyBroadcast(def.broadcast);
-                    saveAchievementData();
-                }
-            }
-
-            if (document.getElementById('achievementModalOverlay').classList.contains('active')) {
-                renderAchievementPanel();
-            }
-            renderNameBadges();
-            updateDailyAchDot();
-        }
-
-        function updateDailyAchDot() {
-            const dot = document.getElementById('dailyAchDot');
-            const today = getTodayStr();
-            const data = achievementData.daily[today];
-            if (data && data.triggered.length > 0) {
-                dot.classList.add('show');
-            } else {
-                dot.classList.remove('show');
-            }
-        }
-
-        function markDailyAchViewed() {
-            document.getElementById('dailyAchDot').classList.remove('show');
-        }
-
-        // ============================================================
-        //  每日成就弹窗
-        // ============================================================
-        let pendingDailyAchDef = null;
-
-        function showDailyAchievementModal(def) {
-            pendingDailyAchDef = def;
-            document.getElementById('dailyAchEmoji').textContent = def.emoji || '🏅';
-            document.getElementById('dailyAchTitle').textContent = def.title;
-            document.getElementById('dailyAchSub').textContent = def.subtitle;
-            document.getElementById('dailyAchBody').innerHTML = def.body + '<br /><span class="highlight-ach">' + def.subtitle +
-                '</span>';
-
-            const hiddenTag = document.getElementById('dailyAchHiddenTag');
-            if (def.hiddenTag) {
-                hiddenTag.style.display = 'block';
-                hiddenTag.textContent = def.hiddenTag;
-            } else {
-                hiddenTag.style.display = 'none';
-            }
-
-            document.getElementById('dailyAchievementModalOverlay').classList.add('active');
-            document.body.style.overflow = 'hidden';
-        }
-
-        function closeDailyAchievementModal() {
-            document.getElementById('dailyAchievementModalOverlay').classList.remove('active');
-            document.body.style.overflow = '';
-            pendingDailyAchDef = null;
-            markDailyAchViewed();
-        }
-
-        function showDailyBroadcast(msg) {
-            const toast = document.getElementById('toast');
-            document.getElementById('toastMsg').innerHTML = msg;
-            toast.className = 'toast daily-ach-toast';
-            toast.classList.add('show');
-            clearTimeout(toastTimer);
-            toastTimer = setTimeout(() => {
-                toast.classList.remove('show');
-                toast.className = 'toast';
-            }, 4000);
-        }
-
-        // ============================================================
-        //  连续成就逻辑
-        // ============================================================
-        function rebuildStreak() {
-            const dailyCompletion = {};
-            projects.forEach(p => {
-                if (p.progress >= 100 && p.completedAt) {
-                    const date = new Date(p.completedAt);
-                    const key = date.getFullYear() + '-' +
-                        String(date.getMonth() + 1).padStart(2, '0') + '-' +
-                        String(date.getDate()).padStart(2, '0');
-                    dailyCompletion[key] = true;
-                }
-            });
-
-            const today = new Date();
-            let streak = 0;
-            let checkDate = new Date(today);
-            for (let i = 0; i < 365; i++) {
-                const key = checkDate.getFullYear() + '-' +
-                    String(checkDate.getMonth() + 1).padStart(2, '0') + '-' +
-                    String(checkDate.getDate()).padStart(2, '0');
-                if (dailyCompletion[key]) {
-                    streak++;
-                    checkDate.setDate(checkDate.getDate() - 1);
-                } else {
-                    break;
-                }
-            }
-
-            achievementData.dailyCompletion = dailyCompletion;
-            achievementData.currentStreak = streak;
-            if (streak > achievementData.maxStreak) {
-                achievementData.maxStreak = streak;
-            }
-
-            let newUnlock = false;
-            for (const def of STREAK_ACHIEVEMENT_DEFS) {
-                if (streak >= def.days && !achievementData.streakUnlocked.includes(def.id)) {
-                    achievementData.streakUnlocked.push(def.id);
-                    newUnlock = true;
-                    showStreakAchievementModal(def, streak);
-                    showStreakBroadcast(def, streak);
-                }
-            }
-
-            if (newUnlock) {
-                updateStreakDot();
-            }
-
-            renderNameBadges();
-            saveAchievementData();
-            if (document.getElementById('achievementModalOverlay').classList.contains('active')) {
-                renderAchievementPanel();
-            }
-        }
-
-        function showStreakAchievementModal(def, currentStreak) {
-            document.getElementById('streakAchEmoji').textContent = def.icon;
-            document.getElementById('streakAchTitle').textContent = '连续产出成就！';
-            document.getElementById('streakAchSub').textContent = '解锁稳定产出称号';
-            document.getElementById('streakAchDays').textContent = currentStreak;
-            document.getElementById('streakAchBody').innerHTML =
-                `连续创作 <strong>${currentStreak}</strong> 天，<br />每日至少完成1张稿件，<br /><span class="highlight-streak">解锁称号：${def.name}</span>`;
-
-            document.getElementById('streakAchievementModalOverlay').classList.add('active');
-            document.body.style.overflow = 'hidden';
-        }
-
-        function closeStreakAchievementModal() {
-            document.getElementById('streakAchievementModalOverlay').classList.remove('active');
-            document.body.style.overflow = '';
-            markStreakViewed();
-        }
-
-        function showStreakBroadcast(def, currentStreak) {
-            const toast = document.getElementById('toast');
-            document.getElementById('toastMsg').innerHTML =
-                `🎯 连续创作 ${currentStreak} 天！解锁称号【${def.name}】`;
-            toast.className = 'toast streak-ach-toast';
-            toast.classList.add('show');
-            clearTimeout(toastTimer);
-            toastTimer = setTimeout(() => {
-                toast.classList.remove('show');
-                toast.className = 'toast';
-            }, 4000);
-        }
-
-        function updateStreakDot() {
-            const dot = document.getElementById('streakAchDot');
-            const viewed = sessionStorage.getItem('streak_viewed') || '[]';
-            const viewedArr = JSON.parse(viewed);
-            const hasNew = achievementData.streakUnlocked.some(id => !viewedArr.includes(id));
-            if (hasNew && achievementData.streakUnlocked.length > 0) {
-                dot.classList.add('show');
-            } else {
-                dot.classList.remove('show');
-            }
-        }
-
-        function markStreakViewed() {
-            sessionStorage.setItem('streak_viewed', JSON.stringify(achievementData.streakUnlocked));
-            document.getElementById('streakAchDot').classList.remove('show');
-        }
-
-        // ============================================================
-        //  负面成就逻辑
-        // ============================================================
-        function checkNegativeAchievements(completedProjectId) {
-            let newUnlock = false;
-            const today = new Date();
-
-            const stalledCount = projects.filter(p => {
-                if (p.progress >= 100) return false;
-                if (!p.dueDate) return false;
-                const due = parseDueDateEnd(p.dueDate);
-                const diff = today - due;
-                return diff > 90 * 24 * 60 * 60 * 1000;
-            }).length;
-
-            if (stalledCount >= 120 && !achievementData.negativeUnlocked.includes('neg_stalled')) {
-                achievementData.negativeUnlocked.push('neg_stalled');
-                newUnlock = true;
-                const def = NEGATIVE_ACHIEVEMENT_DEFS.find(d => d.id === 'neg_stalled');
-                showNegativeAchievementModal(def);
-                showNegativeBroadcast(def);
-            }
-
-            if (completedProjectId) {
-                const project = projects.find(p => p.id === completedProjectId);
-                if (project && project.progress >= 100 && project.dueDate) {
-                    const due = parseDueDateEnd(project.dueDate);
-                    const diff = today - due;
-                    if (diff > 365 * 24 * 60 * 60 * 1000 && !achievementData.forgottenProjects.includes(project.id)) {
-                        achievementData.forgottenProjects.push(project.id);
-                        if (!achievementData.negativeUnlocked.includes('neg_forgotten')) {
-                            achievementData.negativeUnlocked.push('neg_forgotten');
-                            newUnlock = true;
-                            const def = NEGATIVE_ACHIEVEMENT_DEFS.find(d => d.id === 'neg_forgotten');
-                            showNegativeAchievementModal(def);
-                            showNegativeBroadcast(def);
-                        }
-                    }
-                }
-            }
-
-            if (achievementData.lastCompletedDate) {
-                const last = new Date(achievementData.lastCompletedDate);
-                const diff = today - last;
-                if (diff > 60 * 24 * 60 * 60 * 1000 && !achievementData.negativeUnlocked.includes('neg_no_production')) {
-                    achievementData.negativeUnlocked.push('neg_no_production');
-                    newUnlock = true;
-                    const def = NEGATIVE_ACHIEVEMENT_DEFS.find(d => d.id === 'neg_no_production');
-                    showNegativeAchievementModal(def);
-                    showNegativeBroadcast(def);
-                }
-            }
-
-            if (newUnlock) {
-                updateNegativeDot();
-                renderNameBadges();
-                saveAchievementData();
-                if (document.getElementById('achievementModalOverlay').classList.contains('active')) {
-                    renderAchievementPanel();
-                }
-            }
-        }
-
-        function showNegativeAchievementModal(def) {
-            document.getElementById('negAchEmoji').textContent = def.icon;
-            document.getElementById('negAchTitle').textContent = def.unlockTitle;
-            document.getElementById('negAchSub').textContent = '负面成就达成';
-            document.getElementById('negAchBody').innerHTML = def.unlockBody;
-            document.getElementById('negativeAchievementModalOverlay').classList.add('active');
-            document.body.style.overflow = 'hidden';
-        }
-
-        function closeNegativeAchievementModal() {
-            document.getElementById('negativeAchievementModalOverlay').classList.remove('active');
-            document.body.style.overflow = '';
-            markNegativeViewed();
-        }
-
-        function showNegativeBroadcast(def) {
-            const toast = document.getElementById('toast');
-            document.getElementById('toastMsg').innerHTML = `😅 负面成就解锁：${def.name}`;
-            toast.className = 'toast negative-ach-toast';
-            toast.classList.add('show');
-            clearTimeout(toastTimer);
-            toastTimer = setTimeout(() => {
-                toast.classList.remove('show');
-                toast.className = 'toast';
-            }, 4000);
-        }
-
-        function updateNegativeDot() {
-            const dot = document.getElementById('negAchDot');
-            const viewed = sessionStorage.getItem('neg_viewed') || '[]';
-            const viewedArr = JSON.parse(viewed);
-            const hasNew = achievementData.negativeUnlocked.some(id => !viewedArr.includes(id));
-            if (hasNew && achievementData.negativeUnlocked.length > 0) {
-                dot.classList.add('show');
-            } else {
-                dot.classList.remove('show');
-            }
-        }
-
-        function markNegativeViewed() {
-            sessionStorage.setItem('neg_viewed', JSON.stringify(achievementData.negativeUnlocked));
-            document.getElementById('negAchDot').classList.remove('show');
-        }
-
-        // ============================================================
-        //  七彩名字
-        // ============================================================
-        function applyRainbowName() {
-            updateArtistNameStyle();
-            // 同步开关 UI（修复：之前切换状态没切 .enabled/.active 类）
-            syncRainbowToggleUI();
-        }
-
-        /**
-         * 同步七彩名字开关的 UI 状态
-         * - 未解锁（rainbowUnlocked=false）：开关置灰且不可点击
-         * - 已解锁未开启（rainbowUnlocked=true, rainbowEnabled=false）：开关可点击但灰
-         * - 已开启（rainbowEnabled=true）：开关显示七彩动画
-         */
-        function syncRainbowToggleUI() {
-            const toggle = document.getElementById('rainbowToggle');
-            if (!toggle) return;
-            const unlocked = !!(achievementData && achievementData.rainbowUnlocked);
-            const enabled = !!(achievementData && achievementData.rainbowEnabled);
-            const badge = document.getElementById('rainbowBadge');
-
-            // .enabled 类决定是否可点击（pointer-events: auto）
-            toggle.classList.toggle('enabled', unlocked);
-            // .active 类决定是否显示七彩动画背景
-            toggle.classList.toggle('active', unlocked && enabled);
-
-            // 同步角标文案
-            if (badge) {
-                if (!unlocked) {
-                    badge.className = 'badge-locked';
-                    badge.textContent = '🔒 需完成100篇';
-                    badge.style.display = '';
-                } else {
-                    badge.className = 'badge-unlocked';
-                    badge.textContent = enabled ? '🌈 已开启' : '✅ 已解锁';
-                    badge.style.display = '';
-                }
-            }
-        }
-
-        function toggleRainbowName() {
-            if (!achievementData.rainbowUnlocked) {
-                showToast('⚠️ 需要累计完成100篇稿件才能解锁七彩名字');
-                return;
-            }
-            achievementData.rainbowEnabled = !achievementData.rainbowEnabled;
-            saveAchievementData();
-            applyRainbowName();
-            // applyRainbowName 已经会调 syncRainbowToggleUI；toast 再补个明确反馈
-            showToast(achievementData.rainbowEnabled ? '🌈 七彩名字已开启' : '☀️ 七彩名字已关闭');
-        }
-
-        // ============================================================
         //  数据初始化
         // ============================================================
         let projects = [];
         let artistName = '这是一个初始名字';
         let currentFilter = 'all';
-        let currentSort = 'due-asc';  // 默认：截稿日期升序
-        let achievementData = getDefaultAchievementData();
+        let currentSort = 'due-asc';
 
         async function initData() {
-            // 先初始化 IndexedDB 并迁移数据
             await initIDB();
-            // 从 IndexedDB（回退 localStorage）加载主数据
             const saved = await loadAppDataAsync();
             if (saved) {
                 projects = saved.projects;
@@ -11802,84 +9474,36 @@ ${summaryRow}
                 saveAppData();
             }
 
-            // � 修复历史数据：把字符串 id（'proj_xxx_xxx'）转换为数字 id
-            // 原因：详情/打卡/删除按钮用 Number() 匹配，字符串 id 会全部失效
-            let needFixId = false;
+            let normalized = false;
             projects.forEach(p => {
                 if (typeof p.id !== 'number') {
-                    // 用 mihuashiOrderId 或现有数值散列作为种子，保证稳定性
                     const seed = p.mihuashiOrderId || p.title || String(p.id);
                     p.id = parseStableNumberId(seed);
-                    needFixId = true;
+                    normalized = true;
+                }
+                if (Object.prototype.hasOwnProperty.call(p, 'achievementCounted')) {
+                    delete p.achievementCounted;
+                    normalized = true;
+                }
+                if (p.completedAt === undefined) {
+                    p.completedAt = null;
+                    normalized = true;
+                }
+                if (!p.createdAt && !p.isSeedData) {
+                    p.createdAt = p.dueDate || null;
+                    normalized = true;
                 }
             });
-            if (needFixId) {
-                saveAppData();
-                console.log('[画师工作台] 已修复字符串 id 订单');
-            }
+            if (normalized) saveAppData();
 
-            achievementData = await loadAchievementDataAsync();
-
-            const completedIds = projects.filter(p => p.progress >= 100 && !p.isSeedData).map(p => p.id);
-            const countedSet = new Set(achievementData.countedProjects);
-            let newCompleted = 0;
-            completedIds.forEach(id => {
-                if (!countedSet.has(id)) {
-                    countedSet.add(id);
-                    newCompleted++;
-                }
-            });
-            if (newCompleted > 0) {
-                achievementData.completedCount += newCompleted;
-                achievementData.countedProjects = Array.from(countedSet);
-                checkAndUpdateAchievements();
-                saveAchievementData();
-            }
-
-            projects.forEach(p => {
-                if (p.isSeedData) return;  // 种子数据不修正 createdAt/completedAt
-                if (p.progress >= 100 && !p.achievementCounted) {
-                    p.achievementCounted = true;
-                }
-                if (p.completedAt === undefined) p.completedAt = null;
-                if (!p.createdAt) p.createdAt = p.dueDate ? p.dueDate : null;
-            });
-
-            rebuildStreak();
-
-            const completedWithDate = projects.filter(p => p.progress >= 100 && p.completedAt);
-            if (completedWithDate.length > 0) {
-                const latest = completedWithDate.reduce((max, p) => {
-                    const d = new Date(p.completedAt);
-                    return d > max ? d : max;
-                }, new Date(0));
-                achievementData.lastCompletedDate = latest.toISOString();
-            } else {
-                achievementData.lastCompletedDate = null;
-            }
-
-            updateStatistics();
-            checkAllAchievements(null);
+            // 清理旧版本残留的成就数据。
+            try { localStorage.removeItem('artflow_achievement'); } catch (e) {}
 
             renderArtistName();
-            applyRainbowName();
-            updateAllDots();
-            // 把现有稿件发布到 chrome.storage（让米画师扩展做精准去重预览）
             publishWorkspaceProjects();
             applyStatusNodeCssVars();
             renderFilterTags();
             renderStatusSelector();
-
-            const today = getTodayStr();
-            if (!achievementData.daily[today]) {
-                achievementData.daily[today] = { count: 0, triggered: [], projectIds: [] };
-                saveAchievementData();
-            }
-
-            if (achievementData.statistics.projectsWithPriceOver1000.length > 0) {
-                achievementData.statistics.bigOrderTriggered = true;
-            }
-            saveAchievementData();
         }
 
         // ============================================================
@@ -12718,7 +10342,7 @@ function computeOrderSimilarity(existing, order) {
             saveAppData();
             renderProjects();
             renderIncome();
-            updateStatistics();
+
             closeClipboardImport();
             // 弹详细结果报告（不阻塞；用户可点"知道了"关闭）
             showImportResultReport({ imported, updated, skipped, results });
@@ -12917,7 +10541,7 @@ function computeOrderSimilarity(existing, order) {
                 mihuashiOrderId: isMihuashi ? (order.id || null) : null,
                 checkedMilestones: [],
                 platformFeeRate: (order.source === '米画师' || order.source === '画加') ? 0.05 : 0,
-                achievementCounted: false,
+
                 isSeedData: false
             });
         }
@@ -13181,89 +10805,15 @@ function sortProjects(list) {
         }
 
         function renderArtistName() {
-            document.getElementById('sidebarNameText').textContent = artistName;
-            document.getElementById('greetingName').textContent = artistName;
-            const firstChar = artistName.charAt(0).toUpperCase() || 'L';
-            document.getElementById('avatarLetter').textContent = firstChar;
-            renderNameBadges();
-            applyRainbowName();
-        }
-
-        // 汇总所有已解锁成就的图标，按优先级排序
-        // 优先级：主成就 > 价格 > 数量 > 组合 > 连续打卡 > 日成就（>200/500 这类顶级）
-        function collectUnlockedBadges() {
-            const items = [];
-            // 主成就（最高级优先）
-            const mainSorted = [...ACHIEVEMENT_DEFS].sort((a, b) => b.requirement - a.requirement);
-            mainSorted.forEach(def => {
-                if (achievementData.unlocked && achievementData.unlocked.includes(def.id)) {
-                    let tier = '';
-                    if (def.requirement >= 500) tier = 'tier-mythic';
-                    else if (def.requirement >= 200) tier = 'tier-legend';
-                    items.push({ icon: def.icon, name: def.name, tier, weight: 100 + def.requirement });
-                }
-            });
-            // 价格
-            PRICE_ACHIEVEMENT_DEFS.forEach(def => {
-                if (achievementData.priceUnlocked && achievementData.priceUnlocked.includes(def.id)) {
-                    items.push({ icon: def.icon, name: def.name, weight: 60 });
-                }
-            });
-            // 数量
-            QUANTITY_ACHIEVEMENT_DEFS.forEach(def => {
-                if (achievementData.quantityUnlocked && achievementData.quantityUnlocked.includes(def.id)) {
-                    items.push({ icon: def.icon, name: def.name, weight: 50 });
-                }
-            });
-            // 组合
-            COMBO_ACHIEVEMENT_DEFS.forEach(def => {
-                if (achievementData.comboUnlocked && achievementData.comboUnlocked.includes(def.id)) {
-                    items.push({ icon: def.icon, name: def.name, weight: 40 });
-                }
-            });
-            // 月度收入（高阈值权重更高）
-            MONTHLY_INCOME_ACHIEVEMENT_DEFS.forEach(def => {
-                if (achievementData.monthlyIncomeUnlocked && achievementData.monthlyIncomeUnlocked.includes(def.id)) {
-                    items.push({ icon: def.icon, name: def.name, weight: 55 + (def.threshold / 1000) });
-                }
-            });
-            // 连续打卡
-            STREAK_ACHIEVEMENT_DEFS.forEach(def => {
-                if (achievementData.streakUnlocked && achievementData.streakUnlocked.includes(def.id)) {
-                    items.push({ icon: def.icon, name: def.name, weight: 30 + def.days });
-                }
-            });
-            // 按 weight 倒序，取前 8
-            items.sort((a, b) => b.weight - a.weight);
-            return items;
-        }
-
-        function renderNameBadges() {
-            const badges = collectUnlockedBadges();
-            const total = badges.length;
-            const MAX_SHOW = 6;
-            const visible = badges.slice(0, MAX_SHOW);
-            const overflow = total - visible.length;
-            const renderTo = (el, sizeClass) => {
-                if (!el) return;
-                const html = visible.map(b => {
-                    const tierCls = b.tier ? ` ${b.tier}` : '';
-                    const tip = `<span class="badge-tip">${b.name}</span>`;
-                    return `<span class="name-badge${tierCls}" title="${b.name}">${b.icon}${tip}</span>`;
-                }).join('') + (overflow > 0 ? `<span class="name-badge-more" title="还有 ${overflow} 项成就">+${overflow}</span>` : '');
-                el.innerHTML = html;
-                el.style.display = total > 0 ? '' : 'none';
-            };
-            renderTo(document.getElementById('greetingBadges'));
-            // 点击更多气泡切换到成就版块
-            document.querySelectorAll('.name-badge-more').forEach(el => {
-                el.addEventListener('click', (e) => {
-                    e.stopPropagation();
-                    if (typeof switchView === 'function') {
-                        switchView('achievement');
-                    }
-                });
-            });
+            const sidebarNameText = document.getElementById('sidebarNameText');
+            const greetingName = document.getElementById('greetingName');
+            const avatarLetter = document.getElementById('avatarLetter');
+            if (sidebarNameText) sidebarNameText.textContent = artistName;
+            if (greetingName) {
+                greetingName.textContent = artistName;
+                greetingName.className = 'highlight';
+            }
+            if (avatarLetter) avatarLetter.textContent = artistName.charAt(0).toUpperCase() || 'L';
         }
 
         // ============================================================
@@ -13295,7 +10845,6 @@ function sortProjects(list) {
          *   projects   → 进行中稿件数
          *   schedule   → 未来 7 天内的稿件数
          *   income     → 已交付稿件的总收入金额（"¥1.2k" / "¥888"）
-         *   achievement → 已解锁成就数
          */
         function updateSidebarBadges(stats) {
             const upd = (id, val, opts) => {
@@ -13374,8 +10923,14 @@ function sortProjects(list) {
                     if (!project) return;
                     const progress = getProgressForStatus(status, project.progress);
 
+                    const oldProgress = Number(project.progress) || 0;
                     project.status = status;
                     project.progress = progress;
+                    if (progress >= 100 && oldProgress < 100) {
+                        project.completedAt = new Date().toISOString();
+                    } else if (progress < 100 && oldProgress >= 100) {
+                        project.completedAt = null;
+                    }
                     document.getElementById('progressSlider').value = progress;
                     document.getElementById('controlPct').textContent = progress + '%';
                     document.getElementById('modalProgressDisplay').textContent = progress + '%';
@@ -13594,26 +11149,6 @@ function sortProjects(list) {
                 return;
             }
             const title = project.title;
-            if (project.progress >= 100 && project.achievementCounted) {
-                const idx = achievementData.countedProjects.indexOf(project.id);
-                if (idx !== -1) {
-                    achievementData.countedProjects.splice(idx, 1);
-                    achievementData.completedCount = Math.max(0, achievementData.completedCount - 1);
-                    const newUnlocked = [];
-                    ACHIEVEMENT_DEFS.forEach(def => {
-                        if (achievementData.completedCount >= parseInt(def.id)) {
-                            newUnlocked.push(def.id);
-                        }
-                    });
-                    achievementData.unlocked = newUnlocked;
-                    if (achievementData.rainbowUnlocked && achievementData.completedCount < 100) {
-                        achievementData.rainbowUnlocked = false;
-                        achievementData.rainbowEnabled = false;
-                        applyRainbowName();
-                    }
-                    saveAchievementData();
-                }
-            }
             projects = projects.filter(p => p.id !== pendingDeleteId);
             renderProjects();
             renderSchedule();
@@ -13623,10 +11158,6 @@ function sortProjects(list) {
             checkAndShowUrgentAlert();
             closeDeleteConfirmModal();
             showToast(`🗑️ 已删除「${title}」`);
-            rebuildStreak();
-            checkNegativeAchievements(null);
-            updateStatistics();
-            checkAllAchievements(null);
         }
 
         // ============================================================
@@ -13635,30 +11166,16 @@ function sortProjects(list) {
         function updateProjectProgress(id, newProgress) {
             const project = projects.find(p => p.id === id);
             if (!project) return;
-            const oldProgress = project.progress;
+
+            const oldProgress = Number(project.progress) || 0;
             const clamped = Math.max(0, Math.min(100, newProgress));
             project.progress = clamped;
-            const newStatus = getStatusFromProgress(clamped);
-            project.status = newStatus;
+            project.status = getStatusFromProgress(clamped);
 
-            if (clamped >= 100 && oldProgress < 100 && !project.achievementCounted) {
-                project.achievementCounted = true;
+            if (clamped >= 100 && oldProgress < 100) {
                 project.completedAt = new Date().toISOString();
-                const countedSet = new Set(achievementData.countedProjects);
-                if (!countedSet.has(project.id)) {
-                    countedSet.add(project.id);
-                    achievementData.countedProjects = Array.from(countedSet);
-                    achievementData.completedCount++;
-                    saveAchievementData();
-                    checkAndUpdateAchievements();
-                }
-                checkDailyAchievements(project.id);
-                achievementData.lastCompletedDate = project.completedAt;
-                saveAchievementData();
-                rebuildStreak();
-                checkNegativeAchievements(project.id);
-                updateStatistics();
-                checkAllAchievements(project.id);
+            } else if (clamped < 100 && oldProgress >= 100) {
+                project.completedAt = null;
             }
 
             renderProjects();
@@ -13667,10 +11184,6 @@ function sortProjects(list) {
             renderCalendar();
             saveAppData();
             checkAndShowUrgentAlert();
-
-            if (document.getElementById('achievementModalOverlay').classList.contains('active')) {
-                renderAchievementPanel();
-            }
         }
 
         // ============================================================
@@ -14220,17 +11733,12 @@ function sortProjects(list) {
             const projectsView = document.getElementById('projectsView');
             const scheduleView = document.getElementById('scheduleView');
             const incomeView = document.getElementById('incomeView');
-            const achievementView = document.getElementById('achievementView');
 
             projectsView.style.display = 'none';
             scheduleView.style.display = 'none';
             scheduleView.classList.remove('active');
             incomeView.style.display = 'none';
             incomeView.classList.remove('active');
-            if (achievementView) {
-                achievementView.style.display = 'none';
-                achievementView.classList.remove('active');
-            }
 
             if (view === 'projects') {
                 projectsView.style.display = 'block';
@@ -14243,25 +11751,6 @@ function sortProjects(list) {
                 incomeView.style.display = 'block';
                 incomeView.classList.add('active');
                 renderIncome();
-            } else if (view === 'achievement') {
-                if (achievementView) {
-                    achievementView.style.display = 'block';
-                    achievementView.classList.add('active');
-                }
-                renderAchievementPanel();
-                // 标记所有成就徽章为已查看，并关闭可能打开的旧 modal
-                try {
-                    if (typeof markAchievementViewed === 'function') markAchievementViewed();
-                    if (typeof markDailyAchViewed === 'function') markDailyAchViewed();
-                    if (typeof markStreakViewed === 'function') markStreakViewed();
-                    if (typeof markNegativeViewed === 'function') markNegativeViewed();
-                    if (typeof markPriceViewed === 'function') markPriceViewed();
-                    if (typeof markQuantityViewed === 'function') markQuantityViewed();
-                    if (typeof markComboViewed === 'function') markComboViewed();
-                    if (typeof closeAchievementModal === 'function') closeAchievementModal();
-                } catch (err) {
-                    console.warn('[achievement] 标记已查看失败:', err);
-                }
             }
 
             document.querySelectorAll('.sidebar-nav .nav-item').forEach(item => {
@@ -14433,7 +11922,7 @@ function sortProjects(list) {
             renderProjects();
             renderSchedule();
             renderCalendar();
-            updateStatistics();
+
             closeEditTitleModal();
             showToast('✏️ 稿件名字已更新');
         }
@@ -14652,7 +12141,7 @@ function sortProjects(list) {
             renderProjects();
             renderSchedule();
             renderCalendar();
-            updateStatistics();
+
             // 同步更新详情模态框的封面显示
             const modalEmojiBtn = document.getElementById('modalEmoji');
             if (modalEmojiBtn) {
@@ -15448,8 +12937,6 @@ function sortProjects(list) {
                 }
             });
 
-            applyRainbowName();
-
             // 打开模态框时刷新存储统计
             updateStorageStats();
 
@@ -15503,19 +12990,13 @@ function sortProjects(list) {
             const fillEl = document.getElementById('storageStatsFill');
             const projectsEl = document.getElementById('storageStatsProjects');
             const coversEl = document.getElementById('storageStatsCovers');
-            const achEl = document.getElementById('storageStatsAch');
             const refreshEl = document.getElementById('storageStatsRefresh');
 
             // 1. 数据明细（从内存 projects 数组拿，立刻同步显示）
             const projCount = projects.length;
             const coverCount = projects.filter(p => p.coverImage).length;
-            let achCount = 0;
-            try {
-                achCount = (achievementData && achievementData.unlocked && achievementData.unlocked.length) || 0;
-            } catch (e) {}
             if (projectsEl) projectsEl.textContent = projCount;
             if (coversEl) coversEl.textContent = coverCount;
-            if (achEl) achEl.textContent = achCount;
 
             // 2. 拿浏览器真实存储报告
             let usage = null;
@@ -15803,7 +13284,7 @@ function sortProjects(list) {
                 emoji: selectedEmoji || '🎨',
                 coverImage: selectedCoverImage || null,  // 用户上传的封面图（Base64），优先级高于 emoji
                 tags: ['新项目'],
-                achievementCounted: false,
+
                 completedAt: null,
                 createdAt: new Date().toISOString()
             };
@@ -15816,242 +13297,23 @@ function sortProjects(list) {
             saveAppData();
             closeCreateModal();
 
-            // 第一次新建稿件 → 开启成就系统
-            if (!achievementData.achievementTrackingEnabled) {
-                achievementData.achievementTrackingEnabled = true;
-                saveAchievementData();
-                showToast('🎉 成就系统已开启！从此刻起记录你的创作成就', true);
-                setTimeout(() => {
-                    showToast('🏆 查看成就：点击侧边栏"成就"图标');
-                }, 3500);
-            }
-
             showToast(`🎉 已创建稿件「${title}」`);
             setTimeout(() => openModal(newProject.id), 300);
             checkAndShowUrgentAlert();
-            updateStatistics();
-            checkAllAchievements(newProject.id);
         }
 
         // ============================================================
         //  Toast
         // ============================================================
-        function showToast(msg, isAchievement = false) {
+        function showToast(msg) {
             const toast = document.getElementById('toast');
             document.getElementById('toastMsg').textContent = msg;
             toast.className = 'toast';
-            if (isAchievement) {
-                toast.classList.add('achieve-toast');
-            }
             toast.classList.add('show');
             clearTimeout(toastTimer);
             toastTimer = setTimeout(() => {
                 toast.classList.remove('show');
             }, 3500);
-        }
-
-        // ============================================================
-        //  成就面板渲染
-        // ============================================================
-        function renderAchievementPanel() {
-            const count = achievementData.completedCount;
-            document.getElementById('achTotalCount').textContent = count;
-
-            let nextReq = 3;
-            let nextFound = false;
-            for (const def of ACHIEVEMENT_DEFS) {
-                if (!achievementData.unlocked.includes(def.id)) {
-                    nextReq = parseInt(def.id);
-                    nextFound = true;
-                    break;
-                }
-            }
-            if (!nextFound) {
-                document.getElementById('achNextLabel').textContent = '🏆 全部达成！';
-                document.getElementById('achProgressFill').style.width = '100%';
-            } else {
-                document.getElementById('achNextLabel').textContent = `下一个：${nextReq}篇`;
-                const prevReq = ACHIEVEMENT_DEFS.filter(d => achievementData.unlocked.includes(d.id)).pop();
-                const prev = prevReq ? parseInt(prevReq.id) : 0;
-                const progress = Math.min(100, ((count - prev) / (nextReq - prev)) * 100);
-                document.getElementById('achProgressFill').style.width = `${Math.max(0, progress)}%`;
-            }
-
-            const achGrid = document.getElementById('achGrid');
-            achGrid.innerHTML = ACHIEVEMENT_DEFS.map(def => {
-                const unlocked = achievementData.unlocked.includes(def.id);
-                const statusText = unlocked ? '✅ 已解锁' : `🔒 ${def.id}篇`;
-                return `
-                            <div class="ach-item ${unlocked ? 'unlocked' : ''}">
-                                <span class="ach-icon">${def.icon}</span>
-                                <span class="ach-name">${def.name}</span>
-                                <span class="ach-requirement">完成 ${def.id} 篇</span>
-                                <span class="ach-status">${statusText}</span>
-                            </div>
-                        `;
-            }).join('');
-            document.getElementById('achCountBadge').textContent =
-                `${achievementData.unlocked.filter(id => ACHIEVEMENT_DEFS.some(d => d.id === id)).length}/${ACHIEVEMENT_DEFS.length}`;
-
-            const priceGrid = document.getElementById('priceAchGrid');
-            const priceUnlocked = achievementData.priceUnlocked || [];
-            priceGrid.innerHTML = PRICE_ACHIEVEMENT_DEFS.map(def => {
-                const unlocked = priceUnlocked.includes(def.id);
-                const statusText = unlocked ? '✅ 已解锁' : '🔒 未达成';
-                return `
-                            <div class="ach-item ${unlocked ? 'unlocked' : ''}">
-                                <span class="ach-icon">${def.icon}</span>
-                                <span class="ach-name">${def.name}</span>
-                                <span class="ach-requirement">${def.desc}</span>
-                                <span class="ach-status">${statusText}</span>
-                            </div>
-                        `;
-            }).join('');
-            document.getElementById('priceAchCountBadge').textContent =
-                `${priceUnlocked.filter(id => PRICE_ACHIEVEMENT_DEFS.some(d => d.id === id)).length}/${PRICE_ACHIEVEMENT_DEFS.length}`;
-
-            const qtyGrid = document.getElementById('quantityAchGrid');
-            const qtyUnlocked = achievementData.quantityUnlocked || [];
-            qtyGrid.innerHTML = QUANTITY_ACHIEVEMENT_DEFS.map(def => {
-                const unlocked = qtyUnlocked.includes(def.id);
-                const statusText = unlocked ? '✅ 已解锁' : '🔒 未达成';
-                return `
-                            <div class="ach-item ${unlocked ? 'unlocked' : ''}">
-                                <span class="ach-icon">${def.icon}</span>
-                                <span class="ach-name">${def.name}</span>
-                                <span class="ach-requirement">${def.desc}</span>
-                                <span class="ach-status">${statusText}</span>
-                            </div>
-                        `;
-            }).join('');
-            document.getElementById('quantityAchCountBadge').textContent =
-                `${qtyUnlocked.filter(id => QUANTITY_ACHIEVEMENT_DEFS.some(d => d.id === id)).length}/${QUANTITY_ACHIEVEMENT_DEFS.length}`;
-
-            const comboGrid = document.getElementById('comboAchGrid');
-            const comboUnlocked = achievementData.comboUnlocked || [];
-            comboGrid.innerHTML = COMBO_ACHIEVEMENT_DEFS.map(def => {
-                const unlocked = comboUnlocked.includes(def.id);
-                const statusText = unlocked ? '✅ 已解锁' : '🔒 未达成';
-                return `
-                            <div class="ach-item ${unlocked ? 'unlocked' : ''}">
-                                <span class="ach-icon">${def.icon}</span>
-                                <span class="ach-name">${def.name}</span>
-                                <span class="ach-requirement">${def.desc}</span>
-                                <span class="ach-status">${statusText}</span>
-                            </div>
-                        `;
-            }).join('');
-            document.getElementById('comboAchCountBadge').textContent =
-                `${comboUnlocked.filter(id => COMBO_ACHIEVEMENT_DEFS.some(d => d.id === id)).length}/${COMBO_ACHIEVEMENT_DEFS.length}`;
-
-            // 月度收入成就
-            const miGrid = document.getElementById('monthlyIncomeAchGrid');
-            const miUnlocked = achievementData.monthlyIncomeUnlocked || [];
-            const monthlyIncomeMap = (achievementData.statistics && achievementData.statistics.monthlyIncome) || {};
-            // 找出最高已达成月份收入（用于显示「当前最高月度收入」）
-            const maxMonthly = Object.values(monthlyIncomeMap).reduce((m, v) => v > m ? v : m, 0);
-            const fmt = (n) => '¥' + n.toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, ',');
-            miGrid.innerHTML = MONTHLY_INCOME_ACHIEVEMENT_DEFS.map(def => {
-                const unlocked = miUnlocked.includes(def.id);
-                const statusText = unlocked
-                    ? `✅ 已解锁（最高月度 ${fmt(maxMonthly)}）`
-                    : `🔒 未达成（当前最高 ${fmt(maxMonthly)}）`;
-                return `
-                            <div class="ach-item ${unlocked ? 'unlocked' : ''}">
-                                <span class="ach-icon">${def.icon}</span>
-                                <span class="ach-name">${def.name}</span>
-                                <span class="ach-requirement">${def.desc}</span>
-                                <span class="ach-status">${statusText}</span>
-                            </div>
-                        `;
-            }).join('');
-            document.getElementById('monthlyIncomeAchCountBadge').textContent =
-                `${miUnlocked.filter(id => MONTHLY_INCOME_ACHIEVEMENT_DEFS.some(d => d.id === id)).length}/${MONTHLY_INCOME_ACHIEVEMENT_DEFS.length}`;
-            // 进入成就面板后视为已查看，清除红点
-            markMonthlyIncomeViewed();
-
-            const today = getTodayStr();
-            const dailyData = achievementData.daily[today] || { count: 0, triggered: [] };
-            const dailyCount = dailyData.count;
-            document.getElementById('dailyAchCountDisplay').textContent = `今日：${dailyCount} 张`;
-
-            const dailyGrid = document.getElementById('dailyAchGrid');
-            dailyGrid.innerHTML = DAILY_ACHIEVEMENT_DEFS.map(def => {
-                const unlocked = dailyData.triggered.includes(def.id);
-                const statusText = unlocked ? '✅ 已解锁' : `⏳ ${def.requirement}张`;
-                return `
-                            <div class="daily-ach-item ${unlocked ? 'unlocked' : ''}">
-                                <span class="daily-icon">${def.icon}</span>
-                                <span class="daily-name">${def.name}</span>
-                                <span class="daily-req">今日 ≥ ${def.requirement} 张</span>
-                                <span class="daily-status">${statusText}</span>
-                            </div>
-                        `;
-            }).join('');
-
-            const streak = achievementData.currentStreak;
-            document.getElementById('streakCurrentDays').textContent = streak;
-            let nextStreak = 10;
-            let foundNext = false;
-            for (const def of STREAK_ACHIEVEMENT_DEFS) {
-                if (!achievementData.streakUnlocked.includes(def.id)) {
-                    nextStreak = def.days;
-                    foundNext = true;
-                    break;
-                }
-            }
-            if (!foundNext) {
-                document.getElementById('streakNextTarget').textContent = '🏆 全部连续成就达成！';
-            } else {
-                document.getElementById('streakNextTarget').textContent = `下一个成就：${nextStreak}天`;
-            }
-
-            const streakGrid = document.getElementById('streakGrid');
-            streakGrid.innerHTML = STREAK_ACHIEVEMENT_DEFS.map(def => {
-                const unlocked = achievementData.streakUnlocked.includes(def.id);
-                const statusText = unlocked ? '✅ 已解锁' : `🔒 ${def.days}天`;
-                return `
-                            <div class="streak-item ${unlocked ? 'unlocked' : ''}">
-                                <span class="streak-icon">${def.icon}</span>
-                                <span class="streak-name">${def.name}</span>
-                                <span class="streak-req">连续 ${def.days} 天</span>
-                                <span class="streak-status-label">${statusText}</span>
-                            </div>
-                        `;
-            }).join('');
-
-            const negGrid = document.getElementById('negativeAchGrid');
-            negGrid.innerHTML = NEGATIVE_ACHIEVEMENT_DEFS.map(def => {
-                const unlocked = achievementData.negativeUnlocked.includes(def.id);
-                const statusText = unlocked ? '😅 已解锁' : '🔒 未达成';
-                return `
-                            <div class="negative-ach-item ${unlocked ? 'unlocked' : ''}">
-                                <span class="neg-icon">${def.icon}</span>
-                                <span class="neg-name">${def.name}</span>
-                                <span class="neg-desc">${def.desc}</span>
-                                <span class="neg-status">${statusText}</span>
-                            </div>
-                        `;
-            }).join('');
-
-        }
-
-        function openAchievementModal() {
-            renderAchievementPanel();
-            document.getElementById('achievementModalOverlay').classList.add('active');
-            document.body.style.overflow = 'hidden';
-            markAchievementViewed();
-            markDailyAchViewed();
-            markStreakViewed();
-            markNegativeViewed();
-            markPriceViewed();
-            markQuantityViewed();
-            markComboViewed();
-        }
-
-        function closeAchievementModal() {
-            document.getElementById('achievementModalOverlay').classList.remove('active');
-            document.body.style.overflow = '';
         }
 
         // ============================================================
@@ -16161,36 +13423,6 @@ function sortProjects(list) {
             });
             document.querySelectorAll('.date-picker-quick-btns button').forEach(btn => {
                 btn.addEventListener('click', () => applyQuickDate(btn.dataset.quick));
-            });
-
-            document.getElementById('achievementModalClose').addEventListener('click', closeAchievementModal);
-            document.getElementById('achievementModalDone').addEventListener('click', closeAchievementModal);
-            document.getElementById('achievementModalOverlay').addEventListener('click', (e) => {
-                if (e.target === e.currentTarget) closeAchievementModal();
-            });
-
-            document.getElementById('dailyAchModalClose').addEventListener('click', closeDailyAchievementModal);
-            document.getElementById('dailyAchConfirm').addEventListener('click', closeDailyAchievementModal);
-            document.getElementById('dailyAchievementModalOverlay').addEventListener('click', (e) => {
-                if (e.target === e.currentTarget) closeDailyAchievementModal();
-            });
-
-            document.getElementById('streakAchModalClose').addEventListener('click', closeStreakAchievementModal);
-            document.getElementById('streakAchConfirm').addEventListener('click', closeStreakAchievementModal);
-            document.getElementById('streakAchievementModalOverlay').addEventListener('click', (e) => {
-                if (e.target === e.currentTarget) closeStreakAchievementModal();
-            });
-
-            document.getElementById('negAchModalClose').addEventListener('click', closeNegativeAchievementModal);
-            document.getElementById('negAchConfirm').addEventListener('click', closeNegativeAchievementModal);
-            document.getElementById('negativeAchievementModalOverlay').addEventListener('click', (e) => {
-                if (e.target === e.currentTarget) closeNegativeAchievementModal();
-            });
-
-            document.getElementById('genAchModalClose').addEventListener('click', closeGenericAchievementModal);
-            document.getElementById('genAchConfirm').addEventListener('click', closeGenericAchievementModal);
-            document.getElementById('genericAchievementModalOverlay').addEventListener('click', (e) => {
-                if (e.target === e.currentTarget) closeGenericAchievementModal();
             });
 
             document.querySelectorAll('.filter-tag').forEach(tag => {
@@ -16386,7 +13618,6 @@ function sortProjects(list) {
             if (greetingNameEl) greetingNameEl.addEventListener('click', openEditNameModal);
 
             document.getElementById('themeToggle').addEventListener('click', toggleTheme);
-            document.getElementById('rainbowToggle').addEventListener('click', toggleRainbowName);
             // 画加手续费开关
             const huajiaFeeToggle = document.getElementById('huajiaFeeToggle');
             if (huajiaFeeToggle) {
@@ -16691,27 +13922,10 @@ function sortProjects(list) {
                 const newStatus = getStatusFromProgress(val);
                 project.status = newStatus;
 
-                if (val >= 100 && oldProgress < 100 && !project.achievementCounted) {
-                    project.achievementCounted = true;
+                if (val >= 100 && oldProgress < 100) {
                     project.completedAt = new Date().toISOString();
-                    const countedSet = new Set(achievementData.countedProjects);
-                    if (!countedSet.has(project.id)) {
-                        countedSet.add(project.id);
-                        achievementData.countedProjects = Array.from(countedSet);
-                        achievementData.completedCount++;
-                        saveAchievementData();
-                        checkAndUpdateAchievements();
-                    }
-                    checkDailyAchievements(project.id);
-                    achievementData.lastCompletedDate = project.completedAt;
-                    saveAchievementData();
-                    rebuildStreak();
-                    checkNegativeAchievements(project.id);
-                    updateStatistics();
-                    checkAllAchievements(project.id);
-                } else if (oldPrice !== project.price) {
-                    updateStatistics();
-                    checkAllAchievements(project.id);
+                } else if (val < 100 && oldProgress >= 100) {
+                    project.completedAt = null;
                 }
 
                 renderProjects();
@@ -16747,16 +13961,6 @@ function sortProjects(list) {
                         closeUrgentAlert();
                     } else if (document.getElementById('deleteConfirmModalOverlay').classList.contains('active')) {
                         closeDeleteConfirmModal();
-                    } else if (document.getElementById('achievementModalOverlay').classList.contains('active')) {
-                        closeAchievementModal();
-                    } else if (document.getElementById('dailyAchievementModalOverlay').classList.contains('active')) {
-                        closeDailyAchievementModal();
-                    } else if (document.getElementById('streakAchievementModalOverlay').classList.contains('active')) {
-                        closeStreakAchievementModal();
-                    } else if (document.getElementById('negativeAchievementModalOverlay').classList.contains('active')) {
-                        closeNegativeAchievementModal();
-                    } else if (document.getElementById('genericAchievementModalOverlay').classList.contains('active')) {
-                        closeGenericAchievementModal();
                     } else if (document.getElementById('manageStatusModalOverlay').classList.contains('active')) {
                         closeManageStatusModal();
                     } else if (document.getElementById('statusNodeEditModalOverlay').classList.contains('active')) {
@@ -16792,8 +13996,6 @@ function sortProjects(list) {
                             switchView('schedule');
                         } else if (tab === 'income') {
                             switchView('income');
-                        } else if (tab === 'achievement') {
-                            switchView('achievement');
                         } else if (tab === 'settings') {
                             openSettingsModal();
                         } else {
@@ -16893,7 +14095,7 @@ function sortProjects(list) {
                 }
 
                 // 2) 逐层关闭最上面的弹窗。包括设置、稿件详情、日期选择、
-                //    状态编辑、删除确认、成就、导入确认等。
+                //    状态编辑、删除确认、导入确认等。
                 const overlay = getTopActiveOverlay();
                 if (overlay) {
                     return closeTopOverlayForBack(overlay);
@@ -16969,22 +14171,12 @@ function sortProjects(list) {
 
             // 启动 toast（基于内存中的 projects，不再重新 load）
             if (projects.length > 0) {
-                const savedAt = achievementData.savedAt;
-                const ts = savedAt ? new Date(savedAt).toLocaleString() : new Date().toLocaleString();
                 showToast(`💾 已恢复 ${projects.length} 个稿件${dbInstance ? '（IndexedDB）' : '（localStorage）'}`);
             } else {
                 showToast(`🎨 欢迎使用 Artist's Workbench！`);
             }
 
-            try { updateAllDots(); } catch (e) { console.error('updateAllDots 失败:', e); }
-
-            const today = getTodayStr();
-            const dailyData = achievementData.daily[today];
-            if (dailyData && dailyData.triggered.length > 0) {
-                document.getElementById('dailyAchDot').classList.add('show');
-            }
-
-            // 标记 app 就绪（此后 saveAppData/saveAchievementData 才会触发自动同步防抖推送）
+            // 标记 app 就绪（此后 saveAppData 才会触发自动同步防抖推送）
             appReady = true;
             // 启动后若启用自动同步，拉取云端新版本（有更新且本地未改动才自动应用）
             if (syncConfig.enabled && syncConfig.auto) {
