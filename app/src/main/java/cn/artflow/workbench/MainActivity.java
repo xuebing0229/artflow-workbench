@@ -104,10 +104,9 @@ public class MainActivity extends Activity {
         settings.setUseWideViewPort(true);
         settings.setLoadWithOverviewMode(true);
         settings.setTextZoom(100);
-        webView.setLayerType(View.LAYER_TYPE_HARDWARE, null);
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            webView.setRendererPriorityPolicy(WebView.RENDERER_PRIORITY_IMPORTANT, false);
-        }
+        // 不强制 WebView layer type。系统默认硬件加速策略会根据设备/GPU 自行选择；
+        // 强制 LAYER_TYPE_HARDWARE 在部分 Android WebView 上会让
+        // backdrop-filter + transformed modal 直接进入白屏合成路径。
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             settings.setMixedContentMode(WebSettings.MIXED_CONTENT_ALWAYS_ALLOW);
         }
