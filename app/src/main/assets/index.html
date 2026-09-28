@@ -4,6 +4,22 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>🎨 画师工作台 · 稿件管理</title>
+    <script>
+        // Android WebView 专用渲染安全模式。
+        // 部分厂商 GPU 驱动在 fixed + backdrop-filter + transform 组合下会出现
+        // “局部白屏但仍可点击”的合成层故障，因此在 App WebView 中主动降级这些效果。
+        (function () {
+            try {
+                var ua = navigator.userAgent || '';
+                var isAndroid = /Android/i.test(ua);
+                var isWebView = /\bwv\b/i.test(ua) || /;\s*wv\)/i.test(ua) ||
+                    (/Version\/4\.0/i.test(ua) && /Chrome\//i.test(ua));
+                if (isAndroid && isWebView) {
+                    document.documentElement.classList.add('android-webview');
+                }
+            } catch (e) { }
+        })();
+    </script>
     <!-- Google Fonts -->
     <link href="fonts/gf.css" rel="stylesheet" />
     <!-- Font Awesome 6 -->
@@ -7830,6 +7846,44 @@
         }
         .legacy-gpu body {
             background-attachment: scroll !important;
+        }
+
+        /* ============================================================
+           Android WebView GPU 安全模式
+           某些现代 Android/厂商 WebView 即使 Chrome 版本很新，仍会在
+           fixed overlay + backdrop-filter + transformed scroll container
+           的组合下发生“局部白屏但命中测试仍正常”的合成层故障。
+           App 本身就是 WebView，因此这里优先保证稳定绘制。
+           ============================================================ */
+        .android-webview *,
+        .android-webview *::before,
+        .android-webview *::after {
+            backdrop-filter: none !important;
+            -webkit-backdrop-filter: none !important;
+        }
+        .android-webview body {
+            background-attachment: scroll !important;
+        }
+        .android-webview .modal-overlay {
+            backdrop-filter: none !important;
+            -webkit-backdrop-filter: none !important;
+            transition: opacity 0.12s linear !important;
+        }
+        .android-webview .modal,
+        .android-webview .modal-overlay.active .modal {
+            transform: none !important;
+            -webkit-transform: none !important;
+            transition: opacity 0.12s linear !important;
+        }
+        @media (hover: none), (pointer: coarse) {
+            .android-webview button:hover,
+            .android-webview .btn-cute:hover,
+            .android-webview .filter-tag:hover,
+            .android-webview .sticky-note:hover,
+            .android-webview .project-card:hover {
+                transform: none !important;
+                -webkit-transform: none !important;
+            }
         }
     </style>
 </head>
