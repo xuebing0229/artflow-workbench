@@ -463,10 +463,10 @@ public class MainActivity extends Activity {
     }
 
     public static class DownloadBridge {
-        private final Activity activity;
+        private final MainActivity activity;
         private final Context context;
 
-        DownloadBridge(Activity activity) {
+        DownloadBridge(MainActivity activity) {
             this.activity = activity;
             this.context = activity.getApplicationContext();
         }
