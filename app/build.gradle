@@ -16,8 +16,8 @@ android {
         applicationId 'cn.artflow.workbench'
         minSdk 24
         targetSdk 34
-        versionCode 1706
-        versionName '1.7.6-custom'
+        versionCode 1707
+        versionName '1.7.7-custom'
     }
 
     if (hasReleaseSigning) {
