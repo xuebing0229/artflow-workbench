@@ -42,9 +42,9 @@ public class MainActivity extends Activity {
     private static final int FILE_CHOOSER_REQUEST = 1001;
     private static final String START_URL = "file:///android_asset/index.html";
     private static final String UPDATE_MANIFEST_URL =
-            "https://raw.githubusercontent.com/xuebing0229/artflow-workbench-updates/main/latest.json";
+            "https://github.com/xuebing0229/artflow-workbench/releases/latest/download/latest.json";
     private static final String UPDATE_APK_URL_PREFIX =
-            "https://raw.githubusercontent.com/xuebing0229/artflow-workbench-updates/";
+            "https://github.com/xuebing0229/artflow-workbench/releases/download/";
     private static final String UPDATE_PREFS = "artflow_update";
     private static final String PREF_DOWNLOAD_ID = "download_id";
     private static final String PREF_SHA256 = "sha256";
