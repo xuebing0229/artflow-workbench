@@ -7142,6 +7142,20 @@
             -webkit-backdrop-filter: none !important;
         }
 
+        /* range 快速拖动时，避免“可滚动 + transformed modal”触发 WebView 合成层白屏。
+           只在手指按住滑条期间生效，外观不变，弹窗开场动画仍完整保留。 */
+        .android-app-webview .modal.range-dragging {
+            transform: none !important;
+            transition: none !important;
+        }
+        .android-app-webview .modal.range-dragging input[type="range"] {
+            touch-action: none;
+            transition: none !important;
+        }
+        .android-app-webview .modal.range-dragging input[type="range"]::-webkit-slider-thumb {
+            transition: none !important;
+        }
+
     </style>
 </head>
 <body>
@@ -17866,17 +17880,65 @@ function sortProjects(list) {
                 coverImageClear.addEventListener('click', clearCoverImagePreview);
             }
 
-            document.getElementById('progressSlider').addEventListener('input', function() {
-                const val = Number(this.value);
-                document.getElementById('controlPct').textContent = val + '%';
+            // 完成度滑条：Android WebView 中快速拖动原生 range 时，如果父级 modal
+            // 同时是 transformed + overflow 滚动层，部分 GPU 会把整个内容层刷白。
+            // 拖动期间临时释放 modal 的 transform 合成层，并把高频 input 合并到每帧一次。
+            const progressSlider = document.getElementById('progressSlider');
+            const projectModalEl = document.getElementById('projectModal');
+            let progressPreviewFrame = 0;
+            let pendingProgressValue = Number(progressSlider.value) || 0;
+            let lastProgressPreviewStatus = null;
+
+            function renderProgressPreview() {
+                progressPreviewFrame = 0;
+                const val = pendingProgressValue;
+                const pctText = val + '%';
+                const controlPct = document.getElementById('controlPct');
+                const modalProgress = document.getElementById('modalProgressDisplay');
+                if (controlPct && controlPct.textContent !== pctText) controlPct.textContent = pctText;
+                if (modalProgress && modalProgress.textContent !== pctText) modalProgress.textContent = pctText;
+
                 const status = getStatusFromProgress(val);
-                document.getElementById('modalStatusDisplay').textContent =
-                `${getStatusIcon(status)} ${getStatusLabel(status)}`;
-                document.getElementById('modalProgressDisplay').textContent = val + '%';
-                document.querySelectorAll('#statusSelector .status-option').forEach(btn => {
-                    btn.classList.toggle('active', btn.dataset.status === status);
+                const statusDisplay = document.getElementById('modalStatusDisplay');
+                const statusText = `${getStatusIcon(status)} ${getStatusLabel(status)}`;
+                if (statusDisplay && statusDisplay.textContent !== statusText) {
+                    statusDisplay.textContent = statusText;
+                }
+                if (status !== lastProgressPreviewStatus) {
+                    lastProgressPreviewStatus = status;
+                    document.querySelectorAll('#statusSelector .status-option').forEach(btn => {
+                        btn.classList.toggle('active', btn.dataset.status === status);
+                    });
+                }
+            }
+
+            progressSlider.addEventListener('input', function() {
+                pendingProgressValue = Number(this.value);
+                if (!progressPreviewFrame) {
+                    progressPreviewFrame = requestAnimationFrame(renderProgressPreview);
+                }
+            }, { passive: true });
+
+            function beginProgressDrag() {
+                if (projectModalEl) projectModalEl.classList.add('range-dragging');
+            }
+            function endProgressDrag() {
+                if (progressPreviewFrame) {
+                    cancelAnimationFrame(progressPreviewFrame);
+                    progressPreviewFrame = 0;
+                    renderProgressPreview();
+                }
+                // 下一帧再恢复 transition/transform 规则，避免 pointerup 同帧重新建合成层。
+                requestAnimationFrame(() => {
+                    if (projectModalEl) projectModalEl.classList.remove('range-dragging');
                 });
-            });
+            }
+            progressSlider.addEventListener('pointerdown', beginProgressDrag, { passive: true });
+            progressSlider.addEventListener('pointerup', endProgressDrag, { passive: true });
+            progressSlider.addEventListener('pointercancel', endProgressDrag, { passive: true });
+            progressSlider.addEventListener('touchstart', beginProgressDrag, { passive: true });
+            progressSlider.addEventListener('touchend', endProgressDrag, { passive: true });
+            progressSlider.addEventListener('change', endProgressDrag, { passive: true });
 
             document.querySelectorAll('.quick-btns button[data-add]').forEach(btn => {
                 btn.addEventListener('click', function() {
