@@ -9359,6 +9359,23 @@
                     </div>
                 </div>
 
+                <!-- ===== 应用更新 ===== -->
+                <div class="settings-divider"></div>
+                <div class="settings-data-group">
+                    <div class="settings-label">
+                        <i class="fas fa-cloud-download-alt"></i> 应用更新
+                        <span id="currentAppVersion" style="font-size:11px;font-weight:400;color:var(--text-muted);margin-left:6px;">当前版本 —</span>
+                    </div>
+                    <div class="settings-data-actions">
+                        <button type="button" class="settings-btn settings-btn-primary" id="checkAppUpdateBtn" title="检查并拉取最新测试版本">
+                            <i class="fas fa-sync-alt"></i> 拉取最新版本
+                        </button>
+                    </div>
+                    <div class="settings-data-hint" id="appUpdateHint">
+                        检查测试更新源；有新版本时可直接下载并覆盖安装
+                    </div>
+                </div>
+
                 <!-- ===== 云端同步（自建后端 / Cloudflare R2） ===== -->
                 <div class="settings-divider"></div>
                 <div class="settings-data-group">
@@ -11870,6 +11887,169 @@ ${summaryRow}
             box.innerHTML = `<img src="${dataUrl}" alt="附加图预览" />`;
             box.addEventListener('click', () => box.remove());
             document.body.appendChild(box);
+        }
+
+        // ============================================================
+        //  App 内更新（Android APK）
+        // ============================================================
+        function initAppUpdateUI() {
+            const versionEl = document.getElementById('currentAppVersion');
+            const btn = document.getElementById('checkAppUpdateBtn');
+            const hint = document.getElementById('appUpdateHint');
+            const hasBridge = typeof AndroidBridge !== 'undefined' &&
+                AndroidBridge && typeof AndroidBridge.checkForUpdate === 'function';
+            if (hasBridge) {
+                try {
+                    const name = AndroidBridge.getVersionName ? AndroidBridge.getVersionName() : '';
+                    if (versionEl) versionEl.textContent = '当前版本 ' + (name || '未知');
+                } catch (e) {}
+                if (btn) {
+                    btn.disabled = false;
+                    btn.title = '检查并拉取最新测试版本';
+                }
+            } else {
+                if (versionEl) versionEl.textContent = '仅 APK 版支持';
+                if (btn) {
+                    btn.disabled = true;
+                    btn.title = '浏览器版不支持应用内更新';
+                }
+                if (hint) hint.textContent = '浏览器版不支持应用内更新';
+            }
+        }
+
+        function checkAppUpdate() {
+            const btn = document.getElementById('checkAppUpdateBtn');
+            const hint = document.getElementById('appUpdateHint');
+            if (typeof AndroidBridge === 'undefined' || !AndroidBridge ||
+                typeof AndroidBridge.checkForUpdate !== 'function') {
+                showToast('⚠️ 当前不是 Android APK 环境');
+                return;
+            }
+            if (btn) {
+                btn.disabled = true;
+                btn.innerHTML = '<i class="fas fa-sync-alt fa-spin"></i> 检查中…';
+            }
+            if (hint) {
+                hint.textContent = '正在检查最新版本…';
+                hint.classList.remove('error');
+            }
+            try {
+                AndroidBridge.checkForUpdate();
+            } catch (e) {
+                restoreUpdateCheckButton();
+                if (hint) {
+                    hint.textContent = '❌ 无法调用更新检查';
+                    hint.classList.add('error');
+                }
+            }
+        }
+
+        function restoreUpdateCheckButton() {
+            const btn = document.getElementById('checkAppUpdateBtn');
+            if (!btn) return;
+            btn.disabled = false;
+            btn.innerHTML = '<i class="fas fa-sync-alt"></i> 拉取最新版本';
+        }
+
+        window.__artflowOnUpdateResult = function(payloadText) {
+            restoreUpdateCheckButton();
+            const hint = document.getElementById('appUpdateHint');
+            let info;
+            try {
+                info = JSON.parse(payloadText || '{}');
+            } catch (e) {
+                info = { ok: false, message: '更新信息解析失败' };
+            }
+            if (!info.ok) {
+                if (hint) {
+                    hint.textContent = '❌ ' + (info.message || '检查更新失败');
+                    hint.classList.add('error');
+                }
+                showToast('⚠️ ' + (info.message || '检查更新失败'));
+                return;
+            }
+            if (hint) hint.classList.remove('error');
+            if (!info.hasUpdate) {
+                if (hint) hint.textContent = '✅ 已是最新版本 · ' + (info.currentVersionName || '');
+                showToast('✅ 已是最新版本');
+                return;
+            }
+            if (hint) {
+                hint.textContent = '发现新版本 ' + (info.latestVersionName || '') + '，可直接下载安装';
+            }
+            openAppUpdateModal(info);
+        };
+
+        function escapeUpdateHtml(value) {
+            return String(value == null ? '' : value)
+                .replace(/&/g, '&amp;')
+                .replace(/</g, '&lt;')
+                .replace(/>/g, '&gt;')
+                .replace(/"/g, '&quot;')
+                .replace(/'/g, '&#39;');
+        }
+
+        function openAppUpdateModal(info) {
+            const old = document.getElementById('appUpdateOverlay');
+            if (old) old.remove();
+
+            const overlay = document.createElement('div');
+            overlay.className = 'modal-overlay';
+            overlay.id = 'appUpdateOverlay';
+            const notes = escapeUpdateHtml(info.notes || '包含最新修复与改进。').replace(/\n/g, '<br>');
+            overlay.innerHTML = `
+                <div class="modal" style="max-width:520px;">
+                    <div class="modal-header">
+                        <div class="modal-title-group">
+                            <span class="modal-emoji">⬆️</span>
+                            <div>
+                                <div class="modal-title">发现新版本</div>
+                                <div class="modal-sub">${escapeUpdateHtml(info.currentVersionName || '')} → ${escapeUpdateHtml(info.latestVersionName || '')}</div>
+                            </div>
+                        </div>
+                        <button class="modal-close" id="appUpdateClose"><i class="fas fa-times"></i></button>
+                    </div>
+                    <div class="modal-body" style="padding:20px 28px;">
+                        <div style="font-size:13px;color:var(--text-light);line-height:1.75;background:rgba(var(--shadow-color),0.05);border-radius:12px;padding:14px 16px;">
+                            ${notes}
+                        </div>
+                        <div style="font-size:11px;color:var(--text-muted);margin-top:12px;line-height:1.6;">
+                            下载后会校验 SHA-256，再调用 Android 系统安装器覆盖更新。首次使用可能需要开启一次“允许安装未知应用”。
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn-secondary" id="appUpdateCancel">稍后</button>
+                        <button class="btn-primary" id="appUpdateInstall"><i class="fas fa-download"></i> 下载并安装</button>
+                    </div>
+                </div>
+            `;
+            document.body.appendChild(overlay);
+            requestAnimationFrame(() => overlay.classList.add('active'));
+
+            const close = () => overlay.remove();
+            overlay.querySelector('#appUpdateClose').addEventListener('click', close);
+            overlay.querySelector('#appUpdateCancel').addEventListener('click', close);
+            overlay.addEventListener('click', (e) => {
+                if (e.target === overlay) close();
+            });
+            overlay.querySelector('#appUpdateInstall').addEventListener('click', () => {
+                if (typeof AndroidBridge === 'undefined' || !AndroidBridge ||
+                    typeof AndroidBridge.downloadUpdate !== 'function') {
+                    showToast('⚠️ 当前环境无法下载安装');
+                    return;
+                }
+                try {
+                    AndroidBridge.downloadUpdate(
+                        String(info.apkUrl || ''),
+                        String(info.sha256 || ''),
+                        String(info.latestVersionName || '')
+                    );
+                    close();
+                    showToast('⬇️ 已开始下载更新');
+                } catch (e) {
+                    showToast('⚠️ 启动下载失败');
+                }
+            });
         }
 
         // ============================================================
@@ -19103,6 +19283,13 @@ function sortProjects(list) {
                     setHuajiaFeeEnabled(next);
                     showToast(next ? '✅ 画加手续费已开启（自动扣 5%）' : '⛔ 画加手续费已关闭（不再自动扣除）');
                 });
+            }
+
+            // 应用更新
+            initAppUpdateUI();
+            const checkAppUpdateBtn = document.getElementById('checkAppUpdateBtn');
+            if (checkAppUpdateBtn) {
+                checkAppUpdateBtn.addEventListener('click', checkAppUpdate);
             }
 
             // 数据管理：导出 / 导入
