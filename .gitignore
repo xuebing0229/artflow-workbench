@@ -1,0 +1,18 @@
+.gradle/
+.idea/
+local.properties
+*.iml
+/build/
+**/build/
+.cxx/
+.externalNativeBuild/
+
+# Never commit the release signing key or credentials.
+signing/
+*.jks
+*.keystore
+keystore.properties
+
+# Generated packages
+*.apk
+*.aab
