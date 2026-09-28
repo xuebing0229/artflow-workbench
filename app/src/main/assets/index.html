@@ -4,22 +4,6 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>🎨 画师工作台 · 稿件管理</title>
-    <script>
-        // Android WebView 专用渲染安全模式。
-        // 部分厂商 GPU 驱动在 fixed + backdrop-filter + transform 组合下会出现
-        // “局部白屏但仍可点击”的合成层故障，因此在 App WebView 中主动降级这些效果。
-        (function () {
-            try {
-                var ua = navigator.userAgent || '';
-                var isAndroid = /Android/i.test(ua);
-                var isWebView = /\bwv\b/i.test(ua) || /;\s*wv\)/i.test(ua) ||
-                    (/Version\/4\.0/i.test(ua) && /Chrome\//i.test(ua));
-                if (isAndroid && isWebView) {
-                    document.documentElement.classList.add('android-webview');
-                }
-            } catch (e) { }
-        })();
-    </script>
     <!-- Google Fonts -->
     <link href="fonts/gf.css" rel="stylesheet" />
     <!-- Font Awesome 6 -->
@@ -3196,6 +3180,11 @@
             cursor: grab;
             user-select: none;
             -webkit-user-select: none;
+            /* 排序由下面的自定义长按拖动逻辑负责；禁止 WebView 再启动原生拖拽层 */
+            -webkit-user-drag: none;
+        }
+        .status-node-item * {
+            -webkit-user-drag: none;
         }
         .status-node-item:hover {
             background: rgba(var(--shadow-color), 0.09);
@@ -7848,43 +7837,6 @@
             background-attachment: scroll !important;
         }
 
-        /* ============================================================
-           Android WebView GPU 安全模式
-           某些现代 Android/厂商 WebView 即使 Chrome 版本很新，仍会在
-           fixed overlay + backdrop-filter + transformed scroll container
-           的组合下发生“局部白屏但命中测试仍正常”的合成层故障。
-           App 本身就是 WebView，因此这里优先保证稳定绘制。
-           ============================================================ */
-        .android-webview *,
-        .android-webview *::before,
-        .android-webview *::after {
-            backdrop-filter: none !important;
-            -webkit-backdrop-filter: none !important;
-        }
-        .android-webview body {
-            background-attachment: scroll !important;
-        }
-        .android-webview .modal-overlay {
-            backdrop-filter: none !important;
-            -webkit-backdrop-filter: none !important;
-            transition: opacity 0.12s linear !important;
-        }
-        .android-webview .modal,
-        .android-webview .modal-overlay.active .modal {
-            transform: none !important;
-            -webkit-transform: none !important;
-            transition: opacity 0.12s linear !important;
-        }
-        @media (hover: none), (pointer: coarse) {
-            .android-webview button:hover,
-            .android-webview .btn-cute:hover,
-            .android-webview .filter-tag:hover,
-            .android-webview .sticky-note:hover,
-            .android-webview .project-card:hover {
-                transform: none !important;
-                -webkit-transform: none !important;
-            }
-        }
     </style>
 </head>
 <body>
@@ -17720,7 +17672,7 @@ function sortProjects(list) {
                 const progressText = isLast ? '进度 100%' : `进度 ≥ ${n.minProgress}%`;
                 const handleTitle = isLast ? '已交付节点固定不可调节顺序' : '长按拖动排序';
                 return `
-                <li class="status-node-item ${isLast ? 'locked' : ''}" draggable="${isLast ? 'false' : 'true'}" data-id="${escapeHtml(n.id)}" data-index="${i}">
+                <li class="status-node-item ${isLast ? 'locked' : ''}" draggable="false" data-id="${escapeHtml(n.id)}" data-index="${i}">
                     <span class="drag-handle" title="${handleTitle}">${isLast ? '🔒' : '≡'}</span>
                     <span class="node-color" style="background:${n.color};"></span>
                     <span class="node-icon">${escapeHtml(n.icon)}</span>
@@ -17754,6 +17706,12 @@ function sortProjects(list) {
 
         // 长按触发拖动排序（兼容鼠标和触摸）
         function attachLongPressDrag(listEl) {
+            // Android WebView 对 HTML5 draggable 与自定义 touch 拖动同时存在时，
+            // 部分设备会产生空白合成层；只保留本函数自己的拖动实现。
+            listEl.ondragstart = (e) => {
+                e.preventDefault();
+                return false;
+            };
             const LONG_PRESS_MS = 350;
             let pressTimer = null;
             let draggingEl = null;
