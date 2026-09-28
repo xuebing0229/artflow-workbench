@@ -7125,6 +7125,23 @@
             background-attachment: scroll !important;
         }
 
+        /* ============================================================
+           Android APK WebView 绘制稳定化
+           不改变主题本身，只避免大面积 fixed 背景/无意义实时模糊在滚动时
+           被厂商 GPU 反复重建合成层，从而出现整页闪屏。
+           ============================================================ */
+        .android-app-webview body {
+            background-attachment: scroll !important;
+        }
+        .android-app-webview[data-theme-color="cream-mint"] body::before {
+            position: absolute !important;
+        }
+        .android-app-webview .mobile-tabbar {
+            /* tabbar 本身使用不透明 var(--card-bg)，这里的背景模糊没有可见收益 */
+            backdrop-filter: none !important;
+            -webkit-backdrop-filter: none !important;
+        }
+
     </style>
 </head>
 <body>

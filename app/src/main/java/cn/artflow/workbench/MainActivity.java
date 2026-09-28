@@ -50,7 +50,8 @@ public class MainActivity extends Activity {
     private static final String PREF_SHA256 = "sha256";
     private static final String PREF_VERSION = "version";
     private static final String INJECT_SCRIPT =
-            "(function(){if(window.__afDl)return;window.__afDl=1;" +
+            "(function(){try{document.documentElement.classList.add('android-app-webview');}catch(e){}" +
+            "if(window.__afDl)return;window.__afDl=1;" +
             "document.addEventListener('click',function(e){var t=e.target;" +
             "var a=(t&&t.closest)?t.closest('a[download]'):null;if(!a)return;" +
             "var h=a.href||'';if(h.indexOf('blob:')!==0&&h.indexOf('data:')!==0)return;" +
@@ -103,6 +104,10 @@ public class MainActivity extends Activity {
         settings.setUseWideViewPort(true);
         settings.setLoadWithOverviewMode(true);
         settings.setTextZoom(100);
+        webView.setLayerType(View.LAYER_TYPE_HARDWARE, null);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            webView.setRendererPriorityPolicy(WebView.RENDERER_PRIORITY_IMPORTANT, false);
+        }
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             settings.setMixedContentMode(WebSettings.MIXED_CONTENT_ALWAYS_ALLOW);
         }
