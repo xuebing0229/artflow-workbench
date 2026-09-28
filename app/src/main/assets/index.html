@@ -17060,7 +17060,10 @@ function sortProjects(list) {
         // ============================================================
         //  视图切换
         // ============================================================
+        let currentMainView = 'projects';
+
         function switchView(view) {
+            currentMainView = view || 'projects';
             const projectsView = document.getElementById('projectsView');
             const scheduleView = document.getElementById('scheduleView');
             const incomeView = document.getElementById('incomeView');
@@ -19677,6 +19680,112 @@ function sortProjects(list) {
 
             switchView('projects');
         }
+
+        // ============================================================
+        //  Android 系统返回键：按视觉层级逐层返回
+        // ============================================================
+        function getTopActiveOverlay() {
+            const overlays = Array.from(document.querySelectorAll('.modal-overlay.active')).filter(el => {
+                const cs = getComputedStyle(el);
+                return cs.display !== 'none' && cs.visibility !== 'hidden' && cs.pointerEvents !== 'none';
+            });
+            if (!overlays.length) return null;
+            // 先看 z-index；相同时取 DOM 中更靠后的那个，匹配视觉上的最上层。
+            return overlays.reduce((top, el) => {
+                if (!top) return el;
+                const tz = parseInt(getComputedStyle(top).zIndex, 10) || 0;
+                const ez = parseInt(getComputedStyle(el).zIndex, 10) || 0;
+                if (ez > tz) return el;
+                if (ez < tz) return top;
+                return (top.compareDocumentPosition(el) & Node.DOCUMENT_POSITION_FOLLOWING) ? el : top;
+            }, null);
+        }
+
+        function closeTopOverlayForBack(overlay) {
+            if (!overlay) return false;
+
+            // 优先调用弹窗自己的关闭按钮，让每个弹窗原本的清理逻辑继续生效。
+            const closeBtn = overlay.querySelector(
+                '.modal-close, [id$="Cancel"], [id$="Close"], [data-back-close]'
+            );
+            if (closeBtn) {
+                closeBtn.click();
+                setTimeout(() => {
+                    if (document.querySelector('.modal-overlay.active')) {
+                        document.body.style.overflow = 'hidden';
+                    }
+                }, 0);
+                return true;
+            }
+
+            // 很多动态弹窗是点击遮罩关闭；模拟一次真实的遮罩点击。
+            overlay.dispatchEvent(new MouseEvent('click', {
+                bubbles: true,
+                cancelable: true,
+                view: window
+            }));
+            if (!overlay.isConnected || !overlay.classList.contains('active')) {
+                return true;
+            }
+
+            // 最后的兜底：对没有取消按钮的临时浮层，仅关闭视觉层，避免系统返回直接杀掉 App。
+            overlay.classList.remove('active');
+            if (overlay.id && (
+                overlay.id === 'appUpdateOverlay' ||
+                overlay.id === 'importConfirmOverlay' ||
+                overlay.id === 'cleanupConfirmOverlay'
+            )) {
+                setTimeout(() => { try { overlay.remove(); } catch (e) {} }, 180);
+            }
+            document.body.style.overflow =
+                document.querySelector('.modal-overlay.active') ? 'hidden' : '';
+            return true;
+        }
+
+        window.__artflowHandleBack = function() {
+            try {
+                // 1) 图片全屏预览优先关闭。
+                const lightboxes = document.querySelectorAll('.extra-image-lightbox');
+                if (lightboxes.length) {
+                    lightboxes[lightboxes.length - 1].remove();
+                    return true;
+                }
+
+                // 2) 逐层关闭最上面的弹窗。包括设置、稿件详情、日期选择、
+                //    状态编辑、删除确认、成就、导入确认等。
+                const overlay = getTopActiveOverlay();
+                if (overlay) {
+                    return closeTopOverlayForBack(overlay);
+                }
+
+                // 3) 主导航的二级页面返回“全部稿件”首页。
+                const activeTab =
+                    document.querySelector('.mobile-tab.active') ||
+                    document.querySelector('.sidebar-nav .nav-item.active');
+                const activeView = (activeTab && activeTab.dataset && activeTab.dataset.tab) ||
+                    currentMainView || 'projects';
+                if (activeView !== 'projects') {
+                    switchView('projects');
+                    return true;
+                }
+
+                // 4) 已经在首页且没有任何浮层，交还给 Android，允许正常退出 App。
+                return false;
+            } catch (e) {
+                console.error('[返回键] 处理失败:', e);
+                return false;
+            }
+        };
+
+        // 浏览器/桌面调试时 Escape 复用同一套逐层返回逻辑。
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && window.__artflowHandleBack) {
+                if (window.__artflowHandleBack()) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                }
+            }
+        }, true);
 
         // ============================================================
         //  启动

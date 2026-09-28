@@ -69,6 +69,7 @@ public class MainActivity extends Activity {
     private Uri pendingInstallUri;
     private boolean verifyingUpdate = false;
     private boolean downloadReceiverRegistered = false;
+    private boolean backDispatchInProgress = false;
 
     private final BroadcastReceiver downloadReceiver = new BroadcastReceiver() {
         @Override
@@ -438,11 +439,27 @@ public class MainActivity extends Activity {
 
     @Override
     public void onBackPressed() {
-        if (webView != null && webView.canGoBack()) {
-            webView.goBack();
-        } else {
+        if (backDispatchInProgress) return;
+        if (webView == null) {
             super.onBackPressed();
+            return;
         }
+
+        backDispatchInProgress = true;
+        webView.evaluateJavascript(
+                "(function(){try{return !!(window.__artflowHandleBack&&window.__artflowHandleBack());}catch(e){return false;}})();",
+                value -> {
+                    backDispatchInProgress = false;
+                    boolean handled = "true".equalsIgnoreCase(value);
+                    if (handled) return;
+
+                    // 这个 App 是单页 WebView；只有网页明确表示“已经没有上一级”时才退出。
+                    if (webView != null && webView.canGoBack()) {
+                        webView.goBack();
+                    } else {
+                        MainActivity.super.onBackPressed();
+                    }
+                });
     }
 
     @Override
