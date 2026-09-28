@@ -985,20 +985,6 @@
         .sidebar-nav .nav-item .monthly-income-ach-dot.show {
             display: inline-block;
         }
-        .sidebar-nav .nav-item .practice-dot {
-            margin-left: 4px;
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
-            background: #F59E0B;
-            box-shadow: 0 0 8px #F59E0B;
-            display: none;
-            animation: pulse-dot 1.5s infinite;
-        }
-        .sidebar-nav .nav-item .practice-dot.show {
-            display: inline-block;
-        }
-
         .sidebar-footer {
             margin-top: auto;
             padding-top: 20px;
@@ -2404,77 +2390,6 @@
             box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
         }
 
-        /* ============================================================
-         * 练习打卡"皇上您今日已完成"庆祝动画
-         * ============================================================ */
-        .checkin-celebration {
-            position: fixed;
-            inset: 0;
-            z-index: 2147483646;
-            pointer-events: none;
-            overflow: hidden;
-        }
-        .checkin-celebration .checkin-flower {
-            position: absolute;
-            left: 50%;
-            top: 50%;
-            font-size: 32px;
-            opacity: 0;
-            will-change: transform, opacity;
-            animation: flower-burst 2.4s cubic-bezier(0.18, 0.6, 0.3, 1) forwards;
-        }
-        @keyframes flower-burst {
-            0%   { transform: translate(-50%, -50%) translate(0, 0) rotate(0deg) scale(0.4); opacity: 0; }
-            15%  { opacity: 1; }
-            100% { transform: translate(-50%, -50%) translate(var(--dx, 200px), var(--dy, 200px)) rotate(var(--rot, 360deg)) scale(var(--scale, 1.2)); opacity: 0; }
-        }
-        .checkin-celebration .checkin-title {
-            position: absolute;
-            left: 50%;
-            top: 50%;
-            transform: translate(-50%, -50%);
-            font-family: 'KaiTi', 'STKaiti', 'PingFang SC', 'Microsoft YaHei', sans-serif;
-            font-size: 56px;
-            font-weight: 700;
-            background: linear-gradient(135deg, #FFD700 0%, #FF6B9D 35%, #C084FC 70%, #FFD700 100%);
-            background-size: 200% 200%;
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
-            color: transparent;
-            text-shadow: 0 0 30px rgba(255, 215, 0, 0.3);
-            white-space: nowrap;
-            opacity: 0;
-            letter-spacing: 4px;
-            animation: title-pop 3.2s cubic-bezier(0.22, 1, 0.36, 1) forwards;
-        }
-        @keyframes title-pop {
-            0%   { transform: translate(-50%, -50%) scale(0.3) rotate(-6deg); opacity: 0; filter: blur(8px); }
-            18%  { transform: translate(-50%, -50%) scale(1.12) rotate(2deg); opacity: 1; filter: blur(0); }
-            30%  { transform: translate(-50%, -50%) scale(1.0) rotate(0deg); opacity: 1; }
-            75%  { transform: translate(-50%, -50%) scale(1.0) rotate(0deg); opacity: 1; }
-            100% { transform: translate(-50%, -50%) scale(0.96) rotate(0deg); opacity: 0; }
-        }
-        .checkin-celebration .checkin-subtitle {
-            position: absolute;
-            left: 50%;
-            top: calc(50% + 70px);
-            transform: translateX(-50%);
-            font-size: 16px;
-            font-weight: 500;
-            color: #FFD700;
-            text-shadow: 0 0 12px rgba(255, 215, 0, 0.6), 0 2px 4px rgba(0, 0, 0, 0.4);
-            white-space: nowrap;
-            opacity: 0;
-            letter-spacing: 2px;
-            animation: subtitle-fade 3.2s ease-out forwards;
-        }
-        @keyframes subtitle-fade {
-            0%, 30%  { opacity: 0; transform: translateX(-50%) translateY(8px); }
-            45%      { opacity: 1; transform: translateX(-50%) translateY(0); }
-            75%      { opacity: 1; transform: translateX(-50%) translateY(0); }
-            100%     { opacity: 0; transform: translateX(-50%) translateY(-4px); }
-        }
         .modal-body .hidden {
             display: none !important;
         }
@@ -5161,404 +5076,6 @@
             box-shadow: var(--shadow-hover);
         }
 
-        /* ===== 练习打卡视图样式 ===== */
-        .practice-today-card {
-            background: var(--card-bg);
-            border-radius: var(--radius);
-            padding: 24px;
-            margin-bottom: 20px;
-            box-shadow: var(--shadow);
-            border-left: 4px solid var(--primary);
-        }
-        .practice-today-card.done {
-            border-left-color: #10B981;
-        }
-        .practice-today-card .practice-today-empty {
-            text-align: center;
-            padding: 30px 16px;
-        }
-        .practice-today-card .practice-today-title {
-            font-size: 18px;
-            font-weight: 600;
-            color: var(--text);
-            margin-bottom: 6px;
-        }
-        .practice-today-card .practice-today-sub {
-            font-size: 13px;
-            color: var(--text-muted);
-            margin-bottom: 18px;
-        }
-        .practice-upload-zone {
-            border: 2px dashed rgba(var(--primary-rgb), 0.35);
-            border-radius: 12px;
-            padding: 28px 16px;
-            text-align: center;
-            background: rgba(var(--primary-rgb), 0.04);
-            cursor: pointer;
-            transition: background 0.2s ease, border-color 0.2s ease;
-        }
-        .practice-upload-zone:hover,
-        .practice-upload-zone.drag-over {
-            background: rgba(var(--primary-rgb), 0.10);
-            border-color: rgba(var(--primary-rgb), 0.55);
-        }
-        .practice-upload-zone i {
-            font-size: 32px;
-            color: var(--primary);
-            display: block;
-            margin-bottom: 8px;
-        }
-        .practice-upload-zone-text {
-            font-size: 14px;
-            font-weight: 600;
-            color: var(--text);
-        }
-        .practice-upload-zone-hint {
-            font-size: 12px;
-            color: var(--text-muted);
-            margin-top: 4px;
-        }
-        .practice-today-card .practice-today-done {
-            display: flex;
-            gap: 16px;
-            align-items: flex-start;
-        }
-        .practice-today-image {
-            width: 140px;
-            height: 140px;
-            border-radius: 10px;
-            object-fit: cover;
-            border: 1px solid var(--border-light);
-            cursor: pointer;
-            flex-shrink: 0;
-        }
-        .practice-today-info {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            gap: 6px;
-        }
-        .practice-today-info .success-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 5px;
-            color: #10B981;
-            font-weight: 600;
-            font-size: 14px;
-        }
-        .practice-today-note {
-            font-size: 13px;
-            color: var(--text);
-            padding: 8px 12px;
-            background: rgba(var(--shadow-color), 0.04);
-            border-radius: 8px;
-            border-left: 2px solid var(--primary);
-            margin-top: 4px;
-        }
-        .practice-today-actions {
-            display: flex;
-            gap: 8px;
-            margin-top: 10px;
-        }
-        .practice-btn {
-            padding: 6px 14px;
-            border-radius: 8px;
-            border: 1px solid var(--border-light);
-            background: var(--card-bg);
-            color: var(--text);
-            font-size: 12.5px;
-            cursor: pointer;
-            display: inline-flex;
-            align-items: center;
-            gap: 5px;
-            transition: var(--transition);
-        }
-        .practice-btn:hover {
-            border-color: var(--primary);
-            color: var(--primary);
-        }
-        .practice-btn.primary {
-            background: var(--primary);
-            color: #fff;
-            border-color: var(--primary);
-        }
-        .practice-btn.primary:hover {
-            background: var(--primary-dark);
-            color: #fff;
-        }
-        .practice-btn.danger:hover {
-            background: rgba(239, 68, 68, 0.10);
-            color: #EF4444;
-            border-color: rgba(239, 68, 68, 0.30);
-        }
-        /* 统计卡 */
-        .practice-stats-row {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-            gap: 14px;
-            margin-bottom: 20px;
-        }
-        .practice-stat-card {
-            background: var(--card-bg);
-            border-radius: var(--radius);
-            padding: 16px 14px;
-            text-align: center;
-            box-shadow: var(--shadow);
-            border-top: 3px solid var(--primary);
-        }
-        .practice-stat-num {
-            font-size: 28px;
-            font-weight: 700;
-            color: var(--primary);
-            line-height: 1.2;
-        }
-        .practice-stat-label {
-            font-size: 12px;
-            color: var(--text-muted);
-            margin-top: 4px;
-        }
-        /* 历史日历网格 */
-        .practice-history-section,
-        .practice-achievements-section {
-            background: var(--card-bg);
-            border-radius: var(--radius);
-            padding: 18px;
-            margin-bottom: 18px;
-            box-shadow: var(--shadow);
-        }
-        .practice-history-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 14px;
-        }
-        .practice-history-title {
-            font-size: 15px;
-            font-weight: 600;
-            color: var(--text);
-        }
-        .practice-history-title i {
-            color: var(--primary);
-            margin-right: 6px;
-        }
-        .practice-history-hint {
-            font-size: 12px;
-            color: var(--text-muted);
-        }
-        .practice-history-grid {
-            display: grid;
-            grid-template-columns: repeat(10, 1fr);
-            gap: 6px;
-        }
-        @media (max-width: 700px) {
-            .practice-history-grid {
-                grid-template-columns: repeat(7, 1fr);
-            }
-        }
-        @media (max-width: 480px) {
-            .practice-history-grid {
-                grid-template-columns: repeat(5, 1fr);
-            }
-        }
-        .practice-day-cell {
-            aspect-ratio: 1 / 1;
-            border-radius: 8px;
-            background: var(--bg);
-            border: 1px solid var(--border-light);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            font-size: 11px;
-            color: var(--text-muted);
-            cursor: pointer;
-            position: relative;
-            overflow: hidden;
-            transition: transform 0.15s ease, box-shadow 0.15s ease;
-        }
-        .practice-day-cell:hover {
-            transform: scale(1.06);
-            box-shadow: 0 4px 12px rgba(var(--shadow-color), 0.12);
-        }
-        .practice-day-cell .day-num {
-            font-weight: 600;
-            color: var(--text);
-            font-size: 13px;
-        }
-        .practice-day-cell.done {
-            background: linear-gradient(135deg, rgba(16, 185, 129, 0.15), rgba(16, 185, 129, 0.25));
-            border-color: rgba(16, 185, 129, 0.45);
-        }
-        .practice-day-cell.done .day-num {
-            color: #059669;
-        }
-        .practice-day-cell.today {
-            border-color: var(--primary);
-            border-width: 2px;
-        }
-        .practice-day-cell.future {
-            opacity: 0.4;
-            cursor: default;
-        }
-        .practice-day-cell.future:hover {
-            transform: none;
-            box-shadow: none;
-        }
-        .practice-day-cell.has-image {
-            padding: 0;
-        }
-        .practice-day-cell.has-image img {
-            position: absolute;
-            inset: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            display: block;
-        }
-        .practice-day-cell.has-image .day-num {
-            position: absolute;
-            top: 2px;
-            right: 4px;
-            background: rgba(0, 0, 0, 0.55);
-            color: #fff;
-            padding: 1px 4px;
-            border-radius: 4px;
-            font-size: 9px;
-        }
-        .practice-day-cell .day-weekday {
-            font-size: 9px;
-            color: var(--text-muted);
-            margin-top: 1px;
-        }
-        /* 成就墙 */
-        .practice-achievements-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-            gap: 12px;
-        }
-        .practice-achievement-card {
-            background: var(--bg);
-            border-radius: 10px;
-            padding: 14px;
-            text-align: center;
-            border: 1px solid var(--border-light);
-            transition: var(--transition);
-            cursor: default;
-        }
-        .practice-achievement-card.unlocked {
-            background: linear-gradient(135deg, rgba(var(--ach-gold-rgb), 0.10), rgba(var(--ach-gold-rgb), 0.18));
-            border-color: rgba(var(--ach-gold-rgb), 0.40);
-        }
-        .practice-achievement-card .ach-icon {
-            font-size: 32px;
-            display: block;
-            margin-bottom: 6px;
-        }
-        .practice-achievement-card .ach-name {
-            font-size: 13px;
-            font-weight: 600;
-            color: var(--text);
-            margin-bottom: 4px;
-        }
-        .practice-achievement-card .ach-desc {
-            font-size: 11.5px;
-            color: var(--text-muted);
-            line-height: 1.5;
-        }
-        .practice-achievement-card .ach-status {
-            font-size: 11px;
-            margin-top: 6px;
-            color: var(--text-muted);
-            font-weight: 500;
-        }
-        .practice-achievement-card.unlocked .ach-status {
-            color: var(--ach-gold);
-        }
-
-        /* 练习打卡视图 → 跳转成就墙的 banner */
-        .practice-ach-shortcut {
-            display: flex;
-            align-items: center;
-            gap: 14px;
-            padding: 16px 20px;
-            background: linear-gradient(135deg, rgba(167, 139, 250, 0.12), rgba(124, 58, 237, 0.06));
-            border: 1px dashed rgba(167, 139, 250, 0.4);
-            border-radius: 12px;
-            margin-top: 8px;
-        }
-        .practice-ach-shortcut-icon {
-            font-size: 28px;
-            flex-shrink: 0;
-        }
-        .practice-ach-shortcut-text {
-            flex: 1;
-        }
-        .practice-ach-shortcut-title {
-            font-size: 15px;
-            font-weight: 600;
-            color: var(--text);
-            margin-bottom: 2px;
-        }
-        .practice-ach-shortcut-desc {
-            font-size: 12px;
-            color: var(--text-muted);
-        }
-        .practice-ach-shortcut-btn {
-            padding: 8px 16px;
-            background: linear-gradient(135deg, #A78BFA, #7C3AED);
-            color: #fff;
-            border: none;
-            border-radius: 8px;
-            font-size: 13px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.18s;
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            flex-shrink: 0;
-        }
-        .practice-ach-shortcut-btn:hover {
-            transform: translateY(-1px);
-            box-shadow: 0 4px 12px rgba(167, 139, 250, 0.4);
-        }
-        .practice-ach-shortcut-btn i {
-            transition: transform 0.18s;
-        }
-        .practice-ach-shortcut-btn:hover i {
-            transform: translateX(3px);
-        }
-        /* 修改今日备注 / 替换图的模态框 */
-        .practice-edit-modal-body textarea {
-            width: 100%;
-            box-sizing: border-box;
-            padding: 10px 12px;
-            border: 1px solid var(--input-border);
-            border-radius: 8px;
-            font-size: 13px;
-            resize: vertical;
-            min-height: 80px;
-            outline: none;
-            transition: border-color 0.2s ease;
-            background: var(--card-bg);
-            color: var(--text);
-            font-family: inherit;
-        }
-        .practice-edit-modal-body textarea:focus {
-            border-color: var(--primary);
-        }
-        .practice-edit-modal-body .field-hint {
-            font-size: 11px;
-            color: var(--text-muted);
-            margin-top: 6px;
-        }
-        .practice-edit-preview {
-            max-width: 100%;
-            max-height: 200px;
-            border-radius: 8px;
-            margin: 10px 0;
-            border: 1px solid var(--border-light);
-        }
         .income-card .month-label {
             font-size: 16px;
             font-weight: 700;
@@ -6894,9 +6411,6 @@
                 min-height: 46px;
                 font-size: 15px;
             }
-            .practice-btn {
-                min-height: 42px;
-            }
             /* 弹窗贴合手机屏幕（dvh 兼容软键盘/地址栏） */
             .modal-overlay {
                 padding: 8px;
@@ -7190,11 +6704,7 @@
                 <span>日程</span>
                 <span class="badge" id="badgeSchedule">0</span>
             </a>
-            <a class="nav-item" data-tab="practice">
-                <svg class="nav-svg" viewBox="0 0 24 24"><path d="M4 20h4l10.5-10.5a2.12 2.12 0 0 0-3-3L5 17v3z"/><path d="M13.5 8.5l3 3"/></svg>
-                <span>练习</span>
-                <span class="practice-dot" id="practiceDot"></span>
-            </a>
+
             <a class="nav-item" data-tab="income">
                 <svg class="nav-svg" viewBox="0 0 24 24"><path d="M12 2v20"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
                 <span>收入</span>
@@ -7239,10 +6749,7 @@
             <svg class="icon" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
             <span>日程</span>
         </button>
-        <button class="mobile-tab" data-tab="practice" aria-label="练习">
-            <svg class="icon" viewBox="0 0 24 24"><path d="M4 20h4l10.5-10.5a2.12 2.12 0 0 0-3-3L5 17v3z"/><path d="M13.5 8.5l3 3"/></svg>
-            <span>练习</span>
-        </button>
+
         <button class="mobile-tab" data-tab="income" aria-label="收入">
             <svg class="icon" viewBox="0 0 24 24"><path d="M12 2v20"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
             <span>收入</span>
@@ -7369,55 +6876,6 @@
             </div>
             <div class="income-grid" id="incomeGrid"></div>
         </div>
-        <!-- ===== 练习打卡视图 ===== -->
-        <div id="practiceView" style="display:none;">
-            <h2 style="margin-bottom:16px; font-weight:600; color:var(--text);">
-                <i class="fas fa-paint-brush" style="color:var(--primary);"></i> 练习打卡
-                <span style="font-size:14px;font-weight:400;color:var(--text-muted);margin-left:12px;">每天一张练习，记录持续创作</span>
-            </h2>
-
-            <div class="practice-today-card" id="practiceTodayCard"></div>
-
-            <div class="practice-stats-row">
-                <div class="practice-stat-card">
-                    <div class="practice-stat-num" id="practiceCurrentStreak">0</div>
-                    <div class="practice-stat-label">🔥 当前连续</div>
-                </div>
-                <div class="practice-stat-card">
-                    <div class="practice-stat-num" id="practiceMaxStreak">0</div>
-                    <div class="practice-stat-label">⭐ 历史最长</div>
-                </div>
-                <div class="practice-stat-card">
-                    <div class="practice-stat-num" id="practiceTotalDays">0</div>
-                    <div class="practice-stat-label">📅 累计打卡</div>
-                </div>
-                <div class="practice-stat-card">
-                    <div class="practice-stat-num" id="practiceLastDate">—</div>
-                    <div class="practice-stat-label">🕐 上次打卡</div>
-                </div>
-            </div>
-
-            <div class="practice-history-section">
-                <div class="practice-history-header">
-                    <div class="practice-history-title"><i class="fas fa-calendar-alt"></i> 最近 60 天</div>
-                    <div class="practice-history-hint" id="practiceHistoryHint">点击格子可查看 / 修改</div>
-                </div>
-                <div class="practice-history-grid" id="practiceHistoryGrid"></div>
-
-                <div class="practice-ach-shortcut" id="practiceAchShortcut">
-                    <span class="practice-ach-shortcut-icon">🏆</span>
-                    <div class="practice-ach-shortcut-text">
-                        <div class="practice-ach-shortcut-title">查看练习打卡成就</div>
-                        <div class="practice-ach-shortcut-desc" id="practiceAchShortcutDesc">查看你已解锁的练习成就与全部里程碑</div>
-                    </div>
-                    <button class="practice-ach-shortcut-btn" id="practiceAchShortcutBtn">
-                        <i class="fas fa-arrow-right"></i> 前往成就墙
-                    </button>
-                </div>
-            </div>
-
-            <input type="file" accept="image/*" id="practiceFileInput" hidden />
-        </div>
         <div id="achievementView" style="display:none;">
             <h2 style="margin-bottom:16px; font-weight:600; color:var(--text);">
                 <i class="fas fa-trophy" style="color:var(--ach-gold);"></i> 成就墙
@@ -7504,15 +6962,6 @@
                     <div class="negative-ach-grid" id="negativeAchGrid"></div>
                 </div>
 
-                <!-- 练习打卡成就 -->
-                <div class="practice-achievements-section" style="margin-top:20px;">
-                    <div class="section-title">
-                        <i class="fas fa-paint-brush" style="color:#A78BFA;"></i> 练习打卡成就
-                        <span style="font-size:13px;font-weight:400;color:var(--text-muted);margin-left:8px;">（每日上传一张练习图，养成习惯）</span>
-                        <span class="ach-count-badge" id="practiceAchCountBadge">0/7</span>
-                    </div>
-                    <div class="practice-achievements-grid" id="practiceAchGrid"></div>
-                </div>
             </div>
         </div>
     </main>
@@ -8277,15 +7726,6 @@
                     <div class="negative-ach-grid" id="negativeAchGrid"></div>
                 </div>
 
-                <!-- 练习打卡成就 -->
-                <div class="practice-achievements-section" style="margin-top:20px;">
-                    <div class="section-title">
-                        <i class="fas fa-paint-brush" style="color:#A78BFA;"></i> 练习打卡成就
-                        <span style="font-size:13px;font-weight:400;color:var(--text-muted);margin-left:8px;">（每日上传一张练习图，养成习惯）</span>
-                        <span class="ach-count-badge" id="practiceAchCountBadge">0/7</span>
-                    </div>
-                    <div class="practice-achievements-grid" id="practiceAchGrid"></div>
-                </div>
             </div>
             <div class="modal-footer">
                 <button class="btn-primary" id="achievementModalDone">太棒了！</button>
@@ -9735,7 +9175,6 @@ ${summaryRow}
             if (typeof renderCalendar === 'function') renderCalendar();
             const activeTabEl = document.querySelector('.nav-item.active') || document.querySelector('.mobile-tab.active');
             const activeTab = activeTabEl ? activeTabEl.dataset.tab : null;
-            if (activeTab === 'practice' && typeof renderPracticeView === 'function') renderPracticeView();
             if (typeof updateStorageStats === 'function') updateStorageStats();
             localDirtySinceSync = false;
         }
@@ -10283,58 +9722,6 @@ ${summaryRow}
             desc: '连续60天没有产出任何一张成品',
             unlockTitle: '这下真的再起不能了',
             unlockBody: '你达成了 <span class="highlight-neg">这下真的再起不能了</span> 成就！<br />连续60天没有产出任何一张成品…<br />是时候拿起画笔了 🎨'
-        }];
-
-        // ---- 练习打卡成就定义（连续打卡 / 累计打卡）----
-        const PRACTICE_ACHIEVEMENT_DEFS = [{
-            id: 'practice_streak_7',
-            icon: '🔥',
-            name: '周选手',
-            desc: '连续练习打卡 7 天',
-            unlockTitle: '周选手',
-            unlockBody: '你达成了 <span class="highlight-gen">周选手</span> 成就！<br />连续 7 天练习打卡，<br />笔不离手 ✍️'
-        }, {
-            id: 'practice_streak_30',
-            icon: '🌟',
-            name: '月度坚持',
-            desc: '连续练习打卡 30 天',
-            unlockTitle: '月度坚持',
-            unlockBody: '你达成了 <span class="highlight-gen">月度坚持</span> 成就！<br />连续 30 天练习打卡，<br />习惯已成自然 🌟'
-        }, {
-            id: 'practice_streak_100',
-            icon: '💎',
-            name: '百日筑基',
-            desc: '连续练习打卡 100 天',
-            unlockTitle: '百日筑基',
-            unlockBody: '你达成了 <span class="highlight-gen">百日筑基</span> 成就！<br />连续 100 天练习打卡，<br />功夫不负有心人 💎'
-        }, {
-            id: 'practice_streak_365',
-            icon: '👑',
-            name: '一整年都在画',
-            desc: '连续练习打卡 365 天',
-            unlockTitle: '一整年都在画',
-            unlockBody: '你达成了 <span class="highlight-gen">一整年都在画</span> 成就！<br />365 天一天不落，<br />你是真正的画者 👑'
-        }, {
-            id: 'practice_total_30',
-            icon: '🎯',
-            name: '30 日积累',
-            desc: '累计练习打卡 30 天',
-            unlockTitle: '30 日积累',
-            unlockBody: '你达成了 <span class="highlight-gen">30 日积累</span> 成就！<br />累计打卡 30 天，<br />积少成多 🎯'
-        }, {
-            id: 'practice_total_100',
-            icon: '🏆',
-            name: '百日修行者',
-            desc: '累计练习打卡 100 天',
-            unlockTitle: '百日修行者',
-            unlockBody: '你达成了 <span class="highlight-gen">百日修行者</span> 成就！<br />累计打卡 100 天，<br />修行路上又一里程碑 🏆'
-        }, {
-            id: 'practice_total_365',
-            icon: '🌈',
-            name: '365 日绘卷',
-            desc: '累计练习打卡 365 天',
-            unlockTitle: '365 日绘卷',
-            unlockBody: '你达成了 <span class="highlight-gen">365 日绘卷</span> 成就！<br />累计打卡 365 天，<br />一年绘成完整画卷 🌈'
         }];
 
         // ---- 价格成就定义 ----
@@ -11277,14 +10664,6 @@ ${summaryRow}
                 quantityUnlocked: [],
                 comboUnlocked: [],
                 monthlyIncomeUnlocked: [],
-                // ===== 练习打卡（2026-08-25 新增）=====
-                practice: {
-                    history: {},  // { 'YYYY-MM-DD': { image: 'data:...', note: '', updatedAt: '...' } }
-                    currentStreak: 0,
-                    maxStreak: 0,
-                    totalDays: 0,
-                    unlocked: []
-                },
                 statistics: {
                     totalIncome: 0,
                     maxSingleIncome: 0,
@@ -11340,16 +10719,8 @@ ${summaryRow}
             if (!data.quantityUnlocked) data.quantityUnlocked = [];
             if (!data.comboUnlocked) data.comboUnlocked = [];
             if (!data.monthlyIncomeUnlocked) data.monthlyIncomeUnlocked = [];
-            // 练习打卡数据迁移
-            if (!data.practice || typeof data.practice !== 'object') {
-                data.practice = { history: {}, currentStreak: 0, maxStreak: 0, totalDays: 0, unlocked: [] };
-            } else {
-                if (!data.practice.history) data.practice.history = {};
-                if (typeof data.practice.currentStreak !== 'number') data.practice.currentStreak = 0;
-                if (typeof data.practice.maxStreak !== 'number') data.practice.maxStreak = 0;
-                if (typeof data.practice.totalDays !== 'number') data.practice.totalDays = 0;
-                if (!Array.isArray(data.practice.unlocked)) data.practice.unlocked = [];
-            }
+            // 清理旧版本已移除模块的历史数据。
+            if (Object.prototype.hasOwnProperty.call(data, 'practice')) delete data.practice;
             // 清理旧版本已保存的计时器数据。
             if (Object.prototype.hasOwnProperty.call(data, 'pomodoro')) delete data.pomodoro;
             if (!data.statistics.monthlyIncome) data.statistics.monthlyIncome = {};
@@ -11907,20 +11278,6 @@ ${summaryRow}
             updateQuantityDot();
             updateComboDot();
             updateMonthlyIncomeDot();
-            // 练习打卡红点：今天未打卡时显示
-            const practiceDot = document.getElementById('practiceDot');
-            if (practiceDot) {
-                const pr = (achievementData && achievementData.practice) || {};
-                const history = pr.history || {};
-                const done = !!(history[todayStr()] && history[todayStr()].image);
-                practiceDot.classList.toggle('show', !done);
-            }
-            // 侧栏练习角标
-            const practiceBadge = document.getElementById('badgePractice');
-            if (practiceBadge) {
-                const pr = (achievementData && achievementData.practice) || {};
-                practiceBadge.textContent = pr.totalDays || 0;
-            }
         }
 
         function updateMonthlyIncomeDot() {
@@ -12107,624 +11464,6 @@ ${summaryRow}
 
         function markDailyAchViewed() {
             document.getElementById('dailyAchDot').classList.remove('show');
-        }
-
-        // ============================================================
-        //  练习打卡模块（2026-08-25 新增）
-        // ============================================================
-        const PRACTICE_MAX_WIDTH = 600;     // 单张压缩最大宽度
-        const PRACTICE_HISTORY_DAYS = 60;   // 历史网格显示最近天数
-        let pendingPracticeDate = null;     // 模态框当前编辑的日期
-
-        // 把 'YYYY-MM-DD' 拆成年月日
-        function parseDateStr(s) {
-            const m = (s || '').match(/^(\d{4})-(\d{1,2})-(\d{1,2})$/);
-            if (!m) return null;
-            return { y: +m[1], m: +m[2], d: +m[3] };
-        }
-        function dateStr(y, m, d) {
-            return `${y}-${String(m).padStart(2, '0')}-${String(d).padStart(2, '0')}`;
-        }
-        function todayStr() {
-            return dateStr(new Date().getFullYear(), new Date().getMonth() + 1, new Date().getDate());
-        }
-        // dateStr + N 天
-        function addDays(s, n) {
-            const dt = parseDateStr(s);
-            if (!dt) return s;
-            const d = new Date(dt.y, dt.m - 1, dt.d);
-            d.setDate(d.getDate() + n);
-            return dateStr(d.getFullYear(), d.getMonth() + 1, d.getDate());
-        }
-        function dateDiffDays(a, b) {
-            const da = parseDateStr(a), db = parseDateStr(b);
-            if (!da || !db) return 0;
-            const t1 = new Date(da.y, da.m - 1, da.d).getTime();
-            const t2 = new Date(db.y, db.m - 1, db.d).getTime();
-            return Math.round((t1 - t2) / 86400000);
-        }
-
-        // 渲染整个 practiceView（切换到该 view 时调用）
-        function renderPracticeView() {
-            const pr = (achievementData && achievementData.practice) || {};
-            const history = pr.history || {};
-            const today = todayStr();
-
-            // 1) 顶部：今日打卡状态
-            const todayCard = document.getElementById('practiceTodayCard');
-            if (todayCard) {
-                const todayEntry = history[today];
-                if (todayEntry && todayEntry.image) {
-                    todayCard.classList.add('done');
-                    todayCard.innerHTML = `
-                        <div class="practice-today-done">
-                            <img class="practice-today-image" src="${todayEntry.image}" alt="今日练习" onclick="openPracticeImageLightbox('${today}')" />
-                            <div class="practice-today-info">
-                                <div class="success-badge"><i class="fas fa-check-circle"></i> 今日已打卡 ✓</div>
-                                ${todayEntry.note ? `<div class="practice-today-note">${escapeHtml(todayEntry.note)}</div>` : ''}
-                                <div class="practice-today-actions">
-                                    <button class="practice-btn primary" onclick="openPracticeEditModal('${today}')"><i class="fas fa-edit"></i> 编辑</button>
-                                    <button class="practice-btn" onclick="openPracticeFileForReplace()"><i class="fas fa-image"></i> 替换图</button>
-                                    <button class="practice-btn danger" onclick="deletePracticeEntry('${today}')"><i class="fas fa-trash"></i> 删除</button>
-                                </div>
-                            </div>
-                        </div>
-                    `;
-                } else {
-                    todayCard.classList.remove('done');
-                    todayCard.innerHTML = `
-                        <div class="practice-today-empty">
-                            <div class="practice-today-title">🌅 今天还没打卡</div>
-                            <div class="practice-today-sub">上传一张今天的练习图，每天坚持，养成习惯</div>
-                            <div class="practice-upload-zone" id="practiceUploadZone">
-                                <i class="fas fa-cloud-upload-alt"></i>
-                                <div class="practice-upload-zone-text">点击或拖拽图片到这里上传</div>
-                                <div class="practice-upload-zone-hint">支持 JPG / PNG，自动压缩到 ≤600px</div>
-                            </div>
-                        </div>
-                    `;
-                    // 重新绑定上传区事件
-                    bindPracticeUploadZone();
-                }
-            }
-
-            // 2) 统计
-            document.getElementById('practiceCurrentStreak').textContent = pr.currentStreak || 0;
-            document.getElementById('practiceMaxStreak').textContent = pr.maxStreak || 0;
-            document.getElementById('practiceTotalDays').textContent = pr.totalDays || 0;
-            // 上次打卡日期
-            let lastDate = null;
-            Object.keys(history).forEach(d => {
-                if (!lastDate || d > lastDate) lastDate = d;
-            });
-            document.getElementById('practiceLastDate').textContent = lastDate || '—';
-
-            // 3) 历史网格（最近 60 天，从今天往前）
-            const grid = document.getElementById('practiceHistoryGrid');
-            if (grid) {
-                const cells = [];
-                for (let i = PRACTICE_HISTORY_DAYS - 1; i >= 0; i--) {
-                    const d = addDays(today, -i);
-                    const entry = history[d];
-                    const isDone = !!(entry && entry.image);
-                    const isToday = (d === today);
-                    const isFuture = dateDiffDays(d, today) > 0;
-                    const weekday = ['日','一','二','三','四','五','六'][new Date(parseDateStr(d).y, parseDateStr(d).m - 1, parseDateStr(d).d).getDay()];
-                    const cls = ['practice-day-cell'];
-                    if (isDone) cls.push('done', 'has-image');
-                    if (isToday) cls.push('today');
-                    if (isFuture) cls.push('future');
-                    const dn = String(parseDateStr(d).d);
-                    cells.push(`
-                        <div class="${cls.join(' ')}" data-date="${d}" title="${d} ${isDone ? '✓ 已打卡' : ''}"
-                             onclick="${isDone || !isFuture ? `openPracticeDayModal('${d}')` : ''}">
-                            ${isDone ? `<img src="${entry.image}" alt="" />` : ''}
-                            <span class="day-num">${dn}</span>
-                            <span class="day-weekday">${weekday}</span>
-                        </div>
-                    `);
-                }
-                grid.innerHTML = cells.join('');
-            }
-
-            // 4) 跳转 banner：实时显示解锁进度
-            const shortcutDesc = document.getElementById('practiceAchShortcutDesc');
-            if (shortcutDesc) {
-                const unlocked = (pr.unlocked || []).filter(id =>
-                    PRACTICE_ACHIEVEMENT_DEFS.some(d => d.id === id)
-                ).length;
-                shortcutDesc.textContent =
-                    `已解锁 ${unlocked}/${PRACTICE_ACHIEVEMENT_DEFS.length} 个成就 · 连续 + 累计里程碑`;
-            }
-
-            // 5) 红点：今天未打卡时显示
-            const dot = document.getElementById('practiceDot');
-            if (dot) {
-                const done = !!(history[today] && history[today].image);
-                dot.classList.toggle('show', !done);
-            }
-
-            // 6) 侧栏 badge 显示累计打卡天数
-            const badge = document.getElementById('badgePractice');
-            if (badge) badge.textContent = pr.totalDays || 0;
-        }
-
-        // 绑定上传区（重新渲染后会失效，要重新绑）
-        function bindPracticeUploadZone() {
-            const zone = document.getElementById('practiceUploadZone');
-            const input = document.getElementById('practiceFileInput');
-            if (!zone || !input) return;
-            zone.addEventListener('click', () => input.click());
-            zone.addEventListener('dragover', (e) => {
-                e.preventDefault();
-                zone.classList.add('drag-over');
-            });
-            zone.addEventListener('dragleave', () => zone.classList.remove('drag-over'));
-            zone.addEventListener('drop', (e) => {
-                e.preventDefault();
-                zone.classList.remove('drag-over');
-                const files = e.dataTransfer && e.dataTransfer.files;
-                if (files && files.length > 0) handlePracticeFiles(files, todayStr());
-            });
-
-            // 跳转成就墙按钮
-            const achBtn = document.getElementById('practiceAchShortcutBtn');
-            if (achBtn) {
-                achBtn.addEventListener('click', () => {
-                    switchView('achievement');
-                    // 滚动到练习成就区段
-                    setTimeout(() => {
-                        const el = document.querySelector('.practice-achievements-section');
-                        if (el) el.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                    }, 100);
-                });
-            }
-        }
-
-        // 点击"替换图"按钮（已有今日打卡）→ 复用同一 file input
-        function openPracticeFileForReplace() {
-            const input = document.getElementById('practiceFileInput');
-            if (input) {
-                input.value = '';
-                input.click();
-            }
-        }
-
-        // 全局 file input change 事件：拦截 + 走 handlePracticeFiles
-        async function handlePracticeFileChange(e) {
-            const files = e.target.files;
-            if (!files || files.length === 0) return;
-            await handlePracticeFiles(files, todayStr());
-            e.target.value = '';
-        }
-
-        // 处理上传（日期 = 今日，或来自历史格子编辑）
-        async function handlePracticeFiles(files, dateStr) {
-            if (!files || files.length === 0) return;
-            const file = files[0];
-            if (!file.type.startsWith('image/')) {
-                showToast('⚠️ 请选择图片文件');
-                return;
-            }
-            try {
-                const { dataUrl } = await compressImage(file, PRACTICE_MAX_WIDTH, 0.7);
-                const noteInput = document.getElementById('practiceNoteInput');  // 可能在 modal 内
-                const note = noteInput ? noteInput.value.trim() : '';
-                savePracticeEntry(dateStr, dataUrl, note);
-                showToast(`✅ 已打卡 ${dateStr}`);
-            } catch (err) {
-                console.warn('[练习打卡] 压缩失败:', err);
-                showToast('❌ 上传失败：' + (err.message || '未知错误'));
-            }
-        }
-
-        // 保存某天的打卡（新建/更新）
-        function savePracticeEntry(date, imageDataUrl, note) {
-            if (!achievementData.practice) achievementData.practice = { history: {}, currentStreak: 0, maxStreak: 0, totalDays: 0, unlocked: [] };
-            const pr = achievementData.practice;
-            const wasDone = !!(pr.history[date] && pr.history[date].image);
-            pr.history[date] = {
-                image: imageDataUrl,
-                note: note || '',
-                updatedAt: new Date().toISOString()
-            };
-            if (!wasDone) pr.totalDays = (pr.totalDays || 0) + 1;
-            recalcPracticeStreak();
-            checkPracticeAchievements();
-            saveAchievementData();
-            renderPracticeView();
-            // 同步侧栏"练习打卡"角标
-            const badge = document.getElementById('badgePractice');
-            if (badge) badge.textContent = pr.totalDays || 0;
-
-            // 🎉 首次打卡（不是替换图）→ 触发庆祝动画
-            if (!wasDone) {
-                triggerCheckinCelebration(pr);
-            }
-        }
-
-        // 庆祝动画：皇上您今日已完成 + 鲜花弹射
-        function triggerCheckinCelebration(pr) {
-            // 清理上次残留
-            const old = document.querySelector('.checkin-celebration');
-            if (old) old.remove();
-
-            const overlay = document.createElement('div');
-            overlay.className = 'checkin-celebration';
-
-            // 1) 中心标题 + 副标题
-            const title = document.createElement('div');
-            title.className = 'checkin-title';
-            title.textContent = '皇上您今日已完成';
-            overlay.appendChild(title);
-
-            const sub = document.createElement('div');
-            sub.className = 'checkin-subtitle';
-            const streak = (pr && pr.currentStreak) || 1;
-            sub.textContent = streak > 1
-                ? `✍️ 已连续打卡 ${streak} 天 · 坚持就是胜利`
-                : '✍️ 今天的练习已完成';
-            overlay.appendChild(sub);
-
-            // 2) 24 朵鲜花从中心向 360° 弹射
-            const flowers = ['🌸', '🌷', '🌺', '🌹', '💐', '🏵️', '💮', '🌼', '🪷'];
-            const N = 24;
-            const cx = window.innerWidth / 2;
-            const cy = window.innerHeight / 2;
-            // 计算屏幕短边，避免飘出去
-            const maxR = Math.min(window.innerWidth, window.innerHeight) * 0.42;
-            for (let i = 0; i < N; i++) {
-                const flower = document.createElement('div');
-                flower.className = 'checkin-flower';
-                flower.textContent = flowers[Math.floor(Math.random() * flowers.length)];
-                // 随机角度（0-360°）+ 随机半径（最大半径 60-100%）
-                const angle = (360 / N) * i + (Math.random() * 15 - 7.5);  // 每朵错开一点
-                const dist = maxR * (0.55 + Math.random() * 0.5);
-                const dx = Math.cos(angle * Math.PI / 180) * dist;
-                const dy = Math.sin(angle * Math.PI / 180) * dist;
-                // 随机大小（24-56px）
-                const size = 24 + Math.random() * 32;
-                // 随机旋转（顺/逆）
-                const rot = (Math.random() < 0.5 ? -1 : 1) * (180 + Math.random() * 360);
-                // 随机缩放
-                const scale = 0.8 + Math.random() * 0.6;
-                // 随机延迟（0-300ms）
-                const delay = Math.random() * 300;
-                flower.style.fontSize = size + 'px';
-                flower.style.setProperty('--dx', dx + 'px');
-                flower.style.setProperty('--dy', dy + 'px');
-                flower.style.setProperty('--rot', rot + 'deg');
-                flower.style.setProperty('--scale', scale);
-                flower.style.animationDelay = delay + 'ms';
-                overlay.appendChild(flower);
-            }
-
-            document.body.appendChild(overlay);
-
-            // 3) 3.5s 后整体清理
-            setTimeout(() => {
-                overlay.classList.add('fade-out');
-                setTimeout(() => overlay.remove(), 400);
-            }, 3500);
-        }
-
-        // 删除某天的打卡
-        async function deletePracticeEntry(date) {
-            const pr = achievementData.practice;
-            if (!pr || !pr.history[date]) return;
-
-            const entry = pr.history[date];
-            // 1) 先快照数据：删除后连续/总数会变成多少
-            const newTotal = Math.max(0, (pr.totalDays || 0) - 1);
-            // 临时模拟：删掉这一天后重算 streak
-            const saved = pr.history[date];
-            delete pr.history[date];
-            recalcPracticeStreak();
-            const newCurrentStreak = pr.currentStreak;
-            const newMaxStreak = pr.maxStreak;
-            // 还原（用户可能取消）
-            pr.history[date] = saved;
-            recalcPracticeStreak();
-
-            // 2) 影响：当前连续是否归零？该日期是否是 max streak 的一部分？
-            const originalCurrent = pr.currentStreak || 0;
-            const originalMax = pr.maxStreak || 0;
-            const willBreakStreak = newCurrentStreak === 0 && originalCurrent > 0;
-            const mayAffectMax = newMaxStreak < originalMax;
-
-            // 3) 弹自定义模态框
-            const ok = await showPracticeDeleteConfirmModal({
-                date,
-                note: entry.note || '',
-                currentStreak: originalCurrent,
-                newCurrentStreak,
-                totalDays: pr.totalDays || 0,
-                newTotalDays: newTotal,
-                maxStreak: originalMax,
-                newMaxStreak,
-                willBreakStreak,
-                mayAffectMax
-            });
-            if (!ok) return;
-
-            // 4) 真正执行删除
-            delete pr.history[date];
-            pr.totalDays = newTotal;
-            recalcPracticeStreak();
-            saveAchievementData();
-            renderPracticeView();
-            showToast(`🗑 已删除 ${date} 的打卡`);
-        }
-
-        // 练习打卡删除确认（自定义模态框，带统计）
-        function showPracticeDeleteConfirmModal(info) {
-            return new Promise((resolve) => {
-                const old = document.getElementById('practiceDeleteOverlay');
-                if (old) old.remove();
-
-                // 备注预览
-                const noteBlock = info.note
-                    ? `<div style="background:var(--bg);padding:10px 12px;border-radius:8px;margin-top:10px;font-size:13px;color:var(--text);line-height:1.6;border-left:3px solid var(--primary);">📝 ${escapeHtml(info.note)}</div>`
-                    : '';
-
-                // streak 警告
-                const streakWarn = info.willBreakStreak
-                    ? `<div style="background:#FEF3C7;color:#92400E;padding:8px 12px;border-radius:8px;font-size:12px;margin-top:8px;line-height:1.6;">
-                            ⚠️ 删除当天是连续打卡的最后一天，<strong>当前连续将从 ${info.currentStreak} → 0</strong>
-                       </div>`
-                    : (info.mayAffectMax
-                        ? `<div style="background:#FEF3C7;color:#92400E;padding:8px 12px;border-radius:8px;font-size:12px;margin-top:8px;line-height:1.6;">
-                                💡 该日期在历史最长连续中，<strong>历史最长将 ${info.maxStreak} → ${info.newMaxStreak}</strong>
-                           </div>`
-                        : '');
-
-                const overlay = document.createElement('div');
-                overlay.className = 'modal-overlay';
-                overlay.id = 'practiceDeleteOverlay';
-                overlay.innerHTML = `
-                    <div class="modal" style="max-width:460px;">
-                        <div class="modal-header">
-                            <div class="modal-title-group">
-                                <span class="modal-emoji" style="background:#FEE2E2;">🗑</span>
-                                <div>
-                                    <div class="modal-title">删除 ${info.date} 的打卡？</div>
-                                    <div class="modal-sub">此操作不可撤销</div>
-                                </div>
-                            </div>
-                            <button class="modal-close" id="practiceDeleteClose"><i class="fas fa-times"></i></button>
-                        </div>
-                        <div class="modal-body" style="padding:16px 24px;">
-                            <div style="background:var(--bg);padding:12px 16px;border-radius:10px;">
-                                <div style="font-size:13px;color:var(--text-muted);margin-bottom:8px;">删除后将影响：</div>
-                                <div style="display:flex;flex-direction:column;gap:6px;font-size:14px;">
-                                    <div style="display:flex;justify-content:space-between;">
-                                        <span>📅 累计打卡</span>
-                                        <span><strong style="color:var(--text-muted);text-decoration:line-through;">${info.totalDays}</strong> → <strong style="color:var(--primary);">${info.newTotalDays}</strong></span>
-                                    </div>
-                                    <div style="display:flex;justify-content:space-between;">
-                                        <span>🔥 当前连续</span>
-                                        <span><strong style="color:var(--text-muted);text-decoration:line-through;">${info.currentStreak}</strong> → <strong style="color:${info.willBreakStreak ? '#EF4444' : 'var(--primary)'};">${info.newCurrentStreak}</strong></span>
-                                    </div>
-                                    <div style="display:flex;justify-content:space-between;">
-                                        <span>⭐ 历史最长</span>
-                                        <span><strong style="color:${info.mayAffectMax ? 'var(--text-muted);text-decoration:line-through;' : 'var(--text-muted);'};">${info.maxStreak}</strong>${info.mayAffectMax ? ` → <strong style="color:var(--primary);">${info.newMaxStreak}</strong>` : ''}</span>
-                                    </div>
-                                </div>
-                                ${streakWarn}
-                            </div>
-                            ${noteBlock}
-                        </div>
-                        <div class="modal-footer">
-                            <button class="btn-secondary" id="practiceDeleteCancel">取消</button>
-                            <button class="btn-danger" id="practiceDeleteOk" style="background:linear-gradient(135deg,#EF4444,#DC2626);color:#fff;border:none;padding:8px 20px;border-radius:8px;font-weight:600;cursor:pointer;">
-                                🗑 确认删除
-                            </button>
-                        </div>
-                    </div>
-                `;
-                document.body.appendChild(overlay);
-                document.body.style.overflow = 'hidden';
-                requestAnimationFrame(() => overlay.classList.add('active'));
-
-                const close = (result) => {
-                    overlay.classList.remove('active');
-                    document.body.style.overflow = '';
-                    setTimeout(() => overlay.remove(), 200);
-                    document.removeEventListener('keydown', escHandler);
-                    resolve(result);
-                };
-                overlay.querySelector('#practiceDeleteClose').onclick = () => close(false);
-                overlay.querySelector('#practiceDeleteCancel').onclick = () => close(false);
-                overlay.querySelector('#practiceDeleteOk').onclick = () => close(true);
-                overlay.addEventListener('click', (e) => { if (e.target === overlay) close(false); });
-                const escHandler = (e) => {
-                    if (e.key === 'Escape') close(false);
-                };
-                document.addEventListener('keydown', escHandler);
-            });
-        }
-
-        // 重新计算连续天数（按日期排序遍历 history）
-        function recalcPracticeStreak() {
-            const pr = achievementData.practice;
-            if (!pr || !pr.history) return;
-            const dates = Object.keys(pr.history).filter(d => pr.history[d] && pr.history[d].image).sort();
-            if (dates.length === 0) {
-                pr.currentStreak = 0;
-                pr.maxStreak = 0;
-                return;
-            }
-            // 最大连续
-            let maxStreak = 1, curRun = 1;
-            for (let i = 1; i < dates.length; i++) {
-                if (dateDiffDays(dates[i], dates[i - 1]) === 1) {
-                    curRun++;
-                    if (curRun > maxStreak) maxStreak = curRun;
-                } else {
-                    curRun = 1;
-                }
-            }
-            // 当前连续（从今天往前算，连续到今天中断）
-            const today = todayStr();
-            let currentStreak = 0;
-            let cursor = today;
-            // 如果今天没打，从昨天开始算（允许"今天还没打卡"不影响当前连续显示）
-            if (!pr.history[cursor]) cursor = addDays(today, -1);
-            while (pr.history[cursor] && pr.history[cursor].image) {
-                currentStreak++;
-                cursor = addDays(cursor, -1);
-            }
-            pr.currentStreak = currentStreak;
-            pr.maxStreak = Math.max(maxStreak, currentStreak);
-        }
-
-        // 检查练习打卡成就
-        function checkPracticeAchievements() {
-            const pr = achievementData.practice;
-            if (!pr) return;
-            const unlocked = pr.unlocked || (pr.unlocked = []);
-            const total = pr.totalDays || 0;
-            const streak = pr.currentStreak || 0;
-            // 连续天数成就
-            const streakDefs = [
-                { id: 'practice_streak_7', need: 7 },
-                { id: 'practice_streak_30', need: 30 },
-                { id: 'practice_streak_100', need: 100 },
-                { id: 'practice_streak_365', need: 365 }
-            ];
-            // 累计天数成就
-            const totalDefs = [
-                { id: 'practice_total_30', need: 30 },
-                { id: 'practice_total_100', need: 100 },
-                { id: 'practice_total_365', need: 365 }
-            ];
-            let unlockedAny = false;
-            for (const def of PRACTICE_ACHIEVEMENT_DEFS) {
-                if (unlocked.includes(def.id)) continue;
-                let need = 0;
-                if (def.id.startsWith('practice_streak_')) {
-                    const sd = streakDefs.find(x => x.id === def.id);
-                    need = sd ? sd.need : 0;
-                    if (streak < need) continue;
-                } else if (def.id.startsWith('practice_total_')) {
-                    const td = totalDefs.find(x => x.id === def.id);
-                    need = td ? td.need : 0;
-                    if (total < need) continue;
-                } else {
-                    continue;
-                }
-                unlocked.push(def.id);
-                unlockedAny = true;
-                showDailyAchievementModal({
-                    emoji: def.icon,
-                    title: '解锁练习成就！',
-                    subtitle: `【${def.name}】${def.desc}`,
-                    body: `恭喜！你达成了 <span class="highlight-gen">${def.name}</span> 成就！`
-                });
-            }
-            if (unlockedAny) saveAchievementData();
-        }
-
-        // 历史格子点击 → 弹模态框（查看 / 修改 / 删除 / 上传）
-        function openPracticeDayModal(date) {
-            const pr = achievementData.practice || { history: {} };
-            const entry = pr.history[date] || null;
-            pendingPracticeDate = date;
-
-            const old = document.getElementById('practiceDayModalOverlay');
-            if (old) old.remove();
-
-            const overlay = document.createElement('div');
-            overlay.className = 'modal-overlay';
-            overlay.id = 'practiceDayModalOverlay';
-            overlay.innerHTML = `
-                <div class="modal" style="max-width:480px;">
-                    <div class="modal-header">
-                        <div class="modal-title-group">
-                            <span class="modal-emoji">${entry ? '🎨' : '📷'}</span>
-                            <div>
-                                <div class="modal-title">${date}</div>
-                                <div class="modal-sub">${entry ? '已有打卡，可修改' : '点击下方按钮上传当天的练习图'}</div>
-                            </div>
-                        </div>
-                        <button class="modal-close" id="practiceDayModalClose"><i class="fas fa-times"></i></button>
-                    </div>
-                    <div class="modal-body practice-edit-modal-body" style="padding:16px 24px;">
-                        ${entry && entry.image ? `<img class="practice-edit-preview" src="${entry.image}" alt="当日练习" />` : '<div style="color:var(--text-muted);text-align:center;padding:14px 0;">当 天 还 未 打 卡</div>'}
-                        <div class="form-group" style="margin-top:12px;">
-                            <label>备注（选填，限 100 字）</label>
-                            <textarea id="practiceNoteInput" maxlength="100" placeholder="今天练习了什么？随便写点...">${entry ? escapeHtml(entry.note || '') : ''}</textarea>
-                            <span class="field-hint">💡 备注可以和图一起保存</span>
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        ${entry ? '<button class="btn-danger" id="practiceDayDelete" style="background:rgba(239,68,68,0.10);color:#EF4444;border:none;padding:8px 16px;border-radius:8px;cursor:pointer;font-weight:600;"><i class="fas fa-trash"></i> 删除</button>' : ''}
-                        <button class="btn-secondary" id="practiceDayCancel">取消</button>
-                        <button class="btn-primary" id="practiceDaySave"><i class="fas fa-check"></i> 保存备注</button>
-                    </div>
-                </div>
-            `;
-            document.body.appendChild(overlay);
-            document.body.style.overflow = 'hidden';
-            requestAnimationFrame(() => overlay.classList.add('active'));
-
-            const close = () => {
-                overlay.classList.remove('active');
-                document.body.style.overflow = '';
-                setTimeout(() => overlay.remove(), 200);
-            };
-            overlay.querySelector('#practiceDayModalClose').onclick = close;
-            overlay.querySelector('#practiceDayCancel').onclick = close;
-            overlay.addEventListener('click', (e) => { if (e.target === overlay) close(); });
-
-            // 保存备注
-            overlay.querySelector('#practiceDaySave').onclick = async () => {
-                const note = overlay.querySelector('#practiceNoteInput').value.trim();
-                if (entry) {
-                    // 已有打卡：只更新备注
-                    entry.note = note;
-                    entry.updatedAt = new Date().toISOString();
-                    saveAchievementData();
-                    renderPracticeView();
-                    showToast('✅ 备注已更新');
-                    close();
-                } else {
-                    // 没有图：先打开文件选择器
-                    close();
-                    const input = document.getElementById('practiceFileInput');
-                    input.value = '';
-                    input.dataset.targetDate = date;
-                    input.click();
-                }
-            };
-
-            // 删除
-            const delBtn = overlay.querySelector('#practiceDayDelete');
-            if (delBtn) {
-                delBtn.onclick = () => {
-                    close();
-                    deletePracticeEntry(date);
-                };
-            }
-        }
-
-        // 编辑今日（已打卡状态下"编辑"按钮）—— 复用 openPracticeDayModal
-        function openPracticeEditModal(date) {
-            openPracticeDayModal(date);
-        }
-
-        // 全屏查看大图（复用 lightbox）
-        function openPracticeImageLightbox(date) {
-            const pr = achievementData.practice;
-            if (!pr || !pr.history[date]) return;
-            const dataUrl = pr.history[date].image;
-            const old = document.querySelector('.extra-image-lightbox');
-            if (old) old.remove();
-            const box = document.createElement('div');
-            box.className = 'extra-image-lightbox';
-            box.innerHTML = `<img src="${dataUrl}" alt="练习图 ${date}" />`;
-            box.addEventListener('click', () => box.remove());
-            document.body.appendChild(box);
         }
 
         // ============================================================
@@ -15482,7 +14221,6 @@ function sortProjects(list) {
             const scheduleView = document.getElementById('scheduleView');
             const incomeView = document.getElementById('incomeView');
             const achievementView = document.getElementById('achievementView');
-            const practiceView = document.getElementById('practiceView');
 
             projectsView.style.display = 'none';
             scheduleView.style.display = 'none';
@@ -15492,10 +14230,6 @@ function sortProjects(list) {
             if (achievementView) {
                 achievementView.style.display = 'none';
                 achievementView.classList.remove('active');
-            }
-            if (practiceView) {
-                practiceView.style.display = 'none';
-                practiceView.classList.remove('active');
             }
 
             if (view === 'projects') {
@@ -15509,14 +14243,6 @@ function sortProjects(list) {
                 incomeView.style.display = 'block';
                 incomeView.classList.add('active');
                 renderIncome();
-            } else if (view === 'practice') {
-                if (practiceView) {
-                    practiceView.style.display = 'block';
-                    practiceView.classList.add('active');
-                    if (typeof renderPracticeView === 'function') renderPracticeView();
-                    const dot = document.getElementById('practiceDot');
-                    if (dot) dot.classList.remove('show');
-                }
             } else if (view === 'achievement') {
                 if (achievementView) {
                     achievementView.style.display = 'block';
@@ -17308,30 +16034,6 @@ function sortProjects(list) {
                         `;
             }).join('');
 
-            // 练习打卡成就（已统一到成就模块）
-            renderPracticeAchievements();
-        }
-
-        // 练习打卡成就渲染：7 个成就卡片（连续 + 累计）
-        function renderPracticeAchievements() {
-            const grids = document.querySelectorAll('#practiceAchGrid');
-            if (grids.length === 0) return;
-            const unlocked = (achievementData.practice && achievementData.practice.unlocked) || [];
-            const html = PRACTICE_ACHIEVEMENT_DEFS.map(def => {
-                const isUnlocked = unlocked.includes(def.id);
-                return `
-                    <div class="practice-achievement-card ${isUnlocked ? 'unlocked' : ''}">
-                        <span class="ach-icon">${def.icon}</span>
-                        <div class="ach-name">${escapeHtml(def.name)}</div>
-                        <div class="ach-desc">${escapeHtml(def.desc)}</div>
-                        <div class="ach-status">${isUnlocked ? '✅ 已解锁' : '🔒 未达成'}</div>
-                    </div>
-                `;
-            }).join('');
-            grids.forEach(g => g.innerHTML = html);
-            const total = unlocked.filter(id => PRACTICE_ACHIEVEMENT_DEFS.some(d => d.id === id)).length;
-            const badges = document.querySelectorAll('#practiceAchCountBadge');
-            badges.forEach(b => b.textContent = `${total}/${PRACTICE_ACHIEVEMENT_DEFS.length}`);
         }
 
         function openAchievementModal() {
@@ -17744,21 +16446,6 @@ function sortProjects(list) {
                 }
             }
 
-            // 练习打卡：file input change 事件
-            const practiceInput = document.getElementById('practiceFileInput');
-            if (practiceInput && !practiceInput.dataset.bound) {
-                practiceInput.addEventListener('change', async (e) => {
-                    const date = practiceInput.dataset.targetDate || todayStr();
-                    await handlePracticeFiles(e.target.files, date);
-                    delete practiceInput.dataset.targetDate;
-                    e.target.value = '';
-                });
-                practiceInput.dataset.bound = '1';
-            }
-            // 练习视图上传区（如果当前可见）
-            const uploadZone = document.getElementById('practiceUploadZone');
-            if (uploadZone && !uploadZone.dataset.bound) bindPracticeUploadZone();
-
             document.querySelectorAll('.color-option').forEach(option => {
                 option.addEventListener('click', function() {
                     const theme = getTheme();
@@ -18103,8 +16790,6 @@ function sortProjects(list) {
                             }
                         } else if (tab === 'schedule') {
                             switchView('schedule');
-                        } else if (tab === 'practice') {
-                            switchView('practice');
                         } else if (tab === 'income') {
                             switchView('income');
                         } else if (tab === 'achievement') {
